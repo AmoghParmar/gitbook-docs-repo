@@ -20,3 +20,5 @@
 ## Publishing
 * [Publish Guide](publishing/publish-guide.md)
 * [Troubleshooting](publishing/troubleshooting.md)
+## OFBiz / Moqui Notes
+* [OFBiz Learning Notes](ofbiz-notes/README.md)
