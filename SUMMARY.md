@@ -22,3 +22,6 @@
 * [Troubleshooting](publishing/troubleshooting.md)
 ## OFBiz / Moqui Notes
 * [OFBiz Learning Notes](ofbiz-notes/README.md)
+
+## Git Notes
+* [Git Commands & Concepts](git-notes/README.md)
