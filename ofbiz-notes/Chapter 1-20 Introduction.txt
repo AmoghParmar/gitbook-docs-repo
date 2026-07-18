@@ -1,0 +1,20569 @@
+# Chapter 1 - Introduction to Apache OFBiz
+
+---
+
+# What is Apache OFBiz?
+
+Apache OFBiz (Open For Business) is an **Open Source Enterprise Application Framework**.
+
+It is mainly used for building **large business applications**.
+
+Examples:
+
+- Order Management System (OMS)
+- Warehouse Management System (WMS)
+- Inventory Management
+- Product Management
+- Manufacturing
+- Accounting
+- CRM (Customer Relationship Management)
+
+Instead of creating everything from scratch, OFBiz already provides most of the common business modules.
+
+---
+
+# Why was OFBiz created?
+
+Suppose Company A wants to build an Order Management System.
+
+They need:
+
+- Products
+- Orders
+- Customers
+- Inventory
+- Payments
+- Shipments
+- Users
+- Security
+- Reports
+
+Now imagine Company B also needs the same things.
+
+Again Company C.
+
+Again Company D.
+
+Almost every business software requires these modules.
+
+So instead of writing everything again and again, Apache created OFBiz.
+
+Now developers only need to write the custom business logic.
+
+---
+
+# What does OFBiz provide?
+
+OFBiz already provides many frameworks.
+
+Some important ones are:
+
+- Entity Engine
+- Service Engine
+- Screen Widget
+- Form Widget
+- Menu Widget
+- Security Framework
+- Transaction Management
+- Scheduler
+- Workflow
+- Internationalization (i18n)
+- Localization (l10n)
+
+These are already built inside the framework.
+
+---
+
+# What is an Enterprise Framework?
+
+Enterprise means software used by companies to run their business.
+
+Examples:
+
+- Amazon OMS
+- Walmart Inventory System
+- ERP Software
+- Warehouse Software
+- Manufacturing Software
+
+OFBiz is specially designed for these kinds of enterprise applications.
+
+---
+
+# Technologies used in OFBiz
+
+Programming Languages
+
+- Java
+- Groovy
+
+Frontend
+
+- XML Widgets
+- FreeMarker (FTL)
+- HTML
+- CSS
+- JavaScript
+
+Backend
+
+- Java
+- Entity Engine
+- Service Engine
+
+Database
+
+- Derby
+- MySQL
+- PostgreSQL
+- Oracle
+- SQL Server
+
+Application Server
+
+- Tomcat
+
+Build Tool
+
+- Gradle
+
+Logging
+
+- Log4j2
+
+---
+
+# What problems does OFBiz solve?
+
+Instead of writing these modules manually,
+
+- Product Module
+- Customer Module
+- Order Module
+- Shipment Module
+- Payment Module
+- User Module
+
+OFBiz already provides their framework.
+
+Developer only writes the custom business logic.
+
+---
+
+# High Level Architecture
+
+```
+                Browser
+                   │
+                   ▼
+                Tomcat
+                   │
+                   ▼
+              ControlServlet
+                   │
+                   ▼
+              Controller.xml
+                   │
+                   ▼
+                 Event
+                   │
+                   ▼
+                Service
+                   │
+                   ▼
+             Entity Engine
+                   │
+                   ▼
+                 SQL
+                   │
+                   ▼
+               Database
+                   │
+                   ▼
+               HTML Response
+                   │
+                   ▼
+                Browser
+```
+
+This is the complete lifecycle of one request inside OFBiz.
+
+Every feature eventually follows this flow.
+
+---
+
+# Business Logic
+
+Business Logic means:
+
+"The rules of the business."
+
+Example:
+
+Customer places an order.
+
+Business Logic decides:
+
+- Can the order be approved?
+- Is inventory available?
+- Which warehouse should fulfill it?
+- Has payment been completed?
+- Can shipment be created?
+
+These rules are called Business Logic.
+
+---
+
+# Ways to write Business Logic in OFBiz
+
+Business Logic can be written in multiple ways.
+
+## 1. Entity Auto Service
+
+Used for simple CRUD operations.
+
+Examples:
+
+- Create
+- Update
+- Delete
+
+No Java code required.
+
+---
+
+## 2. Simple Service (XML)
+
+Used for simple workflows using XML actions.
+
+Suitable when the logic is straightforward.
+
+---
+
+## 3. Groovy Service
+
+Most commonly used.
+
+Used when the business logic becomes complex.
+
+Examples:
+
+- Loops
+- Conditions
+- Entity Queries
+- Calling Other Services
+- Data Transformations
+
+---
+
+## 4. Java Service
+
+Used for very complex business logic.
+
+Examples:
+
+- Heavy Processing
+- External Integrations
+- Performance Critical Logic
+- Large Business Rules
+
+---
+
+# Which approach should I use?
+
+```
+Simple CRUD
+        │
+        ▼
+Entity Auto Service
+
+----------------------------
+
+Simple Workflow
+        │
+        ▼
+Simple XML Service
+
+----------------------------
+
+Medium Complexity
+        │
+        ▼
+Groovy Service
+
+----------------------------
+
+Very Complex Logic
+        │
+        ▼
+Java Service
+```
+
+---
+
+# Major Building Blocks of OFBiz
+
+```
+Browser
+
+↓
+
+Tomcat
+
+↓
+
+Controller
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Every request eventually reaches the Entity Engine.
+
+---
+
+# Important Concepts I Need To Learn
+
+Java
+
+- OOP
+- Interfaces
+- Abstract Classes
+- Collections
+
+Database
+
+- SQL
+- Indexing
+- B+ Tree
+
+OFBiz
+
+- Component Structure
+- Controller
+- Events
+- Services
+- Entity Engine
+- Delegator
+- GenericValue
+- Widgets
+- Forms
+- Screens
+- FTL
+- Security
+- Transactions
+
+---
+
+# Complete Request Flow
+
+```
+Browser
+
+↓
+
+HTTP Request
+
+↓
+
+Tomcat
+
+↓
+
+ControlServlet
+
+↓
+
+controller.xml
+
+↓
+
+request-map
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Entity Engine
+
+↓
+
+SQL
+
+↓
+
+JDBC
+
+↓
+
+Database
+
+↓
+
+Result
+
+↓
+
+Screen Widget
+
+↓
+
+FTL
+
+↓
+
+HTML
+
+↓
+
+Browser
+```
+
+Remember this flow.
+
+Almost every file inside OFBiz belongs somewhere in this request lifecycle.
+
+---
+
+# Chapter 1 Summary
+
+After completing this chapter, I should be able to answer:
+
+✔ What is Apache OFBiz?
+
+✔ Why was OFBiz created?
+
+✔ What problems does it solve?
+
+✔ Which technologies are used?
+
+✔ What is Business Logic?
+
+✔ How many ways can I write Business Logic?
+
+✔ What is the high-level request flow?
+
+If I can answer all these questions without looking at notes, then Chapter 1 is complete.
+
+
+
+# Chapter 2 - OFBiz Folder Structure & Component Architecture
+
+---
+
+# Why do we need to understand the Folder Structure?
+
+Whenever we download OFBiz, thousands of files are present.
+
+If we don't know which folder is responsible for what, then debugging and development become very difficult.
+
+Understanding the folder structure is like understanding the map of a city.
+
+If you know the map, then you know exactly where to go.
+
+---
+
+# Root Directory Structure
+
+After downloading OFBiz, you'll see something like this:
+
+```
+ofbiz/
+
+├── applications/
+
+├── framework/
+
+├── plugins/
+
+├── runtime/
+
+├── gradle/
+
+├── themes/
+
+├── lib/
+
+├── build.gradle
+
+├── settings.gradle
+
+└── gradlew
+```
+
+Each folder has its own responsibility.
+
+---
+
+# 1. framework/
+
+The **framework** folder contains the core OFBiz engine.
+
+Everything related to the framework is present here.
+
+Examples:
+
+- Entity Engine
+- Service Engine
+- Widget Engine
+- Security
+- Transactions
+- Base Utilities
+- Common Components
+
+Think of it as the **heart of OFBiz**.
+
+Without the framework, OFBiz cannot run.
+
+---
+
+Inside framework, you'll find folders like:
+
+```
+framework/
+
+├── base/
+
+├── entity/
+
+├── service/
+
+├── webapp/
+
+├── widget/
+
+├── security/
+
+├── common/
+
+└── ...
+```
+
+---
+
+## framework/entity
+
+Responsible for:
+
+- Entity Engine
+- SQL Generation
+- Database Communication
+- Entity Definitions
+- Delegator
+- GenericValue
+
+Important files to study later:
+
+```
+framework/entity/
+
+EntityQuery.java
+
+Delegator.java
+
+GenericDelegator.java
+
+GenericValue.java
+
+entityengine.xml
+```
+
+---
+
+## framework/service
+
+Responsible for:
+
+- Service Engine
+- Dispatcher
+- Transactions
+- Sync Services
+- Async Services
+- Job Scheduler
+
+Important classes:
+
+```
+LocalDispatcher.java
+
+GenericDispatcher.java
+
+DispatchContext.java
+```
+
+---
+
+## framework/widget
+
+Responsible for rendering UI.
+
+Contains:
+
+- Screen Widget
+- Form Widget
+- Menu Widget
+- Tree Widget
+
+---
+
+## framework/base
+
+Contains common utilities.
+
+Examples:
+
+```
+UtilMisc.java
+
+UtilValidate.java
+
+Debug.java
+```
+
+These helper classes are used throughout OFBiz.
+
+---
+
+# 2. applications/
+
+This folder contains the default business applications provided by OFBiz.
+
+Examples:
+
+```
+applications/
+
+├── accounting/
+
+├── order/
+
+├── product/
+
+├── party/
+
+├── manufacturing/
+
+├── workeffort/
+
+├── webtools/
+
+└── ...
+```
+
+These are real business components.
+
+---
+
+Example:
+
+applications/order
+
+contains everything related to:
+
+- Orders
+- Order Services
+- Order Screens
+- Order Events
+- Order Entities
+
+---
+
+# 3. plugins/
+
+This is the most important folder for developers.
+
+Plugins are used for **custom development**.
+
+Whenever a client asks for a custom feature,
+
+we usually create our own component inside plugins.
+
+Example:
+
+```
+plugins/
+
+├── example/
+
+├── mycompany/
+
+├── training/
+
+└── customComponent/
+```
+
+Instead of modifying OFBiz source code,
+
+we write our custom code here.
+
+This makes upgrades much easier.
+
+---
+
+# Why should we avoid modifying framework?
+
+Suppose you modify
+
+```
+framework/entity
+```
+
+and later OFBiz releases a new version.
+
+Now your changes may get overwritten.
+
+Instead,
+
+write your custom code inside
+
+```
+plugins/
+```
+
+This is considered a best practice.
+
+---
+
+# 4. runtime/
+
+This folder is created while OFBiz runs.
+
+It stores runtime-generated files.
+
+Examples:
+
+```
+runtime/
+
+├── logs/
+
+├── derby/
+
+├── temp/
+
+├── txlog/
+
+├── upload/
+
+└── cache/
+```
+
+---
+
+## runtime/logs
+
+Contains log files.
+
+Examples:
+
+```
+ofbiz.log
+
+error.log
+
+debug.log
+```
+
+Whenever an exception occurs,
+
+the first place to check is:
+
+```
+runtime/logs/ofbiz.log
+```
+
+---
+
+## runtime/derby
+
+If you're using Derby,
+
+its database files are stored here.
+
+If using MySQL or PostgreSQL,
+
+this folder becomes less important.
+
+---
+
+# 5. themes/
+
+Contains themes used for UI rendering.
+
+Examples:
+
+```
+themes/
+
+common-theme/
+
+hot-deploy/
+
+...
+```
+
+Themes define:
+
+- Header
+- Footer
+- Colors
+- Layout
+- Navigation
+
+---
+
+# 6. gradle/
+
+Contains Gradle wrapper files.
+
+Responsible for:
+
+- Building Project
+- Downloading Dependencies
+- Running Tasks
+
+---
+
+# 7. build.gradle
+
+This is the Gradle build file.
+
+Responsible for:
+
+- Dependencies
+- Plugins
+- Build Tasks
+- Packaging
+
+---
+
+# 8. settings.gradle
+
+Contains Gradle project settings.
+
+---
+
+# 9. gradlew
+
+This is the Gradle Wrapper.
+
+Instead of installing Gradle manually,
+
+we simply run:
+
+```bash
+./gradlew ofbiz
+```
+
+---
+
+# Folder Hierarchy Diagram
+
+```
+OFBiz
+
+│
+
+├── framework
+│       │
+│       ├── Entity Engine
+│       ├── Service Engine
+│       ├── Widget Engine
+│       └── Base Utilities
+
+│
+├── applications
+│       │
+│       ├── Order
+│       ├── Product
+│       ├── Party
+│       ├── Accounting
+│       └── Manufacturing
+
+│
+├── plugins
+│       │
+│       ├── Example
+│       ├── Training
+│       └── Custom Components
+
+│
+├── runtime
+│       │
+│       ├── Logs
+│       ├── Derby
+│       ├── Upload
+│       └── Cache
+
+│
+├── themes
+
+│
+├── gradle
+
+│
+├── build.gradle
+
+│
+└── gradlew
+```
+
+---
+
+# Component Architecture
+
+Every business module inside OFBiz is called a **Component**.
+
+Examples:
+
+```
+Order
+
+Product
+
+Party
+
+Accounting
+
+Manufacturing
+
+Example
+```
+
+Every component has almost the same structure.
+
+```
+Component
+
+│
+
+├── config/
+
+├── data/
+
+├── dtd/
+
+├── documents/
+
+├── entitydef/
+
+├── lib/
+
+├── script/
+
+├── servicedef/
+
+├── src/
+
+├── testdef/
+
+├── webapp/
+
+├── widget/
+
+└── ofbiz-component.xml
+```
+
+Every folder has a specific purpose.
+
+We'll study each folder separately in upcoming chapters.
+
+---
+
+# Why is Component Architecture important?
+
+Suppose someone asks you:
+
+"Where is Order Service written?"
+
+You'll immediately know:
+
+```
+applications/order/
+```
+
+Suppose someone asks:
+
+"Where should I create my own service?"
+
+You'll answer:
+
+```
+plugins/myComponent/
+```
+
+That's why understanding component architecture is very important.
+
+---
+
+# Chapter 2 Summary
+
+After completing this chapter, I should know:
+
+✔ What is framework?
+
+✔ What is applications?
+
+✔ What is plugins?
+
+✔ What is runtime?
+
+✔ Why do we use plugins?
+
+✔ Why should we avoid modifying framework?
+
+✔ What is a Component?
+
+✔ What is the overall OFBiz folder structure?
+
+If I can answer these questions confidently, then Chapter 2 is complete.
+
+# Chapter 3 - OFBiz Component Architecture
+
+---
+
+# What is a Component?
+
+A Component is a **self-contained module** inside OFBiz.
+
+You can think of a component as a small application that contains everything related to one business module.
+
+Examples:
+
+- Order
+- Product
+- Party
+- Accounting
+- Manufacturing
+- Example
+
+Every component has its own:
+
+- Entities
+- Services
+- Screens
+- Forms
+- Events
+- Java Files
+- Groovy Files
+- Data
+- Configuration
+
+Instead of keeping everything in one place, OFBiz organizes code into Components.
+
+---
+
+# Why Components?
+
+Suppose OFBiz had no components.
+
+Everything would be inside one folder.
+
+```
+Java Files
+
+XML Files
+
+Entities
+
+Services
+
+Widgets
+
+Data
+
+Images
+
+JavaScript
+```
+
+Imagine thousands of files inside one folder.
+
+It would become impossible to maintain.
+
+So OFBiz divides the project into Components.
+
+Each Component is responsible for one business domain.
+
+---
+
+# Example
+
+Order Component
+
+Responsible for
+
+- Orders
+- Order Items
+- Payments
+- Shipments
+
+Product Component
+
+Responsible for
+
+- Products
+- Categories
+- Inventory
+- Product Features
+
+Party Component
+
+Responsible for
+
+- Customers
+- Organizations
+- Employees
+- Contact Mechanisms
+
+Every Component has its own responsibility.
+
+---
+
+# Real Component Structure
+
+A typical component looks like this:
+
+```
+plugins/example/
+
+│
+
+├── config/
+
+├── data/
+
+├── documents/
+
+├── dtd/
+
+├── entitydef/
+
+├── lib/
+
+├── script/
+
+├── servicedef/
+
+├── src/
+
+├── testdef/
+
+├── webapp/
+
+├── widget/
+
+├── build.xml
+
+└── ofbiz-component.xml
+```
+
+Every folder has a different purpose.
+
+Let's understand each one.
+
+---
+
+# 1. config/
+
+Purpose:
+
+Stores configuration files.
+
+Examples:
+
+```
+ExampleUiLabels.xml
+
+example.properties
+```
+
+Usually contains
+
+- UI Labels
+- Properties Files
+- Configuration
+
+---
+
+## ExampleUiLabels.xml
+
+Purpose:
+
+Supports
+
+- Internationalization (i18n)
+- Localization (l10n)
+
+Example
+
+```
+First Name
+
+↓
+
+English
+
+First Name
+
+↓
+
+French
+
+Prénom
+
+↓
+
+German
+
+Vorname
+```
+
+Instead of hardcoding text,
+
+we store labels here.
+
+---
+
+## .properties Files
+
+Stores key-value pairs.
+
+Example
+
+```
+application.name=Example
+
+company.name=HotWax
+```
+
+These values can be reused throughout the application.
+
+---
+
+# 2. data/
+
+Purpose:
+
+Contains XML data that will be loaded into the database.
+
+Examples
+
+- Seed Data
+- Seed Initial Data
+- Demo Data
+- Ext Data
+
+---
+
+Example
+
+```
+ExampleTypeData.xml
+
+ExampleDemoData.xml
+```
+
+Whenever we run
+
+```
+./gradlew load
+```
+
+the files inside this folder are loaded according to the configured data readers.
+
+---
+
+# 3. entitydef/
+
+Purpose:
+
+Contains Entity Definitions.
+
+Example
+
+```xml
+<entity entity-name="Example">
+
+    <field name="exampleId"
+           type="id"
+           is-pk="true"/>
+
+    <field name="exampleName"
+           type="name"/>
+
+</entity>
+```
+
+This folder defines
+
+- Tables
+- Fields
+- Primary Keys
+- Relationships
+
+---
+
+# 4. servicedef/
+
+Purpose:
+
+Defines Services.
+
+Example
+
+```xml
+<service
+
+name="createExample"
+
+engine="java">
+```
+
+Here we define
+
+- IN Parameters
+- OUT Parameters
+- Authentication
+- Transactions
+- Engine
+
+This folder only defines services.
+
+Actual logic is written elsewhere.
+
+---
+
+# 5. script/
+
+Purpose:
+
+Contains Groovy scripts.
+
+Examples
+
+```
+CreateOrder.groovy
+
+CreateCustomer.groovy
+
+Inventory.groovy
+```
+
+Whenever business logic is written in Groovy,
+
+it usually lives here.
+
+---
+
+# 6. src/
+
+Purpose:
+
+Contains Java source code.
+
+Example
+
+```
+events/
+
+services/
+
+helper/
+
+util/
+```
+
+Usually contains
+
+- Java Services
+- Events
+- Helper Classes
+- Utility Classes
+
+---
+
+# 7. widget/
+
+Purpose:
+
+Contains UI XML.
+
+Examples
+
+```
+ExampleScreens.xml
+
+ExampleForms.xml
+
+ExampleMenus.xml
+
+ExampleTrees.xml
+```
+
+Responsible for rendering UI.
+
+---
+
+# 8. webapp/
+
+Purpose:
+
+Contains everything related to the Web Application.
+
+Example
+
+```
+webapp/
+
+│
+
+├── WEB-INF/
+
+│
+
+├── images/
+
+├── css/
+
+├── js/
+
+├── templates/
+```
+
+---
+
+Inside WEB-INF
+
+```
+controller.xml
+
+web.xml
+```
+
+These files control request routing.
+
+We'll study them in detail later.
+
+---
+
+# 9. documents/
+
+Purpose:
+
+Stores documentation related to the component.
+
+Usually
+
+- PDFs
+- Notes
+- Specifications
+
+Not every component contains this folder.
+
+---
+
+# 10. dtd/
+
+Purpose:
+
+Stores DTD files.
+
+DTD means
+
+```
+Document Type Definition
+```
+
+Earlier XML validation was done using DTD.
+
+Nowadays,
+
+XSD is mostly used.
+
+---
+
+# 11. lib/
+
+Purpose:
+
+Stores component-specific libraries.
+
+Example
+
+```
+my-library.jar
+```
+
+If only one component needs a library,
+
+we place it here.
+
+---
+
+# 12. testdef/
+
+Purpose:
+
+Contains test definitions.
+
+Used for automated testing.
+
+Not commonly modified during day-to-day development.
+
+---
+
+# 13. build.xml
+
+Purpose:
+
+Component-specific build instructions.
+
+Sometimes used for
+
+- Custom Gradle Tasks
+- Build Automation
+
+Not every component requires customization here.
+
+---
+
+# 14. ofbiz-component.xml
+
+This is the MOST IMPORTANT file inside every component.
+
+Think of it as the **entry point of the component**.
+
+Whenever OFBiz loads a component,
+
+it first reads:
+
+```
+ofbiz-component.xml
+```
+
+---
+
+# Why is ofbiz-component.xml important?
+
+Because it tells OFBiz
+
+"What resources belong to this component?"
+
+Examples
+
+- Entity Definitions
+- Service Definitions
+- Data Files
+- Web Applications
+- Widgets
+- Classpath Resources
+
+Without this file,
+
+OFBiz doesn't know what to load.
+
+---
+
+# Component Loading Flow
+
+```
+OFBiz Starts
+
+↓
+
+Reads component-load.xml
+
+↓
+
+Finds Components
+
+↓
+
+Reads ofbiz-component.xml
+
+↓
+
+Loads
+
+Entities
+
+↓
+
+Loads Services
+
+↓
+
+Loads Widgets
+
+↓
+
+Loads Data
+
+↓
+
+Registers WebApps
+
+↓
+
+Component Ready
+```
+
+---
+
+# Real Life Analogy
+
+Think of a Component like a Restaurant.
+
+Restaurant
+
+contains
+
+Kitchen
+
+↓
+
+Chef
+
+↓
+
+Menu
+
+↓
+
+Waiter
+
+↓
+
+Customers
+
+↓
+
+Billing
+
+Everything required to run the restaurant exists inside one building.
+
+Similarly,
+
+a Component contains everything required to run one business module.
+
+---
+
+# Component Responsibility
+
+One Component should solve one business problem.
+
+Examples
+
+```
+Order Component
+
+↓
+
+Orders Only
+```
+
+```
+Product Component
+
+↓
+
+Products Only
+```
+
+```
+Accounting Component
+
+↓
+
+Accounting Only
+```
+
+This separation makes the code clean and maintainable.
+
+---
+
+# Component Relationship
+
+```
+OFBiz
+
+│
+
+├── Order Component
+
+├── Product Component
+
+├── Party Component
+
+├── Accounting Component
+
+├── Manufacturing Component
+
+└── Example Component
+```
+
+All these components work together,
+
+but each one is independent.
+
+---
+
+# Chapter 3 Summary
+
+After completing this chapter, I should know:
+
+✔ What is a Component?
+
+✔ Why Components are used?
+
+✔ What folders exist inside a Component?
+
+✔ What is stored inside each folder?
+
+✔ Why is ofbiz-component.xml important?
+
+✔ How does OFBiz load a Component?
+
+
+
+
+
+# Chapter 4 - OFBiz Request Lifecycle (End-to-End Flow)
+
+---
+
+# Why do we need to understand Request Lifecycle?
+
+Whenever a user clicks a button,
+
+or opens any page,
+
+or submits any form,
+
+a request travels through many components before the response is returned.
+
+If you understand this flow,
+
+then debugging becomes very easy.
+
+Whenever you encounter any issue,
+
+you'll immediately know where to look.
+
+---
+
+# Complete Request Lifecycle
+
+```
+Browser
+
+↓
+
+HTTP Request
+
+↓
+
+Tomcat
+
+↓
+
+web.xml
+
+↓
+
+ControlServlet
+
+↓
+
+RequestHandler
+
+↓
+
+controller.xml
+
+↓
+
+request-map
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Entity Engine
+
+↓
+
+SQL
+
+↓
+
+Database
+
+↓
+
+Result
+
+↓
+
+View Map
+
+↓
+
+Screen Widget
+
+↓
+
+FTL
+
+↓
+
+HTML Response
+
+↓
+
+Browser
+```
+
+This is the complete lifecycle of one request.
+
+Every page inside OFBiz follows this flow.
+
+---
+
+# Step 1 — Browser
+
+Everything starts from the Browser.
+
+Example
+
+```
+http://localhost:8443/webtools/control/main
+```
+
+or
+
+```
+http://localhost:8443/order/control/main
+```
+
+The browser creates an HTTP Request.
+
+Types of requests:
+
+- GET
+- POST
+- PUT
+- DELETE
+
+Normally,
+
+opening a page uses GET.
+
+Submitting a form usually uses POST.
+
+---
+
+# Step 2 — HTTP Request
+
+The browser sends an HTTP Request.
+
+The request contains:
+
+- URL
+- Headers
+- Parameters
+- Cookies
+- Session ID
+- Request Body
+
+Example
+
+```
+GET
+
+/order/control/main
+```
+
+---
+
+# Step 3 — Tomcat
+
+The request reaches Tomcat.
+
+Tomcat is the Web Server (Servlet Container).
+
+Tomcat does NOT understand OFBiz.
+
+Tomcat only knows:
+
+"I have received an HTTP Request."
+
+Now it needs to decide:
+
+Which application should handle this request?
+
+---
+
+# Step 4 — web.xml
+
+Tomcat reads
+
+```
+WEB-INF/web.xml
+```
+
+This file is called the **Deployment Descriptor**.
+
+Its responsibility is:
+
+- Register Servlets
+- Register Filters
+- Register Listeners
+- Define Context Parameters
+
+Most importantly,
+
+it tells Tomcat
+
+which Servlet should receive incoming requests.
+
+---
+
+# Step 5 — ControlServlet
+
+After reading web.xml,
+
+Tomcat forwards the request to
+
+```
+ControlServlet
+```
+
+Think of ControlServlet as the **main entry point of OFBiz**.
+
+Every request first enters here.
+
+ControlServlet itself doesn't contain business logic.
+
+Its job is simply:
+
+Receive Request
+
+↓
+
+Pass it to RequestHandler
+
+---
+
+# Step 6 — RequestHandler
+
+RequestHandler is responsible for understanding
+
+"What does this URL mean?"
+
+Example
+
+```
+/order/control/findOrders
+```
+
+RequestHandler now needs to find
+
+```
+findOrders
+```
+
+inside
+
+```
+controller.xml
+```
+
+---
+
+# Step 7 — controller.xml
+
+This file contains routing information.
+
+Example
+
+```xml
+<request-map uri="findOrders">
+
+    ...
+
+</request-map>
+```
+
+Think of controller.xml like Google Maps.
+
+It decides
+
+"Where should this request go?"
+
+It contains:
+
+- request-map
+- view-map
+- event
+- security
+- response
+
+---
+
+# Step 8 — request-map
+
+Suppose the request is
+
+```
+findOrders
+```
+
+controller.xml searches for
+
+```xml
+<request-map uri="findOrders">
+```
+
+Inside request-map,
+
+OFBiz decides
+
+Should it call:
+
+- Java Event
+- Service
+- Screen
+
+This decision is made here.
+
+---
+
+# Step 9 — Event
+
+An Event receives
+
+```
+HttpServletRequest
+
+HttpServletResponse
+```
+
+Its responsibilities:
+
+- Read Parameters
+- Validate Input
+- Perform Simple Logic
+- Call Services
+
+Event should NOT contain heavy business logic.
+
+Its main purpose is
+
+Request Handling.
+
+---
+
+# Event Signature
+
+Example
+
+```java
+public static String createOrder(
+
+HttpServletRequest request,
+
+HttpServletResponse response)
+```
+
+Event always returns
+
+```
+String
+```
+
+Examples
+
+```
+success
+
+error
+
+login
+```
+
+---
+
+# Step 10 — Service
+
+The Event usually calls a Service.
+
+Service is responsible for
+
+Business Logic.
+
+Example
+
+```
+Approve Order
+
+Reserve Inventory
+
+Create Shipment
+
+Capture Payment
+```
+
+Unlike Event,
+
+Service does NOT know anything about
+
+HttpServletRequest.
+
+Service only works with
+
+```
+Map<String,Object>
+```
+
+Input
+
+↓
+
+Business Logic
+
+↓
+
+Map<String,Object>
+
+Output
+
+---
+
+# Step 11 — Entity Engine
+
+Whenever the Service needs data,
+
+it calls the Entity Engine.
+
+Example
+
+```
+Find Product
+
+Find Customer
+
+Update Order
+
+Create Shipment
+```
+
+Entity Engine converts
+
+Entity Query
+
+↓
+
+SQL
+
+---
+
+# Step 12 — SQL Generation
+
+Entity Engine prepares SQL.
+
+Example
+
+```
+EntityQuery
+
+↓
+
+SELECT
+
+↓
+
+FROM
+
+↓
+
+WHERE
+
+↓
+
+ORDER BY
+
+↓
+
+LIMIT
+```
+
+SQL is prepared automatically.
+
+Developer usually doesn't write raw SQL.
+
+---
+
+# Step 13 — Database
+
+SQL reaches the Database.
+
+Example
+
+```
+MySQL
+
+PostgreSQL
+
+Derby
+```
+
+Database executes SQL
+
+and returns ResultSet.
+
+---
+
+# Step 14 — Entity Engine receives Result
+
+Entity Engine converts
+
+```
+ResultSet
+
+↓
+
+GenericValue
+
+↓
+
+EntityList
+```
+
+Now Java objects are returned
+
+instead of database rows.
+
+---
+
+# Step 15 — Service returns Result
+
+Service prepares
+
+```
+Map<String,Object>
+```
+
+Example
+
+```
+order
+
+customer
+
+totalAmount
+
+status
+```
+
+Everything is stored inside one Map.
+
+---
+
+# Step 16 — Event receives Result
+
+Event receives the Map.
+
+Now Event returns
+
+```
+success
+```
+
+or
+
+```
+error
+```
+
+---
+
+# Step 17 — view-map
+
+controller.xml checks
+
+```xml
+<response>
+
+name="success"
+
+type="view"
+
+value="OrderList"
+```
+
+Now OFBiz knows
+
+which Screen should be rendered.
+
+---
+
+# Step 18 — Screen Widget
+
+Example
+
+```
+OrderScreens.xml
+```
+
+Screen prepares UI.
+
+Inside Screen
+
+```
+Actions
+
+↓
+
+Widgets
+
+↓
+
+Forms
+
+↓
+
+Menus
+```
+
+---
+
+# Step 19 — FTL
+
+Screen Widget renders
+
+```
+FreeMarker Template
+```
+
+FTL converts data into HTML.
+
+Example
+
+```
+Customer Name
+
+Order Number
+
+Products
+
+Tables
+```
+
+---
+
+# Step 20 — HTML Response
+
+HTML is returned to the Browser.
+
+The Browser displays the page.
+
+The request lifecycle is now complete.
+
+---
+
+# Complete Sequence Diagram
+
+```
+Browser
+
+│
+
+│ HTTP Request
+
+▼
+
+Tomcat
+
+│
+
+▼
+
+web.xml
+
+│
+
+▼
+
+ControlServlet
+
+│
+
+▼
+
+RequestHandler
+
+│
+
+▼
+
+controller.xml
+
+│
+
+▼
+
+request-map
+
+│
+
+▼
+
+Event
+
+│
+
+▼
+
+Service
+
+│
+
+▼
+
+Entity Engine
+
+│
+
+▼
+
+SQL
+
+│
+
+▼
+
+Database
+
+│
+
+▼
+
+ResultSet
+
+│
+
+▼
+
+Entity Engine
+
+│
+
+▼
+
+Service
+
+│
+
+▼
+
+Event
+
+│
+
+▼
+
+view-map
+
+│
+
+▼
+
+Screen Widget
+
+│
+
+▼
+
+FTL
+
+│
+
+▼
+
+HTML
+
+│
+
+▼
+
+Browser
+```
+
+---
+
+# Real Life Analogy
+
+Suppose you order Pizza.
+
+```
+Customer
+
+↓
+
+Reception
+
+↓
+
+Manager
+
+↓
+
+Chef
+
+↓
+
+Kitchen
+
+↓
+
+Cook
+
+↓
+
+Pizza Ready
+
+↓
+
+Waiter
+
+↓
+
+Customer
+```
+
+Mapping with OFBiz
+
+```
+Customer
+
+↓
+
+Browser
+
+↓
+
+Tomcat
+
+↓
+
+Controller
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+
+↓
+
+Response
+```
+
+Every layer has its own responsibility.
+
+No layer should perform another layer's job.
+
+---
+
+# Important Responsibilities
+
+Browser
+
+- Sends Request
+
+Tomcat
+
+- Receives Request
+
+web.xml
+
+- Registers Servlet
+
+ControlServlet
+
+- Entry Point
+
+RequestHandler
+
+- Reads controller.xml
+
+controller.xml
+
+- Routing
+
+Event
+
+- Request Validation
+
+Service
+
+- Business Logic
+
+Entity Engine
+
+- Database Communication
+
+Database
+
+- Stores Data
+
+Screen
+
+- UI Preparation
+
+FTL
+
+- HTML Rendering
+
+Browser
+
+- Displays HTML
+
+---
+
+# Chapter 4 Summary
+
+After completing this chapter, I should be able to answer:
+
+✔ How does a request start?
+
+✔ What is Tomcat's responsibility?
+
+✔ Why do we need web.xml?
+
+✔ Why is ControlServlet required?
+
+✔ What does RequestHandler do?
+
+✔ What is controller.xml?
+
+✔ What is request-map?
+
+✔ Difference between Event and Service?
+
+✔ What is Entity Engine?
+
+✔ How does SQL get generated?
+
+✔ How is HTML returned to the Browser?
+
+
+# Chapter 5 - Controller Layer (The Brain of OFBiz Routing)
+
+---
+
+# Why do we need Controller?
+
+Suppose browser sends this request
+
+```
+http://localhost:8443/example/control/main
+```
+
+Now think...
+
+How does OFBiz know
+
+- Which Java class to call?
+- Which Event to execute?
+- Which Service to invoke?
+- Which Screen to render?
+
+Someone has to decide all this.
+
+That "someone" is the **Controller Layer**.
+
+You can think of Controller as the **Traffic Police** of OFBiz.
+
+It doesn't perform business logic.
+
+It only decides
+
+> "Where should this request go next?"
+
+---
+
+# Controller Flow
+
+```
+Browser
+
+↓
+
+Tomcat
+
+↓
+
+web.xml
+
+↓
+
+ControlServlet
+
+↓
+
+RequestHandler
+
+↓
+
+controller.xml
+
+↓
+
+request-map
+
+↓
+
+Event / View
+
+↓
+
+Screen
+```
+
+---
+
+# Step 1 - Browser Request
+
+Suppose user opens
+
+```
+http://localhost:8443/example/control/main
+```
+
+Browser sends
+
+```
+GET /example/control/main
+```
+
+to Tomcat.
+
+---
+
+# Step 2 - web.xml
+
+Tomcat first checks
+
+```
+WEB-INF/web.xml
+```
+
+Question:
+
+Why?
+
+Because Tomcat has no idea what OFBiz is.
+
+Tomcat only knows
+
+"I received an HTTP Request."
+
+Now it asks
+
+"Which Servlet should handle this request?"
+
+That answer is written inside
+
+```
+web.xml
+```
+
+---
+
+# What is web.xml?
+
+web.xml is called
+
+```
+Deployment Descriptor
+```
+
+It is responsible for
+
+- Registering Servlets
+- Registering Filters
+- Registering Listeners
+- Defining Context Parameters
+
+Think of it as
+
+```
+Tomcat Configuration File
+```
+
+---
+
+# Important things inside web.xml
+
+Generally you'll see
+
+```
+<context-param>
+
+<listener>
+
+<filter>
+
+<servlet>
+
+<servlet-mapping>
+```
+
+---
+
+# Context Parameter
+
+Example
+
+```xml
+<context-param>
+
+<param-name>
+mainDecoratorLocation
+</param-name>
+
+<param-value>
+
+component://common/widget/CommonScreens.xml
+
+</param-value>
+
+</context-param>
+```
+
+Question
+
+Why?
+
+Because this value should be available everywhere.
+
+Later OFBiz automatically makes it available using
+
+```
+parameters.mainDecoratorLocation
+```
+
+inside XML and FTL.
+
+---
+
+# Servlet Registration
+
+Example
+
+```xml
+<servlet>
+
+<servlet-name>
+
+control
+
+</servlet-name>
+
+<servlet-class>
+
+org.apache.ofbiz.webapp.control.ControlServlet
+
+</servlet-class>
+
+</servlet>
+```
+
+Meaning
+
+"When request comes,
+
+call ControlServlet."
+
+---
+
+# Servlet Mapping
+
+Example
+
+```xml
+<servlet-mapping>
+
+<servlet-name>
+
+control
+
+</servlet-name>
+
+<url-pattern>
+
+/control/*
+
+</url-pattern>
+
+</servlet-mapping>
+```
+
+Meaning
+
+Any URL starting with
+
+```
+/control/
+```
+
+should be handled by
+
+```
+ControlServlet
+```
+
+Example
+
+```
+/order/control/main
+
+/example/control/main
+
+/webtools/control/main
+```
+
+All of these go to
+
+```
+ControlServlet
+```
+
+---
+
+# Step 3 - ControlServlet
+
+Now request enters
+
+```
+ControlServlet.java
+```
+
+Think of it as
+
+```
+Main Gate of OFBiz
+```
+
+Every request enters through this gate.
+
+---
+
+# Responsibility of ControlServlet
+
+It DOES NOT
+
+- Call Database
+- Execute SQL
+- Run Services
+
+Its only responsibility is
+
+```
+Receive Request
+
+↓
+
+Create Environment
+
+↓
+
+Pass Request to RequestHandler
+```
+
+---
+
+# Sequence
+
+```
+Browser
+
+↓
+
+Tomcat
+
+↓
+
+ControlServlet
+
+↓
+
+RequestHandler
+```
+
+---
+
+# Step 4 - RequestHandler
+
+This class is the real brain.
+
+It asks
+
+```
+Which request came?
+
+Which controller.xml?
+
+Which request-map?
+
+Which Event?
+
+Which View?
+```
+
+Everything starts here.
+
+---
+
+# What does RequestHandler do?
+
+It performs
+
+1.
+
+Read URL
+
+↓
+
+2.
+
+Find controller.xml
+
+↓
+
+3.
+
+Search request-map
+
+↓
+
+4.
+
+Execute Event
+
+↓
+
+5.
+
+Execute Service (if required)
+
+↓
+
+6.
+
+Render View
+
+---
+
+# Example
+
+Suppose URL is
+
+```
+/example/control/main
+```
+
+RequestHandler extracts
+
+```
+main
+```
+
+Now it searches
+
+```
+controller.xml
+```
+
+for
+
+```xml
+<request-map uri="main">
+```
+
+---
+
+# Step 5 - controller.xml
+
+This is one of the most important XML files.
+
+Think of it as
+
+```
+Google Maps
+
+OR
+
+Traffic Police
+```
+
+It decides
+
+```
+Where should this request go?
+```
+
+---
+
+# controller.xml contains
+
+```
+<request-map>
+
+<response>
+
+<view-map>
+
+<event>
+
+<security>
+
+<include>
+```
+
+We'll study each one.
+
+---
+
+# request-map
+
+This tells OFBiz
+
+"What should happen when this URL is requested?"
+
+Example
+
+```xml
+<request-map uri="main">
+
+...
+
+</request-map>
+```
+
+Meaning
+
+Whenever URL is
+
+```
+main
+```
+
+execute whatever is written inside this block.
+
+---
+
+# request-map example
+
+```xml
+<request-map uri="findOrders">
+
+<event
+
+type="service"
+
+invoke="findOrders"/>
+
+<response
+
+name="success"
+
+type="view"
+
+value="OrderList"/>
+
+</request-map>
+```
+
+Flow becomes
+
+```
+findOrders URL
+
+↓
+
+Call Service
+
+↓
+
+Return Success
+
+↓
+
+Open OrderList Screen
+```
+
+---
+
+# Event Tag
+
+Example
+
+```xml
+<event
+
+type="java"
+
+path="..."
+
+invoke="createOrder"/>
+```
+
+OR
+
+```xml
+<event
+
+type="service"
+
+invoke="createOrder"/>
+```
+
+Event tells OFBiz
+
+"What should be executed?"
+
+---
+
+# Event Types
+
+Mostly you'll see
+
+```
+java
+
+service
+```
+
+Meaning
+
+Either
+
+call Java Event
+
+OR
+
+call Service directly.
+
+---
+
+# Response Tag
+
+Example
+
+```xml
+<response
+
+name="success"
+
+type="view"
+
+value="FindOrder"/>
+```
+
+Meaning
+
+If Event returns
+
+```
+success
+```
+
+Render
+
+```
+FindOrder Screen
+```
+
+---
+
+# Another Example
+
+```xml
+<response
+
+name="error"
+
+type="view"
+
+value="ErrorScreen"/>
+```
+
+If Event returns
+
+```
+error
+```
+
+show
+
+```
+ErrorScreen
+```
+
+---
+
+# View Map
+
+View Map connects
+
+```
+Logical Name
+
+↓
+
+Actual Screen
+```
+
+Example
+
+```xml
+<view-map
+
+name="FindOrder"
+
+type="screen"
+
+page="component://order/widget/OrderScreens.xml#FindOrder"/>
+```
+
+Meaning
+
+When response says
+
+```
+FindOrder
+```
+
+Render this screen
+
+```
+OrderScreens.xml
+
+↓
+
+FindOrder
+```
+
+---
+
+# Security Tag
+
+Example
+
+```xml
+<security
+
+https="true"
+
+auth="true"/>
+```
+
+Meaning
+
+This page
+
+- Requires Login
+- Requires HTTPS
+
+Without login
+
+User cannot access.
+
+---
+
+# Include Tag
+
+Controller can include another controller.
+
+Example
+
+```xml
+<include
+
+location="component://common/webapp/common/WEB-INF/common-controller.xml"/>
+```
+
+Meaning
+
+Don't write everything in one controller.
+
+Break into smaller files.
+
+Exactly like
+
+```
+#include
+
+or
+
+import
+```
+
+---
+
+# Complete Flow Example
+
+Suppose user opens
+
+```
+localhost:8443/order/control/findOrders
+```
+
+Flow
+
+```
+Browser
+
+↓
+
+Tomcat
+
+↓
+
+web.xml
+
+↓
+
+ControlServlet
+
+↓
+
+RequestHandler
+
+↓
+
+controller.xml
+
+↓
+
+request-map
+
+↓
+
+event
+
+↓
+
+service
+
+↓
+
+response
+
+↓
+
+view-map
+
+↓
+
+OrderScreens.xml
+
+↓
+
+FTL
+
+↓
+
+HTML
+
+↓
+
+Browser
+```
+
+---
+
+# Real Life Analogy
+
+Suppose you enter a hospital.
+
+```
+Patient
+
+↓
+
+Reception
+
+↓
+
+Reception asks
+
+Which Department?
+
+↓
+
+Doctor
+
+↓
+
+Treatment
+
+↓
+
+Medicine
+
+↓
+
+Exit
+```
+
+Mapping with OFBiz
+
+```
+Browser
+
+↓
+
+ControlServlet
+
+↓
+
+RequestHandler
+
+↓
+
+controller.xml
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Screen
+
+↓
+
+Browser
+```
+
+Notice
+
+Reception never treats the patient.
+
+It only routes him.
+
+Similarly
+
+Controller never executes business logic.
+
+It only routes requests.
+
+---
+
+# Files You Must Read
+
+```
+WEB-INF/web.xml
+
+↓
+
+ControlServlet.java
+
+↓
+
+RequestHandler.java
+
+↓
+
+controller.xml
+```
+
+Understanding these four files will make the entire routing mechanism of OFBiz clear.
+
+---
+
+# Responsibilities Summary
+
+web.xml
+
+- Registers Servlet
+- Maps URL
+- Context Parameters
+
+ControlServlet
+
+- Entry Point
+- Receives Request
+
+RequestHandler
+
+- Reads URL
+- Reads controller.xml
+- Finds request-map
+- Executes routing
+
+controller.xml
+
+- Defines routes
+- Calls Event
+- Defines Response
+- Opens Screen
+
+Event
+
+- Reads Request
+- Validates Input
+- Calls Service
+
+Response
+
+- Decides next screen
+
+View Map
+
+- Maps logical name to actual screen
+
+---
+
+# Important Interview Questions
+
+Q1. Why do we need web.xml?
+
+Q2. What is ControlServlet?
+
+Q3. Difference between ControlServlet and RequestHandler?
+
+Q4. What is request-map?
+
+Q5. What is response tag?
+
+Q6. What is view-map?
+
+Q7. Why do we need controller.xml?
+
+Q8. What is include tag?
+
+Q9. What is security tag?
+
+Q10. Does ControlServlet execute business logic?
+
+Answer:
+
+No.
+
+It only receives the request and forwards it to RequestHandler.
+
+---
+
+# Chapter 5 Summary
+
+After completing this chapter, you should be able to explain:
+
+✔ How a request enters OFBiz
+
+✔ Why web.xml exists
+
+✔ Why ControlServlet is needed
+
+✔ What RequestHandler does
+
+✔ What controller.xml does
+
+✔ Difference between request-map and view-map
+
+✔ Difference between Event and Response
+
+✔ How OFBiz decides which Screen to render
+
+Once you understand this chapter, the next chapter (Events & Services) becomes much easier because now you know **how the request reaches them**.
+
+
+# Chapter 6 - Events in OFBiz (HTTP Layer)
+
+---
+
+# What is an Event?
+
+An Event is the **first Java code that executes after the Controller decides where the request should go.**
+
+Think of Event as a **bridge between the UI and Business Logic.**
+
+```
+Browser
+
+↓
+
+Controller
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Database
+```
+
+Event itself does **not contain heavy business logic**.
+
+Its main responsibility is
+
+- Read Request
+- Validate Request
+- Prepare Data
+- Call Service
+- Return Result
+
+---
+
+# Why do we need Event?
+
+Suppose a user clicks
+
+```
+Create Customer
+```
+
+The browser sends
+
+```
+HTTP Request
+```
+
+Now someone has to
+
+- Read all form fields
+- Check required fields
+- Validate data
+- Call the correct service
+
+This work is done by the **Event**.
+
+---
+
+# Complete Request Flow
+
+```
+Browser
+
+↓
+
+Tomcat
+
+↓
+
+web.xml
+
+↓
+
+ControlServlet
+
+↓
+
+RequestHandler
+
+↓
+
+controller.xml
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+```
+
+---
+
+# Real Life Example
+
+Suppose you go to a hospital.
+
+```
+Patient
+
+↓
+
+Reception
+
+↓
+
+Doctor
+
+↓
+
+Medicine
+```
+
+Mapping
+
+```
+Browser
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Database
+```
+
+Reception never performs surgery.
+
+Similarly,
+
+Event never performs complex business logic.
+
+It only sends the patient to the correct doctor.
+
+---
+
+# Where are Events Written?
+
+Generally inside
+
+```
+applications/
+
+plugins/
+
+framework/
+```
+
+Examples
+
+```
+OrderEvents.java
+
+PartyEvents.java
+
+ProductEvents.java
+
+LoginEvents.java
+```
+
+---
+
+# How Controller Calls Event
+
+Inside controller.xml
+
+```xml
+<event
+
+type="java"
+
+path="org.apache.ofbiz.order.order.OrderEvents"
+
+invoke="createOrder"/>
+```
+
+Meaning
+
+Controller will call
+
+```java
+OrderEvents.createOrder()
+```
+
+---
+
+# Event Method Signature
+
+Almost every Java Event looks like this
+
+```java
+public static String createOrder(
+
+HttpServletRequest request,
+
+HttpServletResponse response)
+
+{
+    ...
+}
+```
+
+Notice
+
+Event always receives
+
+```
+HttpServletRequest
+
+HttpServletResponse
+```
+
+---
+
+# Why HttpServletRequest?
+
+Because browser sends data inside Request.
+
+Example
+
+```
+Name
+
+Email
+
+Phone
+
+Password
+
+ProductId
+
+OrderId
+```
+
+All this data comes inside
+
+```
+HttpServletRequest
+```
+
+---
+
+# Reading Form Data
+
+Example
+
+```java
+String firstName =
+
+request.getParameter("firstName");
+```
+
+Meaning
+
+Read
+
+```
+<input name="firstName">
+```
+
+from HTML Form.
+
+---
+
+# Multiple Parameters
+
+```java
+String email
+
+=
+
+request.getParameter("email");
+```
+
+```java
+String phone
+
+=
+
+request.getParameter("phone");
+```
+
+```java
+String city
+
+=
+
+request.getParameter("city");
+```
+
+Everything comes from
+
+```
+HttpServletRequest
+```
+
+---
+
+# Why Validation Happens Here?
+
+Suppose browser sends
+
+```
+Email = ""
+
+Phone = ""
+
+Age = -10
+```
+
+Should this reach the Database?
+
+No.
+
+Event checks everything first.
+
+---
+
+# Event Validation
+
+Examples
+
+```
+Required Field
+
+↓
+
+Empty Check
+
+↓
+
+Number Validation
+
+↓
+
+Email Validation
+
+↓
+
+Permission Check
+
+↓
+
+Business Validation
+```
+
+If validation fails
+
+Service is never called.
+
+---
+
+# Example
+
+```java
+if (UtilValidate.isEmpty(email))
+
+{
+
+    request.setAttribute("error",
+
+    "Email Required");
+
+    return "error";
+
+}
+```
+
+Meaning
+
+Stop here.
+
+Go back to UI.
+
+---
+
+# Event Calls Service
+
+After validation
+
+Event prepares a Map.
+
+Example
+
+```java
+Map<String,Object> ctx
+
+=
+
+UtilMisc.toMap(
+
+"partyId",
+
+partyId,
+
+"name",
+
+name);
+```
+
+Now Event calls Service.
+
+```java
+dispatcher.runSync(
+
+"createCustomer",
+
+ctx);
+```
+
+---
+
+# Dispatcher
+
+Dispatcher is responsible for executing services.
+
+Methods
+
+```
+runSync()
+
+runAsync()
+```
+
+We'll study Dispatcher in Service chapter.
+
+---
+
+# Event Return Type
+
+Event always returns
+
+```
+String
+```
+
+Generally
+
+```
+success
+
+error
+
+login
+
+none
+```
+
+Example
+
+```java
+return "success";
+```
+
+Controller then checks
+
+```xml
+<response
+
+name="success"
+
+type="view"
+
+value="FindOrder"/>
+```
+
+Now OFBiz knows
+
+which screen to render.
+
+---
+
+# Complete Event Flow
+
+```
+Browser
+
+↓
+
+HttpServletRequest
+
+↓
+
+Event
+
+↓
+
+Read Parameters
+
+↓
+
+Validation
+
+↓
+
+Prepare Map
+
+↓
+
+Dispatcher
+
+↓
+
+Service
+
+↓
+
+Return String
+
+↓
+
+Controller
+
+↓
+
+Response
+
+↓
+
+Screen
+```
+
+---
+
+# Request Object
+
+Most used methods
+
+```java
+request.getParameter()
+
+request.getSession()
+
+request.getAttribute()
+
+request.setAttribute()
+
+request.getLocale()
+
+request.getRemoteAddr()
+```
+
+---
+
+# Response Object
+
+Mostly used for
+
+```
+Redirect
+
+Download
+
+Cookies
+
+Headers
+
+Output Stream
+```
+
+Example
+
+```java
+response.sendRedirect(...)
+```
+
+---
+
+# Session
+
+One important thing
+
+Session is available inside Event.
+
+Example
+
+```java
+HttpSession session
+
+=
+
+request.getSession();
+```
+
+Because Event works directly with HTTP.
+
+---
+
+# Why Session is NOT Available in Service?
+
+Because Service should remain
+
+```
+Reusable
+
+Independent
+
+Stateless
+```
+
+Service should work whether
+
+it is called from
+
+- Event
+- Scheduler
+- REST API
+- SOAP
+- Another Service
+
+That's why Session is not directly available.
+
+---
+
+# Event vs Service
+
+| Event | Service |
+|--------|----------|
+| HTTP Layer | Business Layer |
+| Receives Request | Receives Map |
+| Returns String | Returns Map |
+| Session Available | Session Not Available |
+| Reads Form Data | Executes Business Logic |
+| Validation | Database Operations |
+| No Scheduler | Supports Scheduler |
+
+---
+
+# Typical Event Structure
+
+```java
+public static String createOrder(
+
+HttpServletRequest request,
+
+HttpServletResponse response)
+
+{
+
+    // Read Request
+
+    String productId
+
+    = request.getParameter("productId");
+
+
+
+    // Validation
+
+    if(UtilValidate.isEmpty(productId))
+
+    {
+
+        return "error";
+
+    }
+
+
+
+    // Prepare Context
+
+    Map<String,Object> ctx
+
+    = UtilMisc.toMap(
+
+        "productId",
+
+        productId);
+
+
+
+    // Call Service
+
+    dispatcher.runSync(
+
+    "createOrder",
+
+    ctx);
+
+
+
+    return "success";
+
+}
+```
+
+Notice
+
+Event never writes SQL.
+
+---
+
+# Event Responsibilities
+
+✔ Read HTTP Request
+
+✔ Read Form Parameters
+
+✔ Validate Data
+
+✔ Prepare Context Map
+
+✔ Call Service
+
+✔ Return Success/Error
+
+---
+
+# What Event SHOULD NOT Do
+
+❌ Complex SQL
+
+❌ Huge Business Logic
+
+❌ Multiple Database Operations
+
+❌ Long Calculations
+
+Those belong inside Services.
+
+---
+
+# Common Event Files to Study
+
+```
+LoginEvents.java
+
+ProductEvents.java
+
+OrderEvents.java
+
+PartyEvents.java
+```
+
+Read
+
+- How parameters are read
+- How validation is done
+- How dispatcher.runSync() is called
+- How String is returned
+
+---
+
+# Common Utility Classes Used in Events
+
+```
+UtilMisc
+
+UtilValidate
+
+Debug
+
+ServiceUtil
+```
+
+---
+
+# Event Sequence Diagram
+
+```
+Browser
+
+ │
+
+ │ HTTP Request
+
+ ▼
+
+Event
+
+ │
+
+ │ request.getParameter()
+
+ ▼
+
+Read Form Data
+
+ │
+
+ │ Validation
+
+ ▼
+
+Prepare Map
+
+ │
+
+ │ dispatcher.runSync()
+
+ ▼
+
+Service
+
+ │
+
+ │ Return Map
+
+ ▼
+
+Event
+
+ │
+
+ │ return "success"
+
+ ▼
+
+Controller
+
+ │
+
+ ▼
+
+Screen
+
+ │
+
+ ▼
+
+Browser
+```
+
+---
+
+# Real Example
+
+Suppose user clicks
+
+```
+Create Product
+```
+
+Flow
+
+```
+Browser
+
+↓
+
+ProductEvents.createProduct()
+
+↓
+
+request.getParameter()
+
+↓
+
+Validation
+
+↓
+
+dispatcher.runSync()
+
+↓
+
+createProduct Service
+
+↓
+
+Database
+
+↓
+
+return "success"
+
+↓
+
+Product List Screen
+```
+
+---
+
+# Files You Must Read
+
+```
+OrderEvents.java
+
+ProductEvents.java
+
+LoginEvents.java
+
+PartyEvents.java
+
+UtilMisc.java
+
+UtilValidate.java
+```
+
+---
+
+# Interview Questions
+
+Q1. What is an Event?
+
+Q2. Why do we need Events?
+
+Q3. Difference between Event and Service?
+
+Q4. Why does Event return String?
+
+Q5. Why does Service return Map?
+
+Q6. Why is Session available in Event?
+
+Q7. Can Event call Database directly?
+
+Ans:
+
+Technically yes,
+
+but it is **not recommended**.
+
+Business Logic should go inside Services.
+
+Q8. Why does Event receive HttpServletRequest?
+
+Ans:
+
+Because browser data comes inside
+
+HttpServletRequest.
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ What is Event
+
+✔ Why Event is needed
+
+✔ How Controller calls Event
+
+✔ HttpServletRequest
+
+✔ HttpServletResponse
+
+✔ request.getParameter()
+
+✔ Validation
+
+✔ Dispatcher
+
+✔ Why Session exists only in Event
+
+✔ Difference between Event and Service
+
+---
+
+# Next Chapter (Chapter 7)
+
+Now we'll study the **most important topic in OFBiz**:
+
+# Services
+
+In the next chapter we'll cover:
+
+- Why Services exist
+- Service Definition (services.xml)
+- In Parameters
+- Out Parameters
+- Auto Attributes
+- entity-auto Engine
+- simple Engine
+- java Engine
+- groovy Engine
+- Dispatcher
+- runSync() vs runAsync()
+- Transactions
+- Authentication
+- Service Lifecycle
+
+This is the chapter where the actual **Business Logic** of OFBiz begins.
+
+
+# Chapter 7 - Services in OFBiz (Business Logic Layer)
+
+---
+
+# What is a Service?
+
+A Service is the **Business Logic Layer** of OFBiz.
+
+It contains the actual business rules of the application.
+
+Think of it like this
+
+```
+Event
+
+↓
+
+Service
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+```
+
+Event only receives the request.
+
+Service decides
+
+- What should happen?
+- Which entity should be updated?
+- Which validation should be performed?
+- Which services should be called?
+- Which database operation should happen?
+
+---
+
+# Why do we need Services?
+
+Suppose we want to
+
+- Create Customer
+- Create Order
+- Cancel Order
+- Approve Order
+- Ship Order
+- Complete Order
+
+All these contain business logic.
+
+We don't write this inside Event.
+
+Instead
+
+```
+Event
+
+↓
+
+Service
+
+↓
+
+Business Logic
+```
+
+---
+
+# Real Life Example
+
+Suppose customer places an order.
+
+Business Logic may be
+
+```
+Check Inventory
+
+↓
+
+Reserve Inventory
+
+↓
+
+Calculate Tax
+
+↓
+
+Calculate Shipping
+
+↓
+
+Create Payment
+
+↓
+
+Create Shipment
+
+↓
+
+Send Email
+
+↓
+
+Return Success
+```
+
+Should all this be written inside Event?
+
+No.
+
+Everything belongs inside Service.
+
+---
+
+# Complete Flow
+
+```
+Browser
+
+↓
+
+Event
+
+↓
+
+Dispatcher
+
+↓
+
+Service
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+
+↓
+
+Return Map
+
+↓
+
+Event
+
+↓
+
+Screen
+```
+
+---
+
+# Service Definition
+
+Every service must be defined inside
+
+```
+servicedef/services.xml
+```
+
+Example
+
+```xml
+<service
+
+name="createCustomer"
+
+engine="java"
+
+location="..."
+
+invoke="createCustomer">
+```
+
+This tells OFBiz
+
+- Service Name
+- Engine Type
+- Java/Groovy Class
+- Method Name
+
+---
+
+# Service Structure
+
+Every service has
+
+```
+In Parameters
+
+↓
+
+Business Logic
+
+↓
+
+Out Parameters
+```
+
+---
+
+# Service Lifecycle
+
+```
+Dispatcher
+
+↓
+
+Read services.xml
+
+↓
+
+Validate Parameters
+
+↓
+
+Create Context Map
+
+↓
+
+Execute Service
+
+↓
+
+Return Map
+```
+
+---
+
+# Input Parameters
+
+Suppose user wants to create customer.
+
+Input may be
+
+```text
+First Name
+
+Last Name
+
+Email
+
+Phone
+```
+
+Inside services.xml
+
+```xml
+<in-parameters>
+
+<parameter
+
+name="firstName"
+
+type="String"/>
+
+<parameter
+
+name="email"
+
+type="String"/>
+
+</in-parameters>
+```
+
+These values come inside
+
+```
+context Map
+```
+
+---
+
+# Output Parameters
+
+Suppose service successfully creates customer.
+
+It may return
+
+```
+partyId
+
+successMessage
+```
+
+Example
+
+```xml
+<out-parameters>
+
+<parameter
+
+name="partyId"
+
+type="String"/>
+
+</out-parameters>
+```
+
+---
+
+# Context Map
+
+Inside every service
+
+Framework automatically gives
+
+```
+context
+```
+
+Example
+
+```groovy
+String partyId
+
+=
+
+context.partyId
+```
+
+or
+
+```groovy
+context.get("partyId")
+```
+
+Context contains
+
+all IN parameters.
+
+---
+
+# Return Type of Service
+
+Every service returns
+
+```
+Map<String,Object>
+```
+
+Example
+
+```java
+return ServiceUtil.returnSuccess();
+```
+
+or
+
+```java
+Map<String,Object> result
+
+=
+
+ServiceUtil.returnSuccess();
+
+result.put("partyId", partyId);
+
+return result;
+```
+
+---
+
+# Why Map?
+
+Because different services return different data.
+
+Example
+
+Customer Service
+
+returns
+
+```
+partyId
+```
+
+Order Service
+
+returns
+
+```
+orderId
+```
+
+Payment Service
+
+returns
+
+```
+paymentId
+```
+
+Map is flexible.
+
+---
+
+# Service Engines
+
+OFBiz supports multiple service engines.
+
+```
+entity-auto
+
+simple
+
+java
+
+groovy
+```
+
+Let's understand each.
+
+---
+
+# 1. entity-auto
+
+Simplest service engine.
+
+No Java.
+
+No Groovy.
+
+No Business Logic.
+
+Used only for
+
+```
+CRUD
+```
+
+Example
+
+```xml
+<service
+
+name="createProduct"
+
+engine="entity-auto"
+
+default-entity-name="Product"/>
+```
+
+Framework automatically creates
+
+```
+Create
+
+Update
+
+Delete
+
+Store
+```
+
+operations.
+
+---
+
+# When to use entity-auto?
+
+Only when
+
+```
+Simple CRUD
+
+No Validation
+
+No Business Logic
+```
+
+---
+
+# 2. Simple Engine
+
+Business logic written in XML.
+
+Example
+
+```xml
+<actions>
+
+<set/>
+
+<if/>
+
+<entity-one/>
+
+<service/>
+
+</actions>
+```
+
+Useful
+
+for very small logic.
+
+---
+
+# 3. Groovy Engine
+
+Business logic written in
+
+```
+Groovy
+```
+
+Example
+
+```xml
+<service
+
+engine="groovy"
+
+location="component://..."/>
+```
+
+Used when
+
+- Loops
+- Conditions
+- Entity Queries
+- Complex Business Logic
+
+---
+
+# 4. Java Engine
+
+Business logic written in Java.
+
+Example
+
+```xml
+<service
+
+engine="java"
+
+location="..."
+
+invoke="createOrder"/>
+```
+
+Used when
+
+Business Logic becomes very large.
+
+---
+
+# Which Engine should we use?
+
+```
+Simple CRUD
+
+↓
+
+entity-auto
+```
+
+```
+Small XML Logic
+
+↓
+
+simple
+```
+
+```
+Medium Logic
+
+↓
+
+groovy
+```
+
+```
+Large Enterprise Logic
+
+↓
+
+java
+```
+
+---
+
+# Dispatcher
+
+Dispatcher is responsible for
+
+executing services.
+
+Think of Dispatcher as
+
+```
+Service Manager
+```
+
+It knows
+
+- Which service to execute
+- Which engine to use
+- Which transaction to start
+- Which parameters to pass
+
+---
+
+# Dispatcher Methods
+
+Most common methods
+
+```java
+dispatcher.runSync()
+```
+
+and
+
+```java
+dispatcher.runAsync()
+```
+
+---
+
+# runSync()
+
+Means
+
+```
+Execute Immediately
+
+↓
+
+Wait for Result
+
+↓
+
+Continue
+```
+
+Example
+
+```
+Create Order
+
+↓
+
+Wait
+
+↓
+
+Get orderId
+
+↓
+
+Continue
+```
+
+---
+
+# runAsync()
+
+Means
+
+```
+Start Service
+
+↓
+
+Don't Wait
+
+↓
+
+Continue Immediately
+```
+
+Example
+
+```
+Send Email
+
+↓
+
+Background Thread
+```
+
+User doesn't wait.
+
+---
+
+# Service Chaining
+
+One service can call another service.
+
+Example
+
+```
+createOrder()
+
+↓
+
+reserveInventory()
+
+↓
+
+createPayment()
+
+↓
+
+createShipment()
+
+↓
+
+sendEmail()
+```
+
+This is called
+
+```
+Service Chaining
+```
+
+---
+
+# Authentication
+
+Service can require login.
+
+Example
+
+```xml
+authenticate="true"
+```
+
+Meaning
+
+Only logged-in users can execute this service.
+
+---
+
+# Transactions
+
+By default
+
+Service runs inside
+
+```
+Database Transaction
+```
+
+Meaning
+
+Either
+
+Everything succeeds
+
+OR
+
+Everything rolls back.
+
+Example
+
+```
+Create Order
+
+↓
+
+Reserve Inventory
+
+↓
+
+Payment
+
+↓
+
+Shipment
+```
+
+Suppose Payment fails.
+
+Then
+
+```
+Rollback Everything
+```
+
+Database remains consistent.
+
+---
+
+# ServiceUtil
+
+Most common utility class.
+
+Examples
+
+```java
+ServiceUtil.returnSuccess()
+```
+
+```java
+ServiceUtil.returnError()
+```
+
+```java
+ServiceUtil.returnFailure()
+```
+
+Instead of creating Map manually.
+
+---
+
+# Example Service Flow
+
+```
+dispatcher.runSync()
+
+↓
+
+Read services.xml
+
+↓
+
+Create Context Map
+
+↓
+
+Validate Parameters
+
+↓
+
+Run Java/Groovy/XML
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+
+↓
+
+Return Map
+```
+
+---
+
+# Service Example
+
+```java
+public static Map<String,Object>
+
+createCustomer(
+
+DispatchContext dctx,
+
+Map<String,Object> context)
+
+{
+
+    String firstName
+
+    = (String) context.get("firstName");
+
+
+
+    ...
+
+
+
+    return ServiceUtil.returnSuccess();
+
+}
+```
+
+Notice
+
+No Request
+
+No Response
+
+Only
+
+```
+DispatchContext
+
+Context Map
+```
+
+---
+
+# Difference between Event and Service
+
+| Event | Service |
+|--------|----------|
+| HTTP Layer | Business Logic Layer |
+| Receives Request | Receives Context Map |
+| Returns String | Returns Map |
+| Session Available | No Session |
+| Reads Form Data | Executes Business Logic |
+| Validation | CRUD + Business Rules |
+| Called by Controller | Called by Dispatcher |
+
+---
+
+# Why Services are Stateless?
+
+Service should work whether it is called from
+
+```
+Event
+
+Scheduler
+
+REST API
+
+Another Service
+
+SOAP
+
+Background Job
+```
+
+If it depends on Session,
+
+it becomes tightly coupled.
+
+That's why
+
+Service receives only
+
+```
+Context Map
+```
+
+---
+
+# Real Example
+
+Suppose user clicks
+
+```
+Approve Order
+```
+
+Flow
+
+```
+Browser
+
+↓
+
+Event
+
+↓
+
+dispatcher.runSync("approveOrder")
+
+↓
+
+approveOrder Service
+
+↓
+
+Update Order
+
+↓
+
+Reserve Inventory
+
+↓
+
+Update Status
+
+↓
+
+Return Success
+
+↓
+
+Screen
+```
+
+---
+
+# Files You Should Read
+
+```
+OrderServices.java
+
+PartyServices.java
+
+ProductServices.java
+
+services.xml
+
+ServiceDispatcher.java
+
+GenericDispatcher.java
+```
+
+---
+
+# Interview Questions
+
+Q1. What is a Service?
+
+Q2. Why do we need Services?
+
+Q3. Why does Service return Map?
+
+Q4. Difference between Event and Service?
+
+Q5. What is Dispatcher?
+
+Q6. Difference between runSync() and runAsync()?
+
+Q7. What are Service Engines?
+
+Q8. When should we use entity-auto?
+
+Q9. Why is Session unavailable inside Services?
+
+Q10. What is Service Chaining?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ What is a Service
+
+✔ Why Services exist
+
+✔ Service Definition
+
+✔ In Parameters
+
+✔ Out Parameters
+
+✔ Context Map
+
+✔ Dispatcher
+
+✔ runSync()
+
+✔ runAsync()
+
+✔ entity-auto
+
+✔ simple
+
+✔ groovy
+
+✔ java
+
+✔ Transactions
+
+✔ Authentication
+
+✔ Service Chaining
+
+---
+
+# Next Chapter (Chapter 8)
+
+Now we move to the **heart of OFBiz**:
+
+# Entity Engine
+
+In the next chapter we'll cover:
+
+- What is Entity Engine?
+- Delegator
+- GenericValue
+- GenericDelegator
+- EntityQuery
+- EntityCondition
+- CRUD Operations
+- Entity XML → SQL Flow
+- How OFBiz generates SQL
+- Entity Cache
+- View Entity
+- Entity Relationships
+- Complete SQL execution flow
+
+This is the chapter where you'll finally understand **how OFBiz converts XML/Java into SQL**.
+
+
+
+# Chapter 8 - Entity Engine (The Heart of OFBiz)
+
+---
+
+# What is Entity Engine?
+
+Entity Engine is the **Database Layer** of OFBiz.
+
+It is responsible for
+
+- Reading Data
+- Creating Data
+- Updating Data
+- Deleting Data
+- Converting Java into SQL
+- Executing SQL
+- Returning Results
+
+Think of it as a **translator**.
+
+```
+Java
+
+↓
+
+Entity Engine
+
+↓
+
+SQL
+
+↓
+
+Database
+```
+
+---
+
+# Why do we need Entity Engine?
+
+Imagine if every developer had to write SQL manually.
+
+Example
+
+```sql
+SELECT *
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID='100';
+```
+
+Now imagine writing thousands of queries like this.
+
+Instead OFBiz says
+
+"Don't write SQL."
+
+Write
+
+```java
+delegator.findOne(...)
+```
+
+or
+
+```java
+EntityQuery.use(delegator)
+```
+
+and Entity Engine will generate SQL automatically.
+
+---
+
+# Complete Flow
+
+```
+Browser
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+
+↓
+
+Database
+
+↓
+
+Entity Engine
+
+↓
+
+GenericValue
+
+↓
+
+Service
+
+↓
+
+Event
+
+↓
+
+Screen
+```
+
+---
+
+# Think of Entity Engine as Google Translate
+
+You write
+
+```
+Java
+```
+
+Entity Engine converts it into
+
+```
+SQL
+```
+
+Database understands SQL.
+
+Database DOES NOT understand Java.
+
+---
+
+# Components of Entity Engine
+
+```
+Delegator
+
+↓
+
+EntityQuery
+
+↓
+
+EntityCondition
+
+↓
+
+GenericValue
+
+↓
+
+ModelEntity
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+```
+
+We'll study each one.
+
+---
+
+# Delegator
+
+Delegator is the most important object.
+
+It is responsible for
+
+```
+CRUD Operations
+```
+
+Meaning
+
+```
+Create
+
+Read
+
+Update
+
+Delete
+```
+
+---
+
+# Delegator Methods
+
+Most common methods
+
+```
+findOne()
+
+find()
+
+create()
+
+store()
+
+remove()
+```
+
+---
+
+# findOne()
+
+Returns
+
+```
+GenericValue
+```
+
+Meaning
+
+Exactly ONE record.
+
+Example
+
+```java
+delegator.findOne(
+
+"Product",
+
+UtilMisc.toMap(
+
+"productId",
+
+"100"),
+
+false);
+```
+
+Equivalent SQL
+
+```sql
+SELECT *
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID='100';
+```
+
+---
+
+# find()
+
+Returns
+
+```
+List<GenericValue>
+```
+
+Example
+
+```java
+delegator.find(...)
+```
+
+Equivalent SQL
+
+```sql
+SELECT *
+
+FROM PRODUCT;
+```
+
+Returns
+
+Multiple Records.
+
+---
+
+# create()
+
+Used for
+
+```
+INSERT
+```
+
+Example
+
+```java
+delegator.create(...)
+```
+
+Equivalent SQL
+
+```sql
+INSERT INTO PRODUCT ...
+```
+
+---
+
+# store()
+
+Used for
+
+```
+UPDATE
+```
+
+Equivalent SQL
+
+```sql
+UPDATE PRODUCT
+SET ...
+WHERE ...
+```
+
+---
+
+# remove()
+
+Used for
+
+```
+DELETE
+```
+
+Equivalent SQL
+
+```sql
+DELETE
+FROM PRODUCT
+WHERE ...
+```
+
+---
+
+# GenericValue
+
+GenericValue represents
+
+```
+One Row
+```
+
+of a database table.
+
+Think
+
+```
+Database Row
+
+↓
+
+GenericValue
+```
+
+Example
+
+Product table
+
+| ProductId | Name |
+|------------|------|
+| 100 | Laptop |
+
+becomes
+
+```java
+GenericValue product
+```
+
+---
+
+# Reading Fields
+
+```java
+product.getString("productId")
+```
+
+```java
+product.getString("internalName")
+```
+
+---
+
+# Updating Fields
+
+```java
+product.set("internalName",
+
+"New Laptop");
+```
+
+---
+
+# Saving Changes
+
+```java
+delegator.store(product);
+```
+
+---
+
+# List of Records
+
+Suppose SQL returns
+
+```
+100 Products
+```
+
+Entity Engine converts them into
+
+```
+List<GenericValue>
+```
+
+Example
+
+```java
+List<GenericValue>
+
+products
+```
+
+---
+
+# EntityQuery
+
+Modern API.
+
+Instead of
+
+```java
+delegator.find(...)
+```
+
+Use
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.where(...)
+
+.queryList();
+```
+
+Much cleaner.
+
+---
+
+# EntityQuery Flow
+
+```
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL
+```
+
+---
+
+# queryOne()
+
+Returns
+
+```
+GenericValue
+```
+
+Example
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.where("productId","100")
+
+.queryOne();
+```
+
+---
+
+# queryList()
+
+Returns
+
+```
+List<GenericValue>
+```
+
+---
+
+# queryFirst()
+
+Returns
+
+First Record.
+
+---
+
+# EntityCondition
+
+Responsible for
+
+```
+WHERE Clause
+```
+
+Example
+
+```java
+.where(
+
+"statusId",
+
+"ORDER_CREATED")
+```
+
+Equivalent SQL
+
+```sql
+WHERE STATUS_ID='ORDER_CREATED'
+```
+
+---
+
+# Operators
+
+Supports
+
+```
+=
+
+>
+
+<
+
+>=
+
+<=
+
+!=
+
+LIKE
+
+IN
+
+BETWEEN
+
+AND
+
+OR
+```
+
+---
+
+# Example
+
+```java
+.where(
+
+EntityCondition.makeCondition(...)
+)
+```
+
+Creates
+
+Complex WHERE clause.
+
+---
+
+# Entity Definition
+
+Every table starts from
+
+Entity XML.
+
+Example
+
+```xml
+<entity
+
+entity-name="Product">
+
+<field
+
+name="productId"
+
+type="id"/>
+
+</entity>
+```
+
+Entity Engine reads this XML.
+
+---
+
+# Entity Definition Flow
+
+```
+Entity XML
+
+↓
+
+ModelEntity
+
+↓
+
+Field Types
+
+↓
+
+SQL Generation
+```
+
+---
+
+# Field Type Mapping
+
+Example
+
+Entity XML
+
+```xml
+type="id"
+```
+
+becomes
+
+Java
+
+```
+String
+```
+
+becomes
+
+MySQL
+
+```
+VARCHAR(20)
+```
+
+Mapping files
+
+```
+fieldtypederby.xml
+
+fieldtypemysql.xml
+```
+
+---
+
+# View Entity
+
+View Entity is
+
+```
+JOIN in XML
+```
+
+Instead of writing SQL
+
+```sql
+SELECT *
+
+FROM ORDER_HEADER
+
+JOIN ORDER_ITEM
+```
+
+We define
+
+```xml
+<view-entity>
+```
+
+Entity Engine creates SQL automatically.
+
+---
+
+# Relationship
+
+Relationships connect entities.
+
+Example
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+```
+
+using
+
+```
+orderId
+```
+
+No SQL required.
+
+---
+
+# Entity Cache
+
+Frequently used data
+
+is stored in memory.
+
+Purpose
+
+```
+Avoid Database Calls
+```
+
+Flow
+
+```
+Service
+
+↓
+
+Entity Cache
+
+↓
+
+Found?
+
+↓
+
+Yes
+
+↓
+
+Return Data
+
+↓
+
+No
+
+↓
+
+Database
+```
+
+---
+
+# CRUD Flow
+
+Suppose
+
+```java
+delegator.findOne(...)
+```
+
+Flow
+
+```
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+Build SQL
+
+↓
+
+JDBC
+
+↓
+
+Database
+
+↓
+
+GenericValue
+
+↓
+
+Return
+```
+
+---
+
+# SQL Generation Flow
+
+```
+Entity XML
+
+↓
+
+Delegator
+
+↓
+
+EntityQuery
+
+↓
+
+EntityCondition
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+
+↓
+
+Database
+```
+
+---
+
+# JDBC
+
+JDBC means
+
+```
+Java Database Connectivity
+```
+
+It sends SQL
+
+to MySQL.
+
+---
+
+# SQL Builder
+
+Entity Engine internally creates
+
+```
+SELECT
+
+FROM
+
+WHERE
+
+GROUP BY
+
+ORDER BY
+
+LIMIT
+```
+
+before sending query.
+
+Developer never writes SQL manually.
+
+---
+
+# Example
+
+Developer writes
+
+```java
+EntityQuery
+
+.use(delegator)
+
+.from("Product")
+
+.where("statusId",
+
+"APPROVED")
+
+.queryList();
+```
+
+Entity Engine generates
+
+```sql
+SELECT *
+
+FROM PRODUCT
+
+WHERE STATUS_ID='APPROVED';
+```
+
+---
+
+# Entity Engine Responsibilities
+
+✔ Read Entity XML
+
+✔ Build SQL
+
+✔ Execute SQL
+
+✔ Convert ResultSet
+
+✔ Create GenericValue
+
+✔ Manage Cache
+
+✔ Handle CRUD
+
+---
+
+# Important Classes
+
+Study these
+
+```
+Delegator.java
+
+GenericDelegator.java
+
+GenericValue.java
+
+EntityQuery.java
+
+EntityCondition.java
+
+ModelEntity.java
+
+ModelField.java
+```
+
+---
+
+# Real Life Analogy
+
+Suppose you want Pizza.
+
+You tell your friend
+
+```
+Large Pizza
+```
+
+Friend translates
+
+to the chef
+
+Chef cooks
+
+returns Pizza.
+
+Mapping
+
+```
+Java
+
+↓
+
+Entity Engine
+
+↓
+
+SQL
+
+↓
+
+Database
+
+↓
+
+Result
+```
+
+---
+
+# Entity Engine Sequence Diagram
+
+```
+Service
+
+ │
+
+ │ queryOne()
+
+ ▼
+
+EntityQuery
+
+ │
+
+ ▼
+
+Delegator
+
+ │
+
+ ▼
+
+Entity Engine
+
+ │
+
+ ▼
+
+SQL Builder
+
+ │
+
+ ▼
+
+JDBC
+
+ │
+
+ ▼
+
+Database
+
+ │
+
+ ▼
+
+ResultSet
+
+ │
+
+ ▼
+
+GenericValue
+
+ │
+
+ ▼
+
+Service
+```
+
+---
+
+# Interview Questions
+
+Q1. What is Entity Engine?
+
+Q2. Why do we need Entity Engine?
+
+Q3. Difference between Delegator and EntityQuery?
+
+Q4. What is GenericValue?
+
+Q5. Difference between queryOne() and queryList()?
+
+Q6. What is View Entity?
+
+Q7. What is Entity Cache?
+
+Q8. How does OFBiz generate SQL?
+
+Q9. Why don't developers write SQL?
+
+Q10. What is JDBC?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ Entity Engine
+
+✔ Delegator
+
+✔ GenericValue
+
+✔ EntityQuery
+
+✔ EntityCondition
+
+✔ CRUD
+
+✔ View Entity
+
+✔ Relationships
+
+✔ Cache
+
+✔ JDBC
+
+✔ SQL Generation
+
+✔ Entity XML → SQL Flow
+
+---
+
+# Next Chapter (Chapter 9)
+
+Now we'll go **inside the Entity Engine** and study **how SQL is actually generated**.
+
+We'll cover:
+
+- ModelEntity
+- ModelField
+- ModelRelation
+- EntityQuery → SQL Builder
+- Delegator → SQL Generation
+- JDBC PreparedStatement
+- ResultSet → GenericValue
+- Caching Internals
+- How Entity Engine converts XML to SQL behind the scenes
+
+This chapter will reveal the **internal implementation** of OFBiz's Entity Engine.
+
+
+
+
+# Chapter 9 - Inside the Entity Engine (How OFBiz Generates SQL)
+
+---
+
+# Goal of this Chapter
+
+Till now we have learned
+
+```
+Browser
+
+↓
+
+Event
+
+↓
+
+Service
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+```
+
+But...
+
+One BIG Question still remains.
+
+> **How does OFBiz convert Java code into SQL?**
+
+Example
+
+You write
+
+```java
+EntityQuery.use(delegator)
+    .from("Product")
+    .where("statusId", "APPROVED")
+    .queryList();
+```
+
+How does this become
+
+```sql
+SELECT *
+FROM PRODUCT
+WHERE STATUS_ID='APPROVED';
+```
+
+Today's chapter answers this question.
+
+---
+
+# Complete SQL Generation Flow
+
+```
+Developer
+
+↓
+
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+ModelEntity
+
+↓
+
+ModelField
+
+↓
+
+EntityCondition
+
+↓
+
+SQL Builder
+
+↓
+
+PreparedStatement
+
+↓
+
+JDBC
+
+↓
+
+Database
+
+↓
+
+ResultSet
+
+↓
+
+GenericValue
+
+↓
+
+Return to Service
+```
+
+This is the complete journey of every query.
+
+---
+
+# Step 1 - Developer Writes Java
+
+Suppose developer writes
+
+```java
+EntityQuery.use(delegator)
+        .from("Product")
+        .where("productId", "100")
+        .queryOne();
+```
+
+Notice
+
+No SQL exists.
+
+Only Java Objects exist.
+
+---
+
+# Step 2 - EntityQuery Object is Created
+
+This line
+
+```java
+EntityQuery.use(delegator)
+```
+
+creates an EntityQuery object.
+
+Think
+
+```
+EntityQuery
+
+=
+
+Query Object
+```
+
+Currently
+
+No SQL exists.
+
+Only information is being collected.
+
+---
+
+# Internal Object
+
+```
+EntityQuery
+
+{
+
+entityName = Product
+
+conditions = []
+
+orderBy = []
+
+selectFields = []
+
+limit = null
+
+offset = null
+
+}
+```
+
+SQL has NOT been generated.
+
+---
+
+# Step 3 - from()
+
+```java
+.from("Product")
+```
+
+stores
+
+```
+entityName = Product
+```
+
+Object becomes
+
+```
+EntityQuery
+
+{
+
+entityName = Product
+
+}
+```
+
+Still
+
+No SQL.
+
+---
+
+# Step 4 - where()
+
+```java
+.where("productId","100")
+```
+
+creates
+
+```
+EntityCondition
+```
+
+Object
+
+```
+EntityCondition
+
+{
+
+field
+
+=
+
+productId
+
+operator
+
+=
+
+=
+
+value
+
+=
+
+100
+
+}
+```
+
+Still
+
+No SQL.
+
+---
+
+# Step 5 - queryOne()
+
+Now developer says
+
+```java
+queryOne()
+```
+
+This is the FIRST method
+
+that actually starts SQL generation.
+
+Before this
+
+everything was only configuration.
+
+---
+
+# Flow
+
+```
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+```
+
+---
+
+# Step 6 - Delegator Receives Query
+
+Delegator now knows
+
+```
+Entity Name
+
+↓
+
+Product
+
+Conditions
+
+↓
+
+productId = 100
+```
+
+Delegator now asks
+
+```
+Tell me about Product Entity.
+```
+
+---
+
+# Step 7 - ModelEntity
+
+Entity Engine loads
+
+```
+ModelEntity
+```
+
+Question
+
+What is ModelEntity?
+
+---
+
+# ModelEntity
+
+ModelEntity is an
+
+**in-memory representation**
+
+of Entity XML.
+
+Example
+
+Suppose XML
+
+```xml
+<entity entity-name="Product">
+
+<field name="productId"/>
+
+<field name="internalName"/>
+
+</entity>
+```
+
+Entity Engine converts this XML into
+
+```
+ModelEntity Object
+```
+
+---
+
+# Think Like This
+
+Entity XML
+
+↓
+
+ModelEntity
+
+Exactly like
+
+```
+JSON File
+
+↓
+
+Java Object
+```
+
+---
+
+# What ModelEntity Contains
+
+```
+Entity Name
+
+Table Name
+
+Fields
+
+Primary Keys
+
+Relationships
+
+Indexes
+```
+
+Everything about an entity.
+
+---
+
+# Example
+
+```
+ModelEntity
+
+{
+
+tableName
+
+=
+
+PRODUCT
+
+fields
+
+=
+
+[
+
+productId,
+
+internalName,
+
+statusId
+
+]
+
+}
+```
+
+---
+
+# Step 8 - ModelField
+
+Each field
+
+inside ModelEntity
+
+becomes
+
+```
+ModelField
+```
+
+Example
+
+```
+productId
+
+↓
+
+ModelField
+```
+
+```
+internalName
+
+↓
+
+ModelField
+```
+
+Each ModelField knows
+
+```
+Field Name
+
+Column Name
+
+Type
+
+Length
+
+Primary Key?
+```
+
+---
+
+# Example
+
+```
+ModelField
+
+{
+
+fieldName
+
+=
+
+productId
+
+columnName
+
+=
+
+PRODUCT_ID
+
+type
+
+=
+
+id
+
+}
+```
+
+---
+
+# Step 9 - EntityCondition
+
+Remember
+
+```java
+.where("productId","100")
+```
+
+This becomes
+
+```
+EntityCondition
+```
+
+Object
+
+```
+field
+
+=
+
+productId
+
+operator
+
+=
+
+=
+
+value
+
+=
+
+100
+```
+
+Entity Engine will later convert this into
+
+```
+WHERE PRODUCT_ID=?
+```
+
+---
+
+# Why "?"
+
+Because OFBiz always uses
+
+PreparedStatement.
+
+Never
+
+String Concatenation.
+
+---
+
+# Step 10 - SQL Builder
+
+Now Entity Engine starts building SQL.
+
+Think
+
+```
+StringBuilder
+```
+
+Initially
+
+```
+SELECT
+```
+
+---
+
+Then
+
+adds
+
+```
+SELECT *
+
+FROM PRODUCT
+```
+
+---
+
+Then
+
+adds WHERE
+
+```
+SELECT *
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID=?
+```
+
+---
+
+This process continues
+
+```
+GROUP BY
+
+ORDER BY
+
+LIMIT
+
+OFFSET
+```
+
+if needed.
+
+---
+
+# SQL Builder Sequence
+
+```
+SELECT
+
+↓
+
+FROM
+
+↓
+
+JOIN
+
+↓
+
+WHERE
+
+↓
+
+GROUP BY
+
+↓
+
+HAVING
+
+↓
+
+ORDER BY
+
+↓
+
+LIMIT
+```
+
+Exactly like SQL.
+
+---
+
+# Internal SQL Builder
+
+Imagine
+
+```
+StringBuilder sql
+
+=
+
+new StringBuilder();
+```
+
+Append
+
+```
+SELECT
+```
+
+↓
+
+Append
+
+```
+FROM PRODUCT
+```
+
+↓
+
+Append
+
+```
+WHERE PRODUCT_ID=?
+```
+
+Final SQL
+
+```
+SELECT *
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID=?
+```
+
+---
+
+# Step 11 - PreparedStatement
+
+Now Entity Engine creates
+
+```
+PreparedStatement
+```
+
+instead of
+
+normal Statement.
+
+Example
+
+```java
+PreparedStatement ps
+```
+
+SQL
+
+```
+SELECT *
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID=?
+```
+
+Parameter
+
+```
+100
+```
+
+is stored separately.
+
+---
+
+# Why PreparedStatement?
+
+Advantages
+
+✔ Faster
+
+✔ Safe
+
+✔ Prevents SQL Injection
+
+✔ Query Reuse
+
+---
+
+# Step 12 - JDBC
+
+PreparedStatement
+
+goes to
+
+```
+JDBC Driver
+```
+
+JDBC converts Java calls
+
+into
+
+Database calls.
+
+---
+
+# Flow
+
+```
+PreparedStatement
+
+↓
+
+JDBC
+
+↓
+
+MySQL
+```
+
+---
+
+# Step 13 - Database
+
+Database executes
+
+```sql
+SELECT *
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID=100;
+```
+
+Returns
+
+```
+ResultSet
+```
+
+---
+
+# Step 14 - ResultSet
+
+Database returns
+
+```
+ResultSet
+```
+
+Think
+
+```
+Raw Database Rows
+```
+
+Example
+
+```
+100
+
+Laptop
+
+APPROVED
+```
+
+---
+
+# Step 15 - GenericValue
+
+Entity Engine converts
+
+ResultSet
+
+into
+
+```
+GenericValue
+```
+
+Example
+
+```
+GenericValue
+
+{
+
+productId
+
+=
+
+100
+
+internalName
+
+=
+
+Laptop
+
+statusId
+
+=
+
+APPROVED
+
+}
+```
+
+---
+
+# Step 16 - Return
+
+GenericValue
+
+↓
+
+Delegator
+
+↓
+
+EntityQuery
+
+↓
+
+Service
+
+↓
+
+Event
+
+↓
+
+Screen
+
+↓
+
+Browser
+
+---
+
+# Complete Internal Flow
+
+```
+Developer
+
+↓
+
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+ModelEntity
+
+↓
+
+ModelField
+
+↓
+
+EntityCondition
+
+↓
+
+SQL Builder
+
+↓
+
+PreparedStatement
+
+↓
+
+JDBC
+
+↓
+
+Database
+
+↓
+
+ResultSet
+
+↓
+
+GenericValue
+
+↓
+
+Return
+```
+
+---
+
+# Important Internal Classes
+
+Read these classes carefully
+
+```
+Delegator.java
+
+↓
+
+GenericDelegator.java
+
+↓
+
+EntityQuery.java
+
+↓
+
+GenericValue.java
+
+↓
+
+ModelEntity.java
+
+↓
+
+ModelField.java
+
+↓
+
+EntityCondition.java
+```
+
+These are the heart of OFBiz.
+
+---
+
+# Real Life Analogy
+
+Suppose you order food.
+
+```
+You
+
+↓
+
+Waiter
+
+↓
+
+Kitchen
+
+↓
+
+Chef
+
+↓
+
+Cook Food
+
+↓
+
+Waiter
+
+↓
+
+You
+```
+
+Mapping
+
+```
+Developer
+
+↓
+
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+SQL Builder
+
+↓
+
+Database
+
+↓
+
+GenericValue
+
+↓
+
+Developer
+```
+
+---
+
+# Important Interview Questions
+
+Q1. What is ModelEntity?
+
+Ans:
+
+ModelEntity is the in-memory representation of Entity XML.
+
+---
+
+Q2. What is ModelField?
+
+Ans:
+
+Represents one field (column) of an Entity.
+
+---
+
+Q3. Why is PreparedStatement used?
+
+Ans:
+
+- Prevent SQL Injection
+- Better Performance
+- Parameter Binding
+
+---
+
+Q4. What is the role of EntityCondition?
+
+Ans:
+
+It builds the WHERE clause of the query.
+
+---
+
+Q5. Does EntityQuery generate SQL immediately?
+
+Ans:
+
+No.
+
+EntityQuery only collects query information.
+
+SQL generation starts when methods like
+
+```
+queryOne()
+
+queryList()
+
+queryIterator()
+```
+
+are executed.
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ ModelEntity
+
+✔ ModelField
+
+✔ EntityCondition
+
+✔ SQL Builder
+
+✔ PreparedStatement
+
+✔ JDBC
+
+✔ ResultSet
+
+✔ GenericValue
+
+✔ Complete SQL Generation Flow
+
+✔ Internal Working of Entity Engine
+
+---
+
+# Next Chapter (Chapter 10)
+
+Now we'll study **EntityQuery** in depth.
+
+We'll cover:
+
+- Builder Pattern
+- Method Chaining
+- queryOne()
+- queryList()
+- queryIterator()
+- where()
+- select()
+- orderBy()
+- cache()
+- distinct()
+- limit()
+- offset()
+- Dynamic View Entity
+- EntityQuery lifecycle
+
+This chapter will make you comfortable reading almost every OFBiz query.
+
+# Chapter 10 - EntityQuery (Builder Pattern & Query Construction)
+
+---
+
+# Goal of this Chapter
+
+Till now we have understood
+
+```
+Service
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+Database
+```
+
+Now we are going to study the class that developers use almost every day.
+
+That class is
+
+```
+EntityQuery
+```
+
+If you master EntityQuery,
+
+you can understand almost every database query written inside OFBiz.
+
+---
+
+# What is EntityQuery?
+
+EntityQuery is a **Builder Class** used to construct database queries.
+
+Instead of writing SQL,
+
+we write Java methods.
+
+Example
+
+Instead of
+
+```sql
+SELECT *
+FROM PRODUCT
+WHERE STATUS_ID='APPROVED'
+ORDER BY INTERNAL_NAME;
+```
+
+We write
+
+```java
+EntityQuery.use(delegator)
+        .from("Product")
+        .where("statusId", "APPROVED")
+        .orderBy("internalName")
+        .queryList();
+```
+
+EntityQuery converts this into SQL.
+
+---
+
+# Why EntityQuery?
+
+Earlier OFBiz developers used
+
+```java
+delegator.find()
+```
+
+which had many parameters.
+
+Example
+
+```java
+delegator.find(
+
+entityName,
+
+condition,
+
+fields,
+
+orderBy,
+
+options,
+
+useCache
+)
+```
+
+Very difficult to read.
+
+EntityQuery made it easier.
+
+---
+
+# Builder Pattern
+
+EntityQuery follows
+
+```
+Builder Design Pattern
+```
+
+Meaning
+
+Every method returns the same object.
+
+Example
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.where(...)
+
+.orderBy(...)
+
+.queryList()
+```
+
+Notice
+
+Every method returns
+
+```
+EntityQuery
+```
+
+again.
+
+That's why we can chain methods.
+
+---
+
+# Method Chaining
+
+Example
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.where("statusId","APPROVED")
+
+.orderBy("internalName")
+
+.cache()
+
+.queryList()
+```
+
+Flow
+
+```
+EntityQuery
+
+↓
+
+from()
+
+↓
+
+where()
+
+↓
+
+orderBy()
+
+↓
+
+cache()
+
+↓
+
+queryList()
+```
+
+Still
+
+Only ONE object exists.
+
+---
+
+# Internal Object
+
+Initially
+
+```
+EntityQuery
+
+{
+
+entity = null
+
+condition = null
+
+fields = null
+
+orderBy = null
+
+limit = null
+
+cache = false
+
+}
+```
+
+---
+
+# use()
+
+```java
+EntityQuery.use(delegator)
+```
+
+Purpose
+
+Tell EntityQuery
+
+which Delegator should execute the query.
+
+Without Delegator,
+
+EntityQuery cannot reach the database.
+
+---
+
+# from()
+
+```java
+.from("Product")
+```
+
+Stores
+
+```
+Entity Name
+```
+
+Object becomes
+
+```
+entityName = Product
+```
+
+No SQL yet.
+
+---
+
+# where()
+
+Purpose
+
+Adds WHERE conditions.
+
+Example
+
+```java
+.where("statusId","APPROVED")
+```
+
+Equivalent SQL
+
+```sql
+WHERE STATUS_ID='APPROVED'
+```
+
+---
+
+# Multiple Conditions
+
+```java
+.where(
+
+"statusId","APPROVED",
+
+"productTypeId","FINISHED_GOOD"
+)
+```
+
+Equivalent SQL
+
+```sql
+WHERE STATUS_ID='APPROVED'
+
+AND PRODUCT_TYPE_ID='FINISHED_GOOD'
+```
+
+---
+
+# EntityCondition
+
+Complex queries use
+
+```
+EntityCondition
+```
+
+Example
+
+```java
+.where(
+
+EntityCondition.makeCondition(...)
+)
+```
+
+Supports
+
+```
+AND
+
+OR
+
+LIKE
+
+IN
+
+BETWEEN
+
+>
+
+<
+
+>=
+
+<=
+```
+
+---
+
+# select()
+
+Purpose
+
+Retrieve only required columns.
+
+Example
+
+```java
+.select(
+
+"productId",
+
+"internalName"
+)
+```
+
+Equivalent SQL
+
+```sql
+SELECT
+
+PRODUCT_ID,
+
+INTERNAL_NAME
+```
+
+instead of
+
+```sql
+SELECT *
+```
+
+Better Performance.
+
+---
+
+# orderBy()
+
+Purpose
+
+Sort Result.
+
+Example
+
+```java
+.orderBy("internalName")
+```
+
+Equivalent SQL
+
+```sql
+ORDER BY INTERNAL_NAME
+```
+
+Descending
+
+```java
+.orderBy("-createdStamp")
+```
+
+Equivalent SQL
+
+```sql
+ORDER BY CREATED_STAMP DESC
+```
+
+---
+
+# queryOne()
+
+Returns
+
+```
+GenericValue
+```
+
+Example
+
+```java
+.queryOne()
+```
+
+Equivalent SQL
+
+```sql
+SELECT *
+
+LIMIT 1
+```
+
+Returns
+
+Only one record.
+
+---
+
+# queryList()
+
+Returns
+
+```
+List<GenericValue>
+```
+
+All matching records.
+
+---
+
+# queryFirst()
+
+Returns
+
+First matching record.
+
+Useful when
+
+multiple records exist,
+
+but only first one is needed.
+
+---
+
+# queryIterator()
+
+Returns
+
+```
+EntityListIterator
+```
+
+Purpose
+
+Read huge datasets
+
+without loading everything into memory.
+
+Example
+
+```
+10 Million Rows
+```
+
+Don't use
+
+```
+queryList()
+```
+
+Use
+
+```
+queryIterator()
+```
+
+instead.
+
+---
+
+# Why queryIterator?
+
+Suppose database contains
+
+```
+5 Million Orders
+```
+
+If we use
+
+```java
+queryList()
+```
+
+Memory may crash.
+
+Instead
+
+Iterator loads
+
+```
+One Row
+
+↓
+
+Next Row
+
+↓
+
+Next Row
+```
+
+Very memory efficient.
+
+---
+
+# cache()
+
+Purpose
+
+Enable Entity Cache.
+
+Example
+
+```java
+.cache()
+```
+
+Flow
+
+```
+Entity Cache
+
+↓
+
+Found?
+
+↓
+
+Yes
+
+↓
+
+Return
+
+↓
+
+No
+
+↓
+
+Database
+```
+
+---
+
+# cache(false)
+
+Example
+
+```java
+.cache(false)
+```
+
+Always read
+
+latest database data.
+
+---
+
+# distinct()
+
+Equivalent SQL
+
+```sql
+SELECT DISTINCT
+```
+
+Example
+
+```java
+.distinct()
+```
+
+Removes duplicate rows.
+
+---
+
+# limit()
+
+Purpose
+
+Limit number of records.
+
+Example
+
+```java
+.limit(10)
+```
+
+Equivalent SQL
+
+```sql
+LIMIT 10
+```
+
+---
+
+# offset()
+
+Purpose
+
+Pagination.
+
+Example
+
+```java
+.offset(20)
+```
+
+Equivalent SQL
+
+```sql
+OFFSET 20
+```
+
+---
+
+# Pagination Example
+
+```java
+.limit(20)
+
+.offset(40)
+```
+
+Equivalent SQL
+
+```sql
+LIMIT 20
+
+OFFSET 40
+```
+
+Useful for
+
+```
+Page 3
+
+Page 4
+
+Page 5
+```
+
+---
+
+# filterByDate()
+
+Very common OFBiz method.
+
+Automatically filters
+
+active records.
+
+Example
+
+```java
+.filterByDate()
+```
+
+Checks
+
+```
+fromDate
+
+thruDate
+```
+
+automatically.
+
+---
+
+# Dynamic View Entity
+
+EntityQuery can create
+
+temporary View Entities.
+
+Example
+
+```
+JOIN
+
+without XML
+```
+
+Useful
+
+when joins are dynamic.
+
+---
+
+# EntityQuery Lifecycle
+
+```
+EntityQuery.use()
+
+↓
+
+from()
+
+↓
+
+where()
+
+↓
+
+select()
+
+↓
+
+orderBy()
+
+↓
+
+cache()
+
+↓
+
+limit()
+
+↓
+
+offset()
+
+↓
+
+queryList()
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL
+```
+
+---
+
+# Example 1
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.queryList();
+```
+
+Equivalent SQL
+
+```sql
+SELECT *
+
+FROM PRODUCT;
+```
+
+---
+
+# Example 2
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.where(
+
+"statusId",
+
+"APPROVED")
+
+.queryList();
+```
+
+Equivalent SQL
+
+```sql
+SELECT *
+
+FROM PRODUCT
+
+WHERE STATUS_ID='APPROVED';
+```
+
+---
+
+# Example 3
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.select(
+
+"productId",
+
+"internalName")
+
+.orderBy("internalName")
+
+.limit(20)
+
+.queryList();
+```
+
+Equivalent SQL
+
+```sql
+SELECT
+
+PRODUCT_ID,
+
+INTERNAL_NAME
+
+FROM PRODUCT
+
+ORDER BY INTERNAL_NAME
+
+LIMIT 20;
+```
+
+---
+
+# Internal Flow
+
+```
+EntityQuery
+
+↓
+
+Collect Information
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+PreparedStatement
+
+↓
+
+Database
+```
+
+Notice
+
+SQL is generated only when
+
+```
+queryOne()
+
+queryList()
+
+queryIterator()
+```
+
+are called.
+
+Before that,
+
+EntityQuery only stores information.
+
+---
+
+# Important Methods
+
+```
+use()
+
+from()
+
+where()
+
+select()
+
+orderBy()
+
+cache()
+
+distinct()
+
+limit()
+
+offset()
+
+filterByDate()
+
+queryOne()
+
+queryList()
+
+queryIterator()
+
+queryFirst()
+```
+
+---
+
+# Real Life Analogy
+
+Suppose you are filling an online shopping filter.
+
+```
+Category
+
+↓
+
+Price
+
+↓
+
+Brand
+
+↓
+
+Rating
+
+↓
+
+Sort
+
+↓
+
+Search
+```
+
+Until you click
+
+```
+Search
+```
+
+nothing happens.
+
+Exactly same
+
+```
+from()
+
+↓
+
+where()
+
+↓
+
+orderBy()
+
+↓
+
+limit()
+
+↓
+
+queryList()
+```
+
+Until
+
+```
+queryList()
+```
+
+SQL is never generated.
+
+---
+
+# Interview Questions
+
+Q1. What is EntityQuery?
+
+Q2. Why do we use Builder Pattern?
+
+Q3. Difference between queryOne() and queryList()?
+
+Q4. Difference between queryList() and queryIterator()?
+
+Q5. When should cache(false) be used?
+
+Q6. Difference between limit() and offset()?
+
+Q7. Why is select() better than SELECT *?
+
+Q8. Does from() generate SQL?
+
+Ans:
+
+No.
+
+It only stores entity information.
+
+Q9. Which method actually triggers SQL generation?
+
+Ans:
+
+```
+queryOne()
+
+queryList()
+
+queryIterator()
+
+queryFirst()
+```
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ EntityQuery
+
+✔ Builder Pattern
+
+✔ Method Chaining
+
+✔ use()
+
+✔ from()
+
+✔ where()
+
+✔ select()
+
+✔ orderBy()
+
+✔ cache()
+
+✔ distinct()
+
+✔ limit()
+
+✔ offset()
+
+✔ queryOne()
+
+✔ queryList()
+
+✔ queryIterator()
+
+✔ EntityQuery Lifecycle
+
+---
+
+# Next Chapter (Chapter 11)
+
+Now we'll study **EntityCondition** in depth.
+
+We'll cover:
+
+- EntityCondition
+- EntityOperator
+- AND
+- OR
+- NOT
+- IN
+- BETWEEN
+- LIKE
+- Nested Conditions
+- SQL WHERE clause generation
+- Internal condition tree
+- How complex conditions are converted into SQL
+
+This chapter will make you capable of writing **complex enterprise-level queries** in OFBiz without writing SQL manually.
+
+
+
+---------------
+
+# Chapter 11 - EntityCondition (WHERE Clause Builder)
+
+---
+
+# Goal of this Chapter
+
+In the previous chapter we learned
+
+```
+EntityQuery
+```
+
+Now we will study
+
+```
+EntityCondition
+```
+
+because every database query eventually needs a
+
+```
+WHERE
+```
+
+clause.
+
+EntityCondition is responsible for building that WHERE clause.
+
+---
+
+# What is EntityCondition?
+
+EntityCondition is an object that represents the SQL WHERE clause.
+
+Instead of writing
+
+```sql
+WHERE STATUS_ID = 'APPROVED'
+```
+
+we write
+
+```java
+EntityCondition.makeCondition(
+    "statusId",
+    EntityOperator.EQUALS,
+    "APPROVED"
+);
+```
+
+The Entity Engine later converts this into SQL.
+
+---
+
+# Why do we need EntityCondition?
+
+Without EntityCondition
+
+every developer would write raw SQL.
+
+Example
+
+```sql
+SELECT *
+
+FROM PRODUCT
+
+WHERE STATUS_ID='APPROVED'
+```
+
+Problem
+
+```
+Database Dependent
+
+Hard to Maintain
+
+SQL Injection Risk
+
+Less Readable
+```
+
+Instead
+
+```
+EntityCondition
+
+↓
+
+Entity Engine
+
+↓
+
+SQL
+```
+
+---
+
+# What does EntityCondition actually store?
+
+Suppose you write
+
+```java
+EntityCondition.makeCondition(
+        "statusId",
+        EntityOperator.EQUALS,
+        "APPROVED");
+```
+
+Internally it stores
+
+```
+Field Name
+
+↓
+
+statusId
+
+Operator
+
+↓
+
+=
+
+Value
+
+↓
+
+APPROVED
+```
+
+Notice
+
+No SQL has been created yet.
+
+---
+
+# SQL is NOT generated immediately
+
+Exactly like EntityQuery
+
+EntityCondition only stores information.
+
+```
+statusId
+
+=
+
+APPROVED
+```
+
+Later
+
+```
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+WHERE STATUS_ID='APPROVED'
+```
+
+---
+
+# Simple Condition
+
+Example
+
+```java
+EntityCondition condition =
+EntityCondition.makeCondition(
+        "statusId",
+        EntityOperator.EQUALS,
+        "APPROVED");
+```
+
+Equivalent SQL
+
+```sql
+WHERE STATUS_ID='APPROVED'
+```
+
+---
+
+# EntityOperator
+
+EntityOperator contains all SQL operators.
+
+Example
+
+```
+EQUALS
+
+NOT_EQUAL
+
+LESS_THAN
+
+GREATER_THAN
+
+LESS_THAN_EQUAL_TO
+
+GREATER_THAN_EQUAL_TO
+
+LIKE
+
+IN
+
+BETWEEN
+```
+
+---
+
+# EQUALS
+
+Example
+
+```java
+EntityOperator.EQUALS
+```
+
+Equivalent SQL
+
+```sql
+=
+```
+
+---
+
+# NOT EQUAL
+
+Example
+
+```java
+EntityOperator.NOT_EQUAL
+```
+
+Equivalent SQL
+
+```sql
+<>
+```
+
+---
+
+# GREATER THAN
+
+Example
+
+```java
+EntityOperator.GREATER_THAN
+```
+
+Equivalent SQL
+
+```sql
+>
+```
+
+---
+
+# LESS THAN
+
+Example
+
+```java
+EntityOperator.LESS_THAN
+```
+
+Equivalent SQL
+
+```sql
+<
+```
+
+---
+
+# GREATER THAN EQUAL
+
+Example
+
+```java
+EntityOperator.GREATER_THAN_EQUAL_TO
+```
+
+Equivalent SQL
+
+```sql
+>=
+```
+
+---
+
+# LESS THAN EQUAL
+
+Example
+
+```java
+EntityOperator.LESS_THAN_EQUAL_TO
+```
+
+Equivalent SQL
+
+```sql
+<=
+```
+
+---
+
+# LIKE
+
+Example
+
+```java
+EntityOperator.LIKE
+```
+
+Equivalent SQL
+
+```sql
+LIKE
+```
+
+Example
+
+```java
+EntityCondition.makeCondition(
+        "internalName",
+        EntityOperator.LIKE,
+        "%Phone%");
+```
+
+Equivalent SQL
+
+```sql
+WHERE INTERNAL_NAME LIKE '%Phone%'
+```
+
+---
+
+# IN
+
+Example
+
+```java
+EntityCondition.makeCondition(
+        "statusId",
+        EntityOperator.IN,
+        Arrays.asList(
+            "APPROVED",
+            "CREATED",
+            "COMPLETED"));
+```
+
+Equivalent SQL
+
+```sql
+WHERE STATUS_ID IN
+(
+'APPROVED',
+'CREATED',
+'COMPLETED'
+)
+```
+
+---
+
+# BETWEEN
+
+Example
+
+```java
+EntityCondition.makeCondition(
+        "createdStamp",
+        EntityOperator.BETWEEN,
+        Arrays.asList(fromDate, thruDate));
+```
+
+Equivalent SQL
+
+```sql
+WHERE CREATED_STAMP
+
+BETWEEN
+
+?
+
+AND
+
+?
+```
+
+---
+
+# Multiple Conditions
+
+Suppose
+
+```
+STATUS='APPROVED'
+
+AND
+
+TYPE='FINISHED_GOOD'
+```
+
+We create two conditions.
+
+```
+Condition 1
+
+statusId='APPROVED'
+
+Condition 2
+
+productTypeId='FINISHED_GOOD'
+```
+
+Then combine them.
+
+---
+
+# AND Condition
+
+Example
+
+```java
+EntityCondition.makeCondition(
+        Arrays.asList(cond1, cond2),
+        EntityOperator.AND);
+```
+
+Equivalent SQL
+
+```sql
+WHERE
+
+STATUS_ID='APPROVED'
+
+AND
+
+PRODUCT_TYPE_ID='FINISHED_GOOD'
+```
+
+---
+
+# OR Condition
+
+Example
+
+```java
+EntityCondition.makeCondition(
+        Arrays.asList(cond1, cond2),
+        EntityOperator.OR);
+```
+
+Equivalent SQL
+
+```sql
+WHERE
+
+STATUS_ID='APPROVED'
+
+OR
+
+STATUS_ID='CREATED'
+```
+
+---
+
+# Nested Conditions
+
+Example
+
+```
+(
+
+STATUS='APPROVED'
+
+OR
+
+STATUS='CREATED'
+
+)
+
+AND
+
+PRODUCT_TYPE='FINISHED_GOOD'
+```
+
+Tree
+
+```
+           AND
+
+         /     \
+
+       OR     TYPE
+
+     /    \
+
+APPROVED CREATED
+```
+
+EntityCondition supports nested trees.
+
+---
+
+# Condition Tree
+
+Internally
+
+EntityCondition is NOT SQL.
+
+It becomes
+
+```
+Condition Object
+
+↓
+
+Condition Object
+
+↓
+
+Condition Object
+
+↓
+
+Tree Structure
+```
+
+Then SQL Builder reads the tree.
+
+---
+
+# Real Example
+
+```java
+EntityCondition statusCond =
+EntityCondition.makeCondition(
+        "statusId",
+        EntityOperator.EQUALS,
+        "APPROVED");
+
+EntityCondition typeCond =
+EntityCondition.makeCondition(
+        "productTypeId",
+        EntityOperator.EQUALS,
+        "FINISHED_GOOD");
+
+EntityCondition finalCondition =
+EntityCondition.makeCondition(
+        Arrays.asList(statusCond, typeCond),
+        EntityOperator.AND);
+```
+
+Equivalent SQL
+
+```sql
+WHERE
+
+STATUS_ID='APPROVED'
+
+AND
+
+PRODUCT_TYPE_ID='FINISHED_GOOD'
+```
+
+---
+
+# Passing Condition to EntityQuery
+
+Example
+
+```java
+EntityCondition condition = ...
+
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.where(condition)
+
+.queryList();
+```
+
+Flow
+
+```
+EntityCondition
+
+↓
+
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+```
+
+---
+
+# Internal Flow
+
+```
+Developer
+
+↓
+
+makeCondition()
+
+↓
+
+Condition Object Created
+
+↓
+
+EntityQuery.where()
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+EntityCondition SQL Renderer
+
+↓
+
+WHERE Clause Generated
+```
+
+---
+
+# EntityCondition Lifecycle
+
+```
+makeCondition()
+
+↓
+
+Store
+
+Field
+
+Operator
+
+Value
+
+↓
+
+Combine
+
+AND / OR
+
+↓
+
+Pass to EntityQuery
+
+↓
+
+Entity Engine
+
+↓
+
+SQL WHERE Clause
+```
+
+---
+
+# SQL Generation Example
+
+Developer writes
+
+```java
+.where(
+EntityCondition.makeCondition(
+        "statusId",
+        EntityOperator.EQUALS,
+        "APPROVED"))
+```
+
+Internally
+
+```
+Field
+
+↓
+
+statusId
+
+Operator
+
+↓
+
+=
+
+Value
+
+↓
+
+APPROVED
+```
+
+Later
+
+SQL becomes
+
+```sql
+WHERE STATUS_ID='APPROVED'
+```
+
+---
+
+# Why not String Concatenation?
+
+Bad
+
+```java
+String sql =
+"WHERE STATUS_ID='" + status + "'";
+```
+
+Problems
+
+```
+SQL Injection
+
+Hard to Maintain
+
+Database Specific
+
+Unsafe
+```
+
+EntityCondition solves these problems.
+
+---
+
+# Parameter Binding
+
+EntityCondition stores
+
+```
+?
+
+Parameter Value
+```
+
+instead of
+
+```
+Raw SQL
+```
+
+Example
+
+SQL
+
+```sql
+WHERE STATUS_ID=?
+```
+
+Parameters
+
+```
+APPROVED
+```
+
+This uses PreparedStatement internally.
+
+Safer
+
+Faster
+
+No SQL Injection.
+
+---
+
+# Most Common Operators
+
+```
+EQUALS
+
+NOT_EQUAL
+
+GREATER_THAN
+
+LESS_THAN
+
+GREATER_THAN_EQUAL_TO
+
+LESS_THAN_EQUAL_TO
+
+LIKE
+
+IN
+
+BETWEEN
+
+AND
+
+OR
+```
+
+---
+
+# Real Life Analogy
+
+Suppose you're searching products on Amazon.
+
+You choose
+
+```
+Brand = Samsung
+
+↓
+
+Price < 50000
+
+↓
+
+Rating > 4
+
+↓
+
+In Stock
+```
+
+You are NOT writing SQL.
+
+You are simply selecting filters.
+
+Those filters are exactly like
+
+```
+EntityCondition
+```
+
+Amazon later converts them into SQL.
+
+Exactly what OFBiz does.
+
+---
+
+# Relationship with EntityQuery
+
+```
+EntityQuery
+
+↓
+
+Needs WHERE Clause
+
+↓
+
+EntityCondition
+
+↓
+
+Provides WHERE Clause
+
+↓
+
+SQL Builder
+
+↓
+
+Final SQL
+```
+
+---
+
+# Internal Diagram
+
+```
+Developer
+
+↓
+
+EntityCondition
+
+(Field + Operator + Value)
+
+↓
+
+EntityQuery.where()
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+WHERE STATUS_ID='APPROVED'
+
+↓
+
+Database
+```
+
+---
+
+# Interview Questions
+
+Q1. What is EntityCondition?
+
+Q2. Why don't we write raw SQL?
+
+Q3. What does EntityCondition store internally?
+
+Q4. Difference between EntityCondition and EntityQuery?
+
+Q5. What is EntityOperator?
+
+Q6. Can EntityCondition create nested conditions?
+
+Q7. How does OFBiz avoid SQL Injection?
+
+Q8. When is SQL actually generated?
+
+Answer
+
+```
+Only when EntityQuery executes
+
+(queryOne/queryList/queryIterator)
+```
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ EntityCondition
+
+✔ EntityOperator
+
+✔ EQUALS
+
+✔ NOT_EQUAL
+
+✔ GREATER_THAN
+
+✔ LESS_THAN
+
+✔ LIKE
+
+✔ IN
+
+✔ BETWEEN
+
+✔ AND
+
+✔ OR
+
+✔ Nested Conditions
+
+✔ Parameter Binding
+
+✔ WHERE Clause Generation
+
+✔ Condition Tree
+
+✔ SQL Injection Prevention
+
+---
+
+# Next Chapter (Chapter 12)
+
+Now we'll study the **Entity Engine** itself.
+
+We'll cover:
+
+- What is Entity Engine?
+- Why OFBiz has an Entity Engine
+- EntityModelReader
+- ModelEntity
+- ModelField
+- ModelRelation
+- SQL generation flow
+- Delegator → Entity Engine → SQL → JDBC → Database
+- Complete internal architecture
+
+This is one of the most important chapters because it explains **how OFBiz converts Java code into SQL behind the scenes**.
+
+
+------------------------------------------------
+# Chapter 12 - Entity Engine Internals (How OFBiz Talks to the Database)
+
+---
+
+# Goal of this Chapter
+
+In the previous chapters, we learned how to **use** the Entity Engine.
+
+Now we'll answer a deeper question:
+
+> **How does the Entity Engine itself work internally?**
+
+We'll follow a query from the moment a developer writes Java code until the database returns the result.
+
+This chapter focuses on the **internal architecture** of the Entity Engine.
+
+---
+
+# What is the Entity Engine?
+
+The Entity Engine is one of the core frameworks of OFBiz.
+
+Its job is to hide database-specific implementation from developers.
+
+Instead of writing
+
+```sql
+SELECT *
+FROM PRODUCT;
+```
+
+Developers write
+
+```java
+EntityQuery.use(delegator)
+    .from("Product")
+    .queryList();
+```
+
+The Entity Engine takes care of everything else.
+
+---
+
+# Responsibilities of Entity Engine
+
+The Entity Engine is responsible for
+
+- Reading Entity XML
+- Creating entity metadata
+- Building SQL
+- Managing database connections
+- Executing SQL
+- Converting ResultSet into Java objects
+- Managing entity cache
+- Supporting multiple databases
+
+Think of it as the **ORM layer** of OFBiz.
+
+---
+
+# High-Level Architecture
+
+```
+Developer
+
+↓
+
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+
+↓
+
+Database
+```
+
+Everything between **Delegator** and **Database** belongs to the Entity Engine.
+
+---
+
+# Main Components
+
+The Entity Engine is made up of several important classes.
+
+```
+GenericDelegator
+
+↓
+
+ModelReader
+
+↓
+
+ModelEntity
+
+↓
+
+ModelField
+
+↓
+
+ModelRelation
+
+↓
+
+EntityQuery
+
+↓
+
+EntityCondition
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+```
+
+We'll understand each one.
+
+---
+
+# GenericDelegator
+
+The most important implementation class.
+
+Interface
+
+```
+Delegator
+```
+
+Implementation
+
+```
+GenericDelegator
+```
+
+Whenever you write
+
+```java
+delegator.findOne(...)
+```
+
+the actual work is done by
+
+```
+GenericDelegator
+```
+
+---
+
+# Why an Interface?
+
+Why not call GenericDelegator directly?
+
+Because OFBiz follows abstraction.
+
+Developer writes
+
+```java
+Delegator delegator;
+```
+
+instead of
+
+```java
+GenericDelegator delegator;
+```
+
+This allows the implementation to change without changing business code.
+
+---
+
+# EntityModelReader
+
+Question
+
+How does OFBiz know what a Product entity looks like?
+
+Answer
+
+It reads
+
+```
+entitymodel.xml
+```
+
+using
+
+```
+ModelReader
+```
+
+---
+
+# ModelReader
+
+ModelReader loads all entity definition XML files during server startup.
+
+Example
+
+```
+entitymodel.xml
+
+↓
+
+ModelReader
+
+↓
+
+ModelEntity Objects
+```
+
+This happens only once.
+
+---
+
+# Why only once?
+
+Imagine reading
+
+```
+800 entity XML files
+```
+
+for every query.
+
+That would be extremely slow.
+
+Instead
+
+```
+Server Starts
+
+↓
+
+Read XML Once
+
+↓
+
+Keep Metadata in Memory
+```
+
+---
+
+# ModelEntity
+
+ModelEntity represents one entity.
+
+Example
+
+```
+Product
+```
+
+becomes
+
+```
+ModelEntity(Product)
+```
+
+It stores metadata.
+
+---
+
+# What does ModelEntity contain?
+
+- Entity Name
+- Table Name
+- Fields
+- Primary Keys
+- Relations
+- Indexes
+- Package Information
+
+Example
+
+```
+ModelEntity
+
+{
+
+entityName = Product
+
+tableName = PRODUCT
+
+}
+```
+
+---
+
+# ModelField
+
+Each field inside ModelEntity is represented by
+
+```
+ModelField
+```
+
+Example
+
+```
+productId
+
+↓
+
+ModelField
+```
+
+A ModelField stores
+
+- Field Name
+- Database Column Name
+- Data Type
+- Primary Key Flag
+- Length
+
+---
+
+# Example
+
+Entity XML
+
+```xml
+<field
+    name="productId"
+    type="id"/>
+```
+
+becomes
+
+```
+ModelField
+
+fieldName = productId
+
+columnName = PRODUCT_ID
+
+type = id
+```
+
+---
+
+# ModelRelation
+
+How does OFBiz know
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+```
+
+are related?
+
+Using
+
+```
+ModelRelation
+```
+
+Relationships are defined in Entity XML.
+
+Example
+
+```xml
+<relation
+    type="one"
+    rel-entity-name="OrderItem"/>
+```
+
+ModelRelation stores this information.
+
+---
+
+# Why ModelRelation?
+
+Suppose you ask
+
+```
+Find all OrderItems for Order 100
+```
+
+Entity Engine already knows
+
+```
+Join Key
+
+↓
+
+orderId
+```
+
+No need to manually define joins every time.
+
+---
+
+# Metadata vs Data
+
+Very important concept.
+
+Metadata
+
+```
+Entity Name
+
+Field Name
+
+Column Name
+
+Relations
+
+Primary Keys
+```
+
+Actual Data
+
+```
+Laptop
+
+Phone
+
+Monitor
+
+Keyboard
+```
+
+Entity Engine stores **metadata**, not actual business records.
+
+---
+
+# Startup Flow
+
+When OFBiz starts
+
+```
+Server
+
+↓
+
+Load Components
+
+↓
+
+Locate entitymodel.xml
+
+↓
+
+ModelReader
+
+↓
+
+Create ModelEntity Objects
+
+↓
+
+Store Metadata in Memory
+```
+
+No database query happens here.
+
+---
+
+# Query Execution Flow
+
+Developer writes
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.queryList();
+```
+
+Flow
+
+```
+EntityQuery
+
+↓
+
+GenericDelegator
+
+↓
+
+ModelEntity
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+
+↓
+
+Database
+```
+
+---
+
+# SQL Builder
+
+Using ModelEntity
+
+the Entity Engine knows
+
+```
+Entity Name
+
+↓
+
+Table Name
+
+Field Names
+
+↓
+
+Column Names
+```
+
+Now SQL Builder creates SQL.
+
+Example
+
+```
+Product
+
+↓
+
+PRODUCT
+
+productId
+
+↓
+
+PRODUCT_ID
+```
+
+Generated SQL
+
+```sql
+SELECT *
+
+FROM PRODUCT
+```
+
+---
+
+# Database Connection
+
+How does SQL reach MySQL?
+
+Using
+
+```
+JDBC Connection
+```
+
+Flow
+
+```
+SQL
+
+↓
+
+PreparedStatement
+
+↓
+
+Connection
+
+↓
+
+MySQL
+```
+
+---
+
+# ResultSet
+
+Database returns
+
+```
+ResultSet
+```
+
+Example
+
+```
+PRODUCT_ID
+
+INTERNAL_NAME
+
+STATUS_ID
+```
+
+This is still JDBC data.
+
+---
+
+# GenericValue Creation
+
+Entity Engine converts
+
+```
+ResultSet
+
+↓
+
+GenericValue
+```
+
+Now business code can work with Java objects instead of JDBC rows.
+
+Example
+
+```java
+product.getString("internalName")
+```
+
+instead of
+
+```java
+resultSet.getString("INTERNAL_NAME")
+```
+
+---
+
+# Entity Cache
+
+Before querying the database
+
+Entity Engine checks cache.
+
+Flow
+
+```
+EntityQuery
+
+↓
+
+Cache
+
+↓
+
+Hit?
+
+↓
+
+Yes
+
+↓
+
+Return GenericValue
+
+↓
+
+No
+
+↓
+
+Database
+```
+
+This reduces unnecessary database calls.
+
+---
+
+# Database Independence
+
+Suppose today you use
+
+```
+MySQL
+```
+
+Tomorrow you switch to
+
+```
+PostgreSQL
+```
+
+Your Java code stays exactly the same.
+
+Only SQL dialect changes internally.
+
+That's one of the biggest advantages of the Entity Engine.
+
+---
+
+# Internal Class Relationships
+
+```
+GenericDelegator
+
+│
+
+├── ModelReader
+
+│
+
+├── ModelEntity
+
+│
+
+├── ModelField
+
+│
+
+├── ModelRelation
+
+│
+
+└── SQL Builder
+```
+
+---
+
+# Complete Internal Flow
+
+```
+Developer
+
+↓
+
+EntityQuery
+
+↓
+
+GenericDelegator
+
+↓
+
+ModelReader
+
+↓
+
+ModelEntity
+
+↓
+
+ModelField
+
+↓
+
+ModelRelation
+
+↓
+
+SQL Builder
+
+↓
+
+PreparedStatement
+
+↓
+
+JDBC
+
+↓
+
+Database
+
+↓
+
+ResultSet
+
+↓
+
+GenericValue
+
+↓
+
+Service
+```
+
+---
+
+# Real Life Analogy
+
+Imagine Google Maps.
+
+You type
+
+```
+Delhi to Mumbai
+```
+
+Google Maps already knows
+
+- Cities
+- Roads
+- Distances
+- Highways
+
+It doesn't discover roads every time.
+
+Similarly
+
+Entity Engine already knows
+
+- Entities
+- Fields
+- Relations
+- Keys
+
+because ModelReader loaded them during startup.
+
+---
+
+# Common Classes to Read
+
+If you want to understand Entity Engine internals,
+
+read these classes in this order:
+
+```
+GenericDelegator.java
+
+↓
+
+ModelReader.java
+
+↓
+
+ModelEntity.java
+
+↓
+
+ModelField.java
+
+↓
+
+ModelRelation.java
+
+↓
+
+EntityQuery.java
+
+↓
+
+EntityCondition.java
+```
+
+---
+
+# Interview Questions
+
+Q1. What is the Entity Engine?
+
+Q2. What is GenericDelegator?
+
+Q3. Why does OFBiz use Delegator instead of GenericDelegator directly?
+
+Q4. What is ModelReader?
+
+Q5. What is ModelEntity?
+
+Q6. What is the difference between ModelEntity and GenericValue?
+
+Q7. What does ModelField store?
+
+Q8. What is ModelRelation?
+
+Q9. Why are entity definitions loaded during startup?
+
+Q10. How does the Entity Engine achieve database independence?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ Entity Engine architecture
+
+✔ GenericDelegator
+
+✔ ModelReader
+
+✔ ModelEntity
+
+✔ ModelField
+
+✔ ModelRelation
+
+✔ Metadata vs Data
+
+✔ Startup loading process
+
+✔ SQL generation flow
+
+✔ ResultSet → GenericValue conversion
+
+✔ Database independence
+
+✔ Entity cache overview
+
+---
+
+# Next Chapter (Chapter 13)
+
+Now we'll study **GenericValue**, one of the most frequently used classes in OFBiz.
+
+We'll cover:
+
+- What is GenericValue?
+- Why GenericValue exists
+- GenericValue lifecycle
+- Reading fields
+- Updating fields
+- Creating records
+- Storing records
+- Removing records
+- GenericValue vs Java POJO
+- GenericValue vs ModelEntity
+- Best practices and common mistakes
+
+By the end of the next chapter, you'll understand why almost every OFBiz service and event revolves around **GenericValue**.
+
+
+--------------------
+
+# Chapter 13 - GenericValue (The Runtime Representation of a Database Row)
+
+---
+
+# Goal of this Chapter
+
+In the previous chapters we learned
+
+- EntityQuery
+- EntityCondition
+- Entity Engine
+- SQL Generation
+- ModelEntity
+
+Now we'll study the class that almost every OFBiz developer works with daily.
+
+That class is
+
+```
+GenericValue
+```
+
+If EntityQuery is used to **fetch data**,
+
+then GenericValue is used to **work with that data**.
+
+---
+
+# What is GenericValue?
+
+GenericValue represents **one row of an entity** at runtime.
+
+Think of it like this:
+
+```
+Database Table
+
+PRODUCT
+```
+
+| PRODUCT_ID | INTERNAL_NAME | STATUS_ID |
+|------------|---------------|-----------|
+| P100 | Laptop | APPROVED |
+
+After querying,
+
+this row becomes
+
+```
+GenericValue product
+```
+
+---
+
+# GenericValue in One Line
+
+> **GenericValue is the Java object representation of a single database record.**
+
+---
+
+# Why is it called "Generic" Value?
+
+Unlike JPA/Hibernate,
+
+OFBiz does NOT create Java classes like
+
+```
+Product.java
+
+OrderHeader.java
+
+Party.java
+```
+
+Instead,
+
+every entity becomes
+
+```
+GenericValue
+```
+
+One class can represent
+
+```
+Product
+
+OrderHeader
+
+Party
+
+Facility
+
+OrderItem
+
+Shipment
+```
+
+That's why it is called
+
+```
+GenericValue
+```
+
+---
+
+# Complete Flow
+
+```
+Database
+
+↓
+
+ResultSet
+
+↓
+
+Entity Engine
+
+↓
+
+GenericValue
+
+↓
+
+Service
+
+↓
+
+Event
+
+↓
+
+Screen
+```
+
+---
+
+# Example
+
+Developer writes
+
+```java
+GenericValue product =
+EntityQuery.use(delegator)
+        .from("Product")
+        .where("productId", "P100")
+        .queryOne();
+```
+
+Now
+
+```
+product
+```
+
+contains one Product record.
+
+---
+
+# What does GenericValue contain?
+
+Internally,
+
+it stores
+
+```
+Entity Name
+
+↓
+
+Product
+
+Field Values
+
+↓
+
+productId
+
+↓
+
+P100
+
+internalName
+
+↓
+
+Laptop
+
+statusId
+
+↓
+
+APPROVED
+```
+
+Think of it as
+
+```
+Map<String, Object>
+```
+
+with additional OFBiz functionality.
+
+---
+
+# Visual Representation
+
+```
+GenericValue
+
+{
+
+entityName = Product
+
+values = {
+
+productId = P100
+
+internalName = Laptop
+
+statusId = APPROVED
+
+}
+
+}
+```
+
+---
+
+# Reading Data
+
+Suppose
+
+```
+GenericValue product
+```
+
+To read Product ID
+
+```java
+product.getString("productId");
+```
+
+Read Name
+
+```java
+product.getString("internalName");
+```
+
+Read Status
+
+```java
+product.getString("statusId");
+```
+
+---
+
+# Reading Different Data Types
+
+String
+
+```java
+product.getString("internalName");
+```
+
+Integer
+
+```java
+product.getInteger("sequenceNum");
+```
+
+Timestamp
+
+```java
+product.getTimestamp("createdStamp");
+```
+
+BigDecimal
+
+```java
+orderItem.getBigDecimal("unitPrice");
+```
+
+Boolean
+
+```java
+value.getBoolean("isActive");
+```
+
+---
+
+# Updating a Field
+
+Suppose
+
+Current Name
+
+```
+Laptop
+```
+
+New Name
+
+```
+Gaming Laptop
+```
+
+Code
+
+```java
+product.set(
+    "internalName",
+    "Gaming Laptop");
+```
+
+Notice
+
+Database has NOT changed yet.
+
+Only GenericValue changed.
+
+---
+
+# Saving Changes
+
+To update database
+
+```java
+delegator.store(product);
+```
+
+Flow
+
+```
+GenericValue
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+UPDATE SQL
+
+↓
+
+Database
+```
+
+---
+
+# SQL Generated
+
+Equivalent SQL
+
+```sql
+UPDATE PRODUCT
+
+SET INTERNAL_NAME='Gaming Laptop'
+
+WHERE PRODUCT_ID='P100';
+```
+
+---
+
+# Creating a New Record
+
+Step 1
+
+Create GenericValue
+
+```java
+GenericValue product =
+delegator.makeValue("Product");
+```
+
+---
+
+# Step 2
+
+Set Values
+
+```java
+product.set("productId", "P200");
+
+product.set("internalName", "Mouse");
+
+product.set("statusId", "APPROVED");
+```
+
+---
+
+# Step 3
+
+Insert into Database
+
+```java
+delegator.create(product);
+```
+
+Generated SQL
+
+```sql
+INSERT INTO PRODUCT
+
+(...)
+VALUES (...);
+```
+
+---
+
+# Deleting a Record
+
+```java
+delegator.removeValue(product);
+```
+
+Equivalent SQL
+
+```sql
+DELETE
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID='P200';
+```
+
+---
+
+# GenericValue Lifecycle
+
+```
+EntityQuery
+
+↓
+
+Database
+
+↓
+
+ResultSet
+
+↓
+
+GenericValue Created
+
+↓
+
+Read Values
+
+↓
+
+Modify Values
+
+↓
+
+delegator.store()
+
+↓
+
+Database Updated
+```
+
+---
+
+# GenericValue vs ModelEntity
+
+Many beginners confuse these.
+
+| ModelEntity | GenericValue |
+|-------------|--------------|
+| Metadata | Actual Data |
+| Loaded during startup | Created at runtime |
+| Describes Product entity | Contains Product row |
+| Entity structure | Entity values |
+
+Example
+
+ModelEntity
+
+```
+Product has
+
+productId
+
+internalName
+
+statusId
+```
+
+GenericValue
+
+```
+productId=P100
+
+internalName=Laptop
+
+statusId=APPROVED
+```
+
+---
+
+# GenericValue vs Database Row
+
+Database
+
+| PRODUCT_ID | INTERNAL_NAME |
+|------------|---------------|
+| P100 | Laptop |
+
+↓
+
+Runtime
+
+```
+GenericValue
+
+{
+
+productId=P100
+
+internalName=Laptop
+
+}
+```
+
+---
+
+# GenericValue vs Java POJO
+
+Traditional Java
+
+```java
+Product product =
+new Product();
+```
+
+Requires
+
+```
+Product.java
+```
+
+OFBiz
+
+```java
+GenericValue product;
+```
+
+No Product.java required.
+
+Works for every entity.
+
+---
+
+# Internal Structure
+
+Simplified
+
+```
+GenericValue
+
+{
+
+entityName
+
+fieldValues
+
+delegator
+
+modelEntity
+
+}
+```
+
+---
+
+# Related Methods
+
+Common methods
+
+```
+get()
+
+getString()
+
+getInteger()
+
+getTimestamp()
+
+getBigDecimal()
+
+set()
+
+containsKey()
+
+getPrimaryKey()
+```
+
+---
+
+# get()
+
+Returns
+
+```
+Object
+```
+
+Example
+
+```java
+Object value =
+product.get("internalName");
+```
+
+---
+
+# getString()
+
+Returns
+
+```
+String
+```
+
+Preferred when field type is String.
+
+---
+
+# containsKey()
+
+Checks
+
+whether field exists.
+
+Example
+
+```java
+product.containsKey("statusId");
+```
+
+---
+
+# getPrimaryKey()
+
+Returns
+
+primary key values.
+
+Useful when entity has
+
+multiple primary keys.
+
+---
+
+# Refreshing Data
+
+Suppose another user updates the database.
+
+Your GenericValue still contains
+
+old values.
+
+To fetch latest values,
+
+query again using EntityQuery.
+
+Remember
+
+GenericValue is a snapshot of the database row at the time it was fetched.
+
+---
+
+# Common Mistake
+
+Many beginners think
+
+```java
+product.set(...)
+```
+
+updates database.
+
+Wrong.
+
+It only changes
+
+the Java object.
+
+Database changes only after
+
+```java
+delegator.store(product);
+```
+
+---
+
+# Another Common Mistake
+
+Changing a GenericValue
+
+without calling
+
+```
+store()
+```
+
+means
+
+changes are lost.
+
+---
+
+# Real Life Analogy
+
+Suppose you download a Word document.
+
+You edit it.
+
+Has the original file changed?
+
+No.
+
+Only after clicking
+
+```
+Save
+```
+
+does the file change.
+
+Exactly same
+
+```
+GenericValue.set()
+
+↓
+
+Java Object Updated
+
+↓
+
+delegator.store()
+
+↓
+
+Database Updated
+```
+
+---
+
+# Sequence Diagram
+
+```
+Developer
+
+│
+
+│ queryOne()
+
+▼
+
+EntityQuery
+
+│
+
+▼
+
+Database
+
+│
+
+▼
+
+ResultSet
+
+│
+
+▼
+
+GenericValue
+
+│
+
+│ set()
+
+▼
+
+Modified GenericValue
+
+│
+
+│ store()
+
+▼
+
+Database Updated
+```
+
+---
+
+# Best Practices
+
+✔ Use `getString()` instead of `get()` when possible.
+
+✔ Always check for `null` before using a GenericValue returned by `queryOne()`.
+
+✔ Call `store()` after modifying values.
+
+✔ Use `create()` only for new records.
+
+✔ Do not reuse the same GenericValue across unrelated transactions.
+
+---
+
+# Interview Questions
+
+Q1. What is GenericValue?
+
+Q2. Why does OFBiz use GenericValue instead of Product.java?
+
+Q3. Difference between ModelEntity and GenericValue?
+
+Q4. Does `set()` update the database?
+
+Q5. What does `delegator.store()` do?
+
+Q6. How do you create a new GenericValue?
+
+Q7. Difference between `create()` and `store()`?
+
+Q8. Why is GenericValue called "Generic"?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ What is GenericValue
+
+✔ GenericValue lifecycle
+
+✔ Reading values
+
+✔ Updating values
+
+✔ Creating records
+
+✔ Deleting records
+
+✔ GenericValue vs ModelEntity
+
+✔ GenericValue vs POJO
+
+✔ Runtime behavior
+
+✔ Best practices
+
+---
+
+# Next Chapter (Chapter 14)
+
+Now we'll study **Delegator**, the central object that connects your business logic to the Entity Engine.
+
+We'll cover:
+
+- What is Delegator?
+- GenericDelegator
+- CRUD operations
+- makeValue()
+- create()
+- store()
+- remove()
+- findOne()
+- findList()
+- Transactions
+- Delegator lifecycle
+- How Delegator coordinates with the Entity Engine
+
+After Chapter 14, you'll understand why almost every OFBiz service starts with a `Delegator`.
+
+-----------------------------------
+
+# Chapter 14 - Delegator (The Gateway to the Entity Engine)
+
+---
+
+# Goal of this Chapter
+
+In previous chapters we learned
+
+- Entity Engine
+- EntityQuery
+- EntityCondition
+- GenericValue
+
+But there is one object that connects all of them.
+
+That object is
+
+```
+Delegator
+```
+
+Almost every Service, Event, and OFBiz component uses a Delegator.
+
+If GenericValue represents **one database record**,
+
+then Delegator represents **the gateway to the entire database**.
+
+---
+
+# What is a Delegator?
+
+A Delegator is the primary interface used to interact with the Entity Engine.
+
+It is responsible for
+
+- Creating records
+- Reading records
+- Updating records
+- Deleting records
+- Looking up entity metadata
+- Managing entity cache
+- Delegating database work to the Entity Engine
+
+Think of it as a **Database Manager**.
+
+---
+
+# Why is it called "Delegator"?
+
+The name comes from the word
+
+```
+Delegate
+```
+
+Meaning
+
+> "Pass the work to someone else."
+
+Delegator itself does **not** execute SQL.
+
+Instead it delegates the work to
+
+```
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+
+↓
+
+Database
+```
+
+---
+
+# High-Level Flow
+
+```
+Developer
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+```
+
+Notice
+
+Developer never talks directly to the Entity Engine.
+
+Everything goes through the Delegator.
+
+---
+
+# Where does Delegator come from?
+
+Inside a Service
+
+```java
+public static Map<String, Object> createProduct(
+        DispatchContext dctx,
+        Map<String, Object> context)
+{
+    Delegator delegator = dctx.getDelegator();
+
+    ...
+}
+```
+
+Inside an Event
+
+```java
+Delegator delegator =
+request.getAttribute("delegator");
+```
+
+So every business logic already has access to a Delegator.
+
+---
+
+# Delegator vs GenericDelegator
+
+Very important interview question.
+
+```
+Delegator
+
+↓
+
+Interface
+```
+
+```
+GenericDelegator
+
+↓
+
+Implementation
+```
+
+Think of it like
+
+```
+List
+
+↓
+
+ArrayList
+```
+
+or
+
+```
+Map
+
+↓
+
+HashMap
+```
+
+Similarly
+
+```
+Delegator
+
+↓
+
+GenericDelegator
+```
+
+Developers code against the interface.
+
+The implementation performs the actual work.
+
+---
+
+# Why use an Interface?
+
+Suppose tomorrow OFBiz introduces
+
+```
+AdvancedDelegator
+```
+
+Your code
+
+```java
+Delegator delegator;
+```
+
+will continue to work.
+
+This is one of the benefits of abstraction.
+
+---
+
+# Responsibilities of Delegator
+
+Delegator is responsible for
+
+```
+Create
+
+Read
+
+Update
+
+Delete
+
+Entity Lookup
+
+Cache Lookup
+
+Metadata Lookup
+
+Transaction Coordination
+```
+
+Notice
+
+Delegator is **not responsible for SQL generation**.
+
+That work belongs to the Entity Engine.
+
+---
+
+# Common Methods
+
+The most frequently used methods are
+
+```
+findOne()
+
+findByPrimaryKey()
+
+findList()
+
+create()
+
+store()
+
+removeValue()
+
+makeValue()
+
+findCountByCondition()
+
+removeByCondition()
+```
+
+We'll understand each one.
+
+---
+
+# makeValue()
+
+Purpose
+
+Create an empty GenericValue.
+
+Example
+
+```java
+GenericValue product =
+delegator.makeValue("Product");
+```
+
+Result
+
+```
+GenericValue
+
+{
+
+entity = Product
+
+values = {}
+}
+```
+
+Nothing is inserted into the database yet.
+
+---
+
+# create()
+
+Purpose
+
+Insert a new record.
+
+Example
+
+```java
+delegator.create(product);
+```
+
+Flow
+
+```
+GenericValue
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+INSERT SQL
+
+↓
+
+Database
+```
+
+---
+
+# store()
+
+Purpose
+
+Update an existing record.
+
+Example
+
+```java
+product.set(
+    "statusId",
+    "APPROVED");
+
+delegator.store(product);
+```
+
+Generated SQL
+
+```sql
+UPDATE PRODUCT
+
+SET STATUS_ID='APPROVED'
+
+WHERE PRODUCT_ID='P100'
+```
+
+---
+
+# removeValue()
+
+Purpose
+
+Delete a record.
+
+Example
+
+```java
+delegator.removeValue(product);
+```
+
+Equivalent SQL
+
+```sql
+DELETE
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID='P100'
+```
+
+---
+
+# findOne()
+
+Purpose
+
+Retrieve exactly one record.
+
+Example
+
+```java
+GenericValue product =
+delegator.findOne(
+        "Product",
+        UtilMisc.toMap(
+                "productId",
+                "P100"),
+        false);
+```
+
+Returns
+
+```
+GenericValue
+```
+
+---
+
+# findList()
+
+Purpose
+
+Retrieve multiple records.
+
+Returns
+
+```
+List<GenericValue>
+```
+
+Equivalent SQL
+
+```sql
+SELECT *
+
+FROM PRODUCT
+```
+
+---
+
+# findCountByCondition()
+
+Purpose
+
+Return only the count.
+
+Example
+
+Instead of
+
+```sql
+SELECT *
+
+FROM PRODUCT
+```
+
+it generates
+
+```sql
+SELECT COUNT(*)
+```
+
+Useful for
+
+- Pagination
+- Reports
+- Dashboard counts
+
+---
+
+# removeByCondition()
+
+Deletes multiple records matching a condition.
+
+Example
+
+```
+STATUS='TEMP'
+```
+
+Equivalent SQL
+
+```sql
+DELETE
+
+FROM PRODUCT
+
+WHERE STATUS_ID='TEMP'
+```
+
+---
+
+# Delegator Lifecycle
+
+Suppose developer writes
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.queryList();
+```
+
+Flow
+
+```
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+GenericDelegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+PreparedStatement
+
+↓
+
+Database
+
+↓
+
+ResultSet
+
+↓
+
+GenericValue
+
+↓
+
+Return
+```
+
+---
+
+# Delegator and EntityQuery
+
+Question
+
+Does EntityQuery talk directly to the database?
+
+No.
+
+Flow
+
+```
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+```
+
+Delegator is always in the middle.
+
+---
+
+# Delegator and GenericValue
+
+Question
+
+Who creates GenericValue?
+
+Answer
+
+```
+Entity Engine
+
+↓
+
+Delegator
+
+↓
+
+Developer receives GenericValue
+```
+
+Question
+
+Who stores GenericValue?
+
+Answer
+
+```
+Developer
+
+↓
+
+Delegator.store()
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+```
+
+---
+
+# Delegator and Cache
+
+Before querying the database
+
+Delegator checks
+
+```
+Entity Cache
+```
+
+Flow
+
+```
+Query
+
+↓
+
+Delegator
+
+↓
+
+Cache
+
+↓
+
+Found?
+
+↓
+
+Yes
+
+↓
+
+Return GenericValue
+
+↓
+
+No
+
+↓
+
+Database
+```
+
+This improves performance.
+
+---
+
+# Delegator and Transactions
+
+Delegator works inside the transaction started by the Service Engine.
+
+Example
+
+```
+Service
+
+↓
+
+Transaction Started
+
+↓
+
+Delegator.create()
+
+↓
+
+Delegator.store()
+
+↓
+
+Commit
+
+OR
+
+Rollback
+```
+
+Delegator itself does not start transactions.
+
+It participates in them.
+
+---
+
+# Delegator Architecture
+
+```
+Delegator (Interface)
+
+↓
+
+GenericDelegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+
+↓
+
+Database
+```
+
+---
+
+# Real-Life Analogy
+
+Imagine a restaurant.
+
+You never enter the kitchen.
+
+Instead
+
+```
+Customer
+
+↓
+
+Waiter
+
+↓
+
+Kitchen
+
+↓
+
+Chef
+
+↓
+
+Food
+```
+
+Mapping
+
+```
+Developer
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+
+↓
+
+Result
+```
+
+Delegator acts like the waiter.
+
+It accepts your request,
+
+passes it to the Entity Engine,
+
+and returns the result.
+
+---
+
+# Common Mistakes
+
+## Mistake 1
+
+Calling
+
+```java
+makeValue()
+```
+
+and expecting a database record.
+
+Wrong.
+
+`makeValue()` only creates a Java object.
+
+You must call
+
+```java
+create()
+```
+
+to insert it.
+
+---
+
+## Mistake 2
+
+Calling
+
+```java
+set()
+```
+
+without
+
+```java
+store()
+```
+
+Result
+
+Database is never updated.
+
+---
+
+## Mistake 3
+
+Using
+
+```java
+findList()
+```
+
+when only one record is expected.
+
+Prefer
+
+```java
+findOne()
+```
+
+or
+
+```java
+EntityQuery.queryOne()
+```
+
+---
+
+# Sequence Diagram
+
+```
+Developer
+
+│
+
+│ EntityQuery
+
+▼
+
+Delegator
+
+│
+
+▼
+
+GenericDelegator
+
+│
+
+▼
+
+Entity Engine
+
+│
+
+▼
+
+Database
+
+│
+
+▼
+
+ResultSet
+
+│
+
+▼
+
+GenericValue
+
+│
+
+▼
+
+Developer
+```
+
+---
+
+# Delegator vs EntityQuery
+
+| Delegator | EntityQuery |
+|-----------|-------------|
+| Interface | Builder Class |
+| Executes operations | Builds query |
+| Can create/store/remove | Mainly reads data |
+| Talks to Entity Engine | Talks to Delegator |
+| Used directly or indirectly | Usually used for SELECT queries |
+
+---
+
+# Delegator vs GenericValue
+
+| Delegator | GenericValue |
+|-----------|--------------|
+| Database gateway | One database row |
+| Performs CRUD | Holds entity values |
+| Interface | Runtime object |
+| Executes operations | Stores data |
+
+---
+
+# Best Practices
+
+✔ Prefer `EntityQuery` for read operations because it is more readable.
+
+✔ Use `makeValue()` only when creating a new record.
+
+✔ Always call `store()` after modifying a `GenericValue`.
+
+✔ Avoid writing raw SQL when the Entity Engine can perform the task.
+
+✔ Use `findCountByCondition()` instead of loading all records just to count them.
+
+---
+
+# Interview Questions
+
+Q1. What is a Delegator?
+
+Q2. Why is it called Delegator?
+
+Q3. Difference between Delegator and GenericDelegator?
+
+Q4. Difference between Delegator and EntityQuery?
+
+Q5. Does Delegator generate SQL?
+
+Q6. What does `makeValue()` do?
+
+Q7. Difference between `create()` and `store()`?
+
+Q8. How does Delegator participate in transactions?
+
+Q9. Does Delegator communicate directly with the database?
+
+Q10. Where do Services get the Delegator from?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ Delegator
+
+✔ GenericDelegator
+
+✔ CRUD operations
+
+✔ makeValue()
+
+✔ create()
+
+✔ store()
+
+✔ removeValue()
+
+✔ findOne()
+
+✔ findList()
+
+✔ Cache interaction
+
+✔ Transaction participation
+
+✔ Delegator architecture
+
+---
+
+# Next Chapter (Chapter 15)
+
+Now we'll study **Transactions**, one of the most critical concepts in OFBiz.
+
+We'll cover:
+
+- What is a Transaction?
+- Commit vs Rollback
+- TransactionUtil
+- Nested Transactions
+- Service Transactions
+- Database Consistency
+- Exception Handling
+- ACID Properties
+- Transaction Flow inside OFBiz
+- Best Practices for transactional services
+
+This chapter is essential for understanding how OFBiz ensures data integrity when multiple database operations happen together.
+
+
+------------------------------------------------------
+# Chapter 14 - Delegator (The Gateway to the Entity Engine)
+
+---
+
+# Goal of this Chapter
+
+In previous chapters we learned
+
+- Entity Engine
+- EntityQuery
+- EntityCondition
+- GenericValue
+
+But there is one object that connects all of them.
+
+That object is
+
+```
+Delegator
+```
+
+Almost every Service, Event, and OFBiz component uses a Delegator.
+
+If GenericValue represents **one database record**,
+
+then Delegator represents **the gateway to the entire database**.
+
+---
+
+# What is a Delegator?
+
+A Delegator is the primary interface used to interact with the Entity Engine.
+
+It is responsible for
+
+- Creating records
+- Reading records
+- Updating records
+- Deleting records
+- Looking up entity metadata
+- Managing entity cache
+- Delegating database work to the Entity Engine
+
+Think of it as a **Database Manager**.
+
+---
+
+# Why is it called "Delegator"?
+
+The name comes from the word
+
+```
+Delegate
+```
+
+Meaning
+
+> "Pass the work to someone else."
+
+Delegator itself does **not** execute SQL.
+
+Instead it delegates the work to
+
+```
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+
+↓
+
+Database
+```
+
+---
+
+# High-Level Flow
+
+```
+Developer
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+```
+
+Notice
+
+Developer never talks directly to the Entity Engine.
+
+Everything goes through the Delegator.
+
+---
+
+# Where does Delegator come from?
+
+Inside a Service
+
+```java
+public static Map<String, Object> createProduct(
+        DispatchContext dctx,
+        Map<String, Object> context)
+{
+    Delegator delegator = dctx.getDelegator();
+
+    ...
+}
+```
+
+Inside an Event
+
+```java
+Delegator delegator =
+request.getAttribute("delegator");
+```
+
+So every business logic already has access to a Delegator.
+
+---
+
+# Delegator vs GenericDelegator
+
+Very important interview question.
+
+```
+Delegator
+
+↓
+
+Interface
+```
+
+```
+GenericDelegator
+
+↓
+
+Implementation
+```
+
+Think of it like
+
+```
+List
+
+↓
+
+ArrayList
+```
+
+or
+
+```
+Map
+
+↓
+
+HashMap
+```
+
+Similarly
+
+```
+Delegator
+
+↓
+
+GenericDelegator
+```
+
+Developers code against the interface.
+
+The implementation performs the actual work.
+
+---
+
+# Why use an Interface?
+
+Suppose tomorrow OFBiz introduces
+
+```
+AdvancedDelegator
+```
+
+Your code
+
+```java
+Delegator delegator;
+```
+
+will continue to work.
+
+This is one of the benefits of abstraction.
+
+---
+
+# Responsibilities of Delegator
+
+Delegator is responsible for
+
+```
+Create
+
+Read
+
+Update
+
+Delete
+
+Entity Lookup
+
+Cache Lookup
+
+Metadata Lookup
+
+Transaction Coordination
+```
+
+Notice
+
+Delegator is **not responsible for SQL generation**.
+
+That work belongs to the Entity Engine.
+
+---
+
+# Common Methods
+
+The most frequently used methods are
+
+```
+findOne()
+
+findByPrimaryKey()
+
+findList()
+
+create()
+
+store()
+
+removeValue()
+
+makeValue()
+
+findCountByCondition()
+
+removeByCondition()
+```
+
+We'll understand each one.
+
+---
+
+# makeValue()
+
+Purpose
+
+Create an empty GenericValue.
+
+Example
+
+```java
+GenericValue product =
+delegator.makeValue("Product");
+```
+
+Result
+
+```
+GenericValue
+
+{
+
+entity = Product
+
+values = {}
+}
+```
+
+Nothing is inserted into the database yet.
+
+---
+
+# create()
+
+Purpose
+
+Insert a new record.
+
+Example
+
+```java
+delegator.create(product);
+```
+
+Flow
+
+```
+GenericValue
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+INSERT SQL
+
+↓
+
+Database
+```
+
+---
+
+# store()
+
+Purpose
+
+Update an existing record.
+
+Example
+
+```java
+product.set(
+    "statusId",
+    "APPROVED");
+
+delegator.store(product);
+```
+
+Generated SQL
+
+```sql
+UPDATE PRODUCT
+
+SET STATUS_ID='APPROVED'
+
+WHERE PRODUCT_ID='P100'
+```
+
+---
+
+# removeValue()
+
+Purpose
+
+Delete a record.
+
+Example
+
+```java
+delegator.removeValue(product);
+```
+
+Equivalent SQL
+
+```sql
+DELETE
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID='P100'
+```
+
+---
+
+# findOne()
+
+Purpose
+
+Retrieve exactly one record.
+
+Example
+
+```java
+GenericValue product =
+delegator.findOne(
+        "Product",
+        UtilMisc.toMap(
+                "productId",
+                "P100"),
+        false);
+```
+
+Returns
+
+```
+GenericValue
+```
+
+---
+
+# findList()
+
+Purpose
+
+Retrieve multiple records.
+
+Returns
+
+```
+List<GenericValue>
+```
+
+Equivalent SQL
+
+```sql
+SELECT *
+
+FROM PRODUCT
+```
+
+---
+
+# findCountByCondition()
+
+Purpose
+
+Return only the count.
+
+Example
+
+Instead of
+
+```sql
+SELECT *
+
+FROM PRODUCT
+```
+
+it generates
+
+```sql
+SELECT COUNT(*)
+```
+
+Useful for
+
+- Pagination
+- Reports
+- Dashboard counts
+
+---
+
+# removeByCondition()
+
+Deletes multiple records matching a condition.
+
+Example
+
+```
+STATUS='TEMP'
+```
+
+Equivalent SQL
+
+```sql
+DELETE
+
+FROM PRODUCT
+
+WHERE STATUS_ID='TEMP'
+```
+
+---
+
+# Delegator Lifecycle
+
+Suppose developer writes
+
+```java
+EntityQuery.use(delegator)
+
+.from("Product")
+
+.queryList();
+```
+
+Flow
+
+```
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+GenericDelegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+PreparedStatement
+
+↓
+
+Database
+
+↓
+
+ResultSet
+
+↓
+
+GenericValue
+
+↓
+
+Return
+```
+
+---
+
+# Delegator and EntityQuery
+
+Question
+
+Does EntityQuery talk directly to the database?
+
+No.
+
+Flow
+
+```
+EntityQuery
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+```
+
+Delegator is always in the middle.
+
+---
+
+# Delegator and GenericValue
+
+Question
+
+Who creates GenericValue?
+
+Answer
+
+```
+Entity Engine
+
+↓
+
+Delegator
+
+↓
+
+Developer receives GenericValue
+```
+
+Question
+
+Who stores GenericValue?
+
+Answer
+
+```
+Developer
+
+↓
+
+Delegator.store()
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+```
+
+---
+
+# Delegator and Cache
+
+Before querying the database
+
+Delegator checks
+
+```
+Entity Cache
+```
+
+Flow
+
+```
+Query
+
+↓
+
+Delegator
+
+↓
+
+Cache
+
+↓
+
+Found?
+
+↓
+
+Yes
+
+↓
+
+Return GenericValue
+
+↓
+
+No
+
+↓
+
+Database
+```
+
+This improves performance.
+
+---
+
+# Delegator and Transactions
+
+Delegator works inside the transaction started by the Service Engine.
+
+Example
+
+```
+Service
+
+↓
+
+Transaction Started
+
+↓
+
+Delegator.create()
+
+↓
+
+Delegator.store()
+
+↓
+
+Commit
+
+OR
+
+Rollback
+```
+
+Delegator itself does not start transactions.
+
+It participates in them.
+
+---
+
+# Delegator Architecture
+
+```
+Delegator (Interface)
+
+↓
+
+GenericDelegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+JDBC
+
+↓
+
+Database
+```
+
+---
+
+# Real-Life Analogy
+
+Imagine a restaurant.
+
+You never enter the kitchen.
+
+Instead
+
+```
+Customer
+
+↓
+
+Waiter
+
+↓
+
+Kitchen
+
+↓
+
+Chef
+
+↓
+
+Food
+```
+
+Mapping
+
+```
+Developer
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+
+↓
+
+Result
+```
+
+Delegator acts like the waiter.
+
+It accepts your request,
+
+passes it to the Entity Engine,
+
+and returns the result.
+
+---
+
+# Common Mistakes
+
+## Mistake 1
+
+Calling
+
+```java
+makeValue()
+```
+
+and expecting a database record.
+
+Wrong.
+
+`makeValue()` only creates a Java object.
+
+You must call
+
+```java
+create()
+```
+
+to insert it.
+
+---
+
+## Mistake 2
+
+Calling
+
+```java
+set()
+```
+
+without
+
+```java
+store()
+```
+
+Result
+
+Database is never updated.
+
+---
+
+## Mistake 3
+
+Using
+
+```java
+findList()
+```
+
+when only one record is expected.
+
+Prefer
+
+```java
+findOne()
+```
+
+or
+
+```java
+EntityQuery.queryOne()
+```
+
+---
+
+# Sequence Diagram
+
+```
+Developer
+
+│
+
+│ EntityQuery
+
+▼
+
+Delegator
+
+│
+
+▼
+
+GenericDelegator
+
+│
+
+▼
+
+Entity Engine
+
+│
+
+▼
+
+Database
+
+│
+
+▼
+
+ResultSet
+
+│
+
+▼
+
+GenericValue
+
+│
+
+▼
+
+Developer
+```
+
+---
+
+# Delegator vs EntityQuery
+
+| Delegator | EntityQuery |
+|-----------|-------------|
+| Interface | Builder Class |
+| Executes operations | Builds query |
+| Can create/store/remove | Mainly reads data |
+| Talks to Entity Engine | Talks to Delegator |
+| Used directly or indirectly | Usually used for SELECT queries |
+
+---
+
+# Delegator vs GenericValue
+
+| Delegator | GenericValue |
+|-----------|--------------|
+| Database gateway | One database row |
+| Performs CRUD | Holds entity values |
+| Interface | Runtime object |
+| Executes operations | Stores data |
+
+---
+
+# Best Practices
+
+✔ Prefer `EntityQuery` for read operations because it is more readable.
+
+✔ Use `makeValue()` only when creating a new record.
+
+✔ Always call `store()` after modifying a `GenericValue`.
+
+✔ Avoid writing raw SQL when the Entity Engine can perform the task.
+
+✔ Use `findCountByCondition()` instead of loading all records just to count them.
+
+---
+
+# Interview Questions
+
+Q1. What is a Delegator?
+
+Q2. Why is it called Delegator?
+
+Q3. Difference between Delegator and GenericDelegator?
+
+Q4. Difference between Delegator and EntityQuery?
+
+Q5. Does Delegator generate SQL?
+
+Q6. What does `makeValue()` do?
+
+Q7. Difference between `create()` and `store()`?
+
+Q8. How does Delegator participate in transactions?
+
+Q9. Does Delegator communicate directly with the database?
+
+Q10. Where do Services get the Delegator from?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ Delegator
+
+✔ GenericDelegator
+
+✔ CRUD operations
+
+✔ makeValue()
+
+✔ create()
+
+✔ store()
+
+✔ removeValue()
+
+✔ findOne()
+
+✔ findList()
+
+✔ Cache interaction
+
+✔ Transaction participation
+
+✔ Delegator architecture
+
+---
+
+# Next Chapter (Chapter 15)
+
+Now we'll study **Transactions**, one of the most critical concepts in OFBiz.
+
+We'll cover:
+
+- What is a Transaction?
+- Commit vs Rollback
+- TransactionUtil
+- Nested Transactions
+- Service Transactions
+- Database Consistency
+- Exception Handling
+- ACID Properties
+- Transaction Flow inside OFBiz
+- Best Practices for transactional services
+
+This chapter is essential for understanding how OFBiz ensures data integrity when multiple database operations happen together.
+
+
+
+-----------------------------------------------------
+
+# Chapter 15 - Transactions in OFBiz (Commit, Rollback & Data Integrity)
+
+---
+
+# Goal of this Chapter
+
+Till now we have learned
+
+- Entity Engine
+- EntityQuery
+- GenericValue
+- Delegator
+
+Now let's answer an important question.
+
+> What happens if multiple database operations are running and one of them fails?
+
+Example
+
+```
+Create Order
+
+↓
+
+Reserve Inventory
+
+↓
+
+Create Payment
+
+↓
+
+Create Shipment
+```
+
+Suppose Payment fails.
+
+Should the Order still remain in the database?
+
+**No.**
+
+This is where **Transactions** come into the picture.
+
+---
+
+# What is a Transaction?
+
+A Transaction is a **group of database operations that behave as one single unit**.
+
+Meaning
+
+```
+Either
+
+Everything succeeds
+
+OR
+
+Everything fails
+```
+
+There is no middle state.
+
+---
+
+# Example Without Transaction
+
+Suppose we execute
+
+```
+Insert Order
+
+✔ Success
+
+↓
+
+Reserve Inventory
+
+✔ Success
+
+↓
+
+Create Payment
+
+❌ Failed
+
+↓
+
+Create Shipment
+
+Not Executed
+```
+
+Database becomes
+
+```
+Order Exists
+
+Inventory Reserved
+
+Payment Missing
+```
+
+This is an inconsistent database.
+
+---
+
+# Example With Transaction
+
+Same flow
+
+```
+Insert Order
+
+↓
+
+Reserve Inventory
+
+↓
+
+Create Payment
+
+↓
+
+Shipment
+```
+
+Suppose Payment fails.
+
+Result
+
+```
+Rollback
+
+↓
+
+Order Removed
+
+↓
+
+Inventory Released
+
+↓
+
+Database restored
+```
+
+Now database remains consistent.
+
+---
+
+# Why Transactions?
+
+Transactions ensure
+
+- Data Consistency
+- Data Integrity
+- No Partial Updates
+- Safe Recovery
+
+---
+
+# Transaction Lifecycle
+
+```
+Begin Transaction
+
+↓
+
+Execute SQL
+
+↓
+
+Execute SQL
+
+↓
+
+Execute SQL
+
+↓
+
+Success?
+
+↓
+
+Yes
+
+↓
+
+Commit
+
+OR
+
+↓
+
+Rollback
+```
+
+---
+
+# Commit
+
+Commit means
+
+> Save all database changes permanently.
+
+Flow
+
+```
+Transaction Started
+
+↓
+
+Insert Product
+
+↓
+
+Update Inventory
+
+↓
+
+Create Order
+
+↓
+
+Commit
+
+↓
+
+Saved Forever
+```
+
+---
+
+# Rollback
+
+Rollback means
+
+> Undo every change made in the current transaction.
+
+Flow
+
+```
+Transaction Started
+
+↓
+
+Insert Product
+
+↓
+
+Update Inventory
+
+↓
+
+Payment Failed
+
+↓
+
+Rollback
+
+↓
+
+Nothing Saved
+```
+
+---
+
+# Visual Example
+
+```
+Transaction
+
+{
+
+Create Order
+
+Reserve Inventory
+
+Payment
+
+Shipment
+
+}
+```
+
+If Shipment fails
+
+↓
+
+Entire transaction rolls back.
+
+---
+
+# Real Example
+
+Suppose customer places an order.
+
+Business flow
+
+```
+Create Order Header
+
+↓
+
+Create Order Items
+
+↓
+
+Reserve Inventory
+
+↓
+
+Authorize Payment
+
+↓
+
+Generate Shipment
+```
+
+Suppose
+
+```
+Authorize Payment
+
+↓
+
+Fails
+```
+
+Result
+
+```
+Rollback Entire Transaction
+```
+
+Database becomes exactly as it was before.
+
+---
+
+# ACID Properties
+
+Every transaction follows
+
+```
+ACID
+```
+
+---
+
+# A - Atomicity
+
+Meaning
+
+```
+All
+
+OR
+
+Nothing
+```
+
+Example
+
+```
+Bank Transfer
+
+Withdraw ₹1000
+
+Deposit ₹1000
+```
+
+Cannot happen partially.
+
+---
+
+# C - Consistency
+
+Database should always remain valid.
+
+Wrong
+
+```
+Order Exists
+
+Payment Missing
+```
+
+Correct
+
+```
+Order
+
+Payment
+
+Shipment
+
+Everything Consistent
+```
+
+---
+
+# I - Isolation
+
+Multiple users can perform transactions simultaneously.
+
+Example
+
+```
+User A
+
+Creating Order
+
+||
+
+User B
+
+Updating Product
+```
+
+They should not interfere with each other.
+
+---
+
+# D - Durability
+
+Once committed
+
+data survives
+
+```
+Server Restart
+
+Power Failure
+
+Crash
+```
+
+because it is stored in the database.
+
+---
+
+# Transactions in OFBiz
+
+Most Services automatically run inside a transaction.
+
+Example
+
+```xml
+<service
+    name="createOrder"
+    engine="java"
+    auth="true"/>
+```
+
+When Service starts
+
+```
+Transaction Begins
+```
+
+When Service finishes successfully
+
+```
+Commit
+```
+
+If an exception occurs
+
+```
+Rollback
+```
+
+---
+
+# Transaction Flow
+
+```
+Browser
+
+↓
+
+Event
+
+↓
+
+Dispatcher
+
+↓
+
+Service
+
+↓
+
+Transaction Begins
+
+↓
+
+Delegator
+
+↓
+
+Database
+
+↓
+
+Commit / Rollback
+
+↓
+
+Return
+```
+
+---
+
+# Who Starts the Transaction?
+
+Not the Delegator.
+
+Not EntityQuery.
+
+The **Service Engine** starts the transaction.
+
+Flow
+
+```
+Dispatcher
+
+↓
+
+Service Engine
+
+↓
+
+TransactionManager
+
+↓
+
+Delegator
+
+↓
+
+Database
+```
+
+---
+
+# TransactionManager
+
+Internally OFBiz uses
+
+```
+TransactionManager
+```
+
+to control
+
+- Begin
+- Commit
+- Rollback
+
+Developers usually don't call it directly.
+
+---
+
+# TransactionUtil
+
+OFBiz provides
+
+```
+TransactionUtil
+```
+
+for transaction management.
+
+Common methods
+
+```
+begin()
+
+commit()
+
+rollback()
+
+isTransactionInPlace()
+```
+
+These are mostly used in framework code or advanced scenarios.
+
+---
+
+# Example
+
+```java
+boolean began =
+TransactionUtil.begin();
+```
+
+Later
+
+```java
+TransactionUtil.commit();
+```
+
+If exception occurs
+
+```java
+TransactionUtil.rollback();
+```
+
+---
+
+# Exception Handling
+
+Suppose
+
+```java
+try {
+
+    createOrder();
+
+    reserveInventory();
+
+    createPayment();
+
+}
+
+catch(Exception e){
+
+    rollback();
+
+}
+```
+
+If any method throws an exception
+
+↓
+
+Entire transaction rolls back.
+
+---
+
+# Checked vs Runtime Exceptions
+
+OFBiz generally rolls back
+
+when a service throws an exception
+
+or explicitly returns an error in transactional contexts.
+
+Always check the service contract and transaction settings.
+
+---
+
+# Nested Transactions
+
+Suppose
+
+```
+Service A
+
+↓
+
+calls
+
+↓
+
+Service B
+```
+
+Question
+
+Will Service B create another transaction?
+
+Usually
+
+No.
+
+It joins the existing transaction.
+
+Flow
+
+```
+Transaction
+
+↓
+
+Service A
+
+↓
+
+Service B
+
+↓
+
+Service C
+
+↓
+
+Commit
+```
+
+One transaction.
+
+---
+
+# Why Nested Transactions?
+
+Imagine
+
+```
+Create Order
+
+↓
+
+Reserve Inventory
+
+↓
+
+Payment
+
+↓
+
+Shipment
+```
+
+These are different services.
+
+But together
+
+they represent one business operation.
+
+---
+
+# Transaction Boundary
+
+Think of transaction as a boundary.
+
+```
+Begin
+
+↓
+
+Everything Inside
+
+↓
+
+Commit
+```
+
+Outside the boundary
+
+changes are already permanent.
+
+---
+
+# Delegator Inside Transaction
+
+Suppose
+
+```java
+delegator.create(...);
+
+delegator.store(...);
+
+delegator.removeValue(...);
+```
+
+These operations
+
+do NOT commit immediately.
+
+They wait until
+
+```
+Transaction Ends
+```
+
+---
+
+# Sequence Diagram
+
+```
+Service
+
+│
+
+│ Begin Transaction
+
+▼
+
+Delegator
+
+│
+
+▼
+
+Entity Engine
+
+│
+
+▼
+
+Database
+
+│
+
+▲
+
+Commit / Rollback
+
+│
+
+Service Ends
+```
+
+---
+
+# Common Mistakes
+
+## Mistake 1
+
+Thinking
+
+```java
+delegator.store()
+```
+
+immediately commits.
+
+Wrong.
+
+Commit happens when
+
+the transaction completes.
+
+---
+
+## Mistake 2
+
+Catching an exception
+
+and ignoring it.
+
+Example
+
+```java
+catch(Exception e){
+
+}
+```
+
+Now transaction may commit
+
+even though something failed.
+
+Always handle exceptions properly.
+
+---
+
+## Mistake 3
+
+Doing external API calls
+
+inside long-running transactions.
+
+Example
+
+```
+Begin Transaction
+
+↓
+
+Call Payment Gateway
+
+↓
+
+Wait 30 Seconds
+
+↓
+
+Commit
+```
+
+This keeps database resources locked.
+
+Better approach
+
+```
+Finish Database Work
+
+↓
+
+Commit
+
+↓
+
+Call External API
+```
+
+(or design the workflow appropriately if the external call must be part of the business process).
+
+---
+
+# Real Life Analogy
+
+Suppose you're transferring money.
+
+```
+Withdraw ₹1000
+
+↓
+
+Deposit ₹1000
+```
+
+If the deposit fails
+
+the withdrawal should also be cancelled.
+
+That's exactly what a transaction guarantees.
+
+---
+
+# Transaction Architecture
+
+```
+Browser
+
+↓
+
+Event
+
+↓
+
+Dispatcher
+
+↓
+
+Service
+
+↓
+
+TransactionManager
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+
+↓
+
+Commit / Rollback
+```
+
+---
+
+# Interview Questions
+
+Q1. What is a Transaction?
+
+Q2. Difference between Commit and Rollback?
+
+Q3. What are ACID properties?
+
+Q4. Who starts a transaction in OFBiz?
+
+Q5. Does Delegator commit data immediately?
+
+Q6. What is TransactionUtil?
+
+Q7. Why are transactions important?
+
+Q8. What happens if one database operation fails?
+
+Q9. What are nested transactions?
+
+Q10. Why should long-running external API calls generally be avoided inside a transaction?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ What is a Transaction
+
+✔ Commit
+
+✔ Rollback
+
+✔ ACID Properties
+
+✔ Transaction Lifecycle
+
+✔ TransactionManager
+
+✔ TransactionUtil
+
+✔ Nested Transactions
+
+✔ Exception Handling
+
+✔ Service Transactions
+
+✔ Transaction Boundaries
+
+✔ Best Practices
+
+---
+
+# Next Chapter (Chapter 16)
+
+Now we'll study one of the most powerful features of OFBiz:
+
+# Entity Relationships
+
+We'll cover:
+
+- One-to-One Relationships
+- One-to-Many Relationships
+- Many-to-Many Relationships
+- `<relation>` tag in Entity XML
+- Foreign Keys
+- Primary Keys
+- `getRelated()`
+- `getRelatedOne()`
+- Self Relationships
+- View Entities
+- How OFBiz automatically performs joins using relationships
+
+This chapter is essential because relationships are the foundation of modules like **Order, Product, Party, Shipment, Inventory, and Accounting**.
+
+
+---------------------------
+
+# Chapter 16 - Entity Relationships (How OFBiz Connects Entities)
+
+---
+
+# Goal of this Chapter
+
+Till now we have learned
+
+- Entity Engine
+- EntityQuery
+- GenericValue
+- Delegator
+- Transactions
+
+Now let's answer an important question.
+
+> How does OFBiz know that an Order belongs to a Customer?
+
+Or
+
+> How does OFBiz know which OrderItems belong to an OrderHeader?
+
+The answer is
+
+```
+Entity Relationships
+```
+
+Relationships are one of the most important concepts in OFBiz because **almost every module depends on them.**
+
+---
+
+# What is an Entity Relationship?
+
+An Entity Relationship defines how two entities are connected.
+
+Example
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+```
+
+using
+
+```
+orderId
+```
+
+Instead of manually writing SQL JOINs every time,
+
+OFBiz stores these relationships in Entity XML.
+
+---
+
+# Real Database Example
+
+Suppose we have two tables.
+
+## PRODUCT
+
+| PRODUCT_ID | NAME |
+|------------|------|
+| P100 | Laptop |
+
+---
+
+## ORDER_ITEM
+
+| ORDER_ID | PRODUCT_ID | QTY |
+|----------|------------|-----|
+| O100 | P100 | 2 |
+
+Question
+
+How does database know
+
+```
+P100
+
+↓
+
+Laptop
+```
+
+belongs to
+
+```
+OrderItem
+```
+
+Using
+
+```
+Foreign Key
+```
+
+---
+
+# Primary Key
+
+Primary Key uniquely identifies one record.
+
+Example
+
+```
+Product
+
+↓
+
+productId
+```
+
+```
+Party
+
+↓
+
+partyId
+```
+
+```
+OrderHeader
+
+↓
+
+orderId
+```
+
+Every entity has one or more Primary Keys.
+
+---
+
+# Foreign Key
+
+Foreign Key references another table's Primary Key.
+
+Example
+
+```
+OrderItem
+
+productId
+
+↓
+
+Product.productId
+```
+
+Now OrderItem knows
+
+which Product it belongs to.
+
+---
+
+# Relationship in Entity XML
+
+Example
+
+```xml
+<relation
+
+type="one"
+
+rel-entity-name="Product"
+
+fk-name="ORDITM_PROD"
+
+title="Product">
+
+<key-map
+
+field-name="productId"/>
+</relation>
+```
+
+This tells OFBiz
+
+```
+OrderItem
+
+↓
+
+Product
+
+using
+
+productId
+```
+
+---
+
+# What is `<relation>`?
+
+`<relation>` is an XML element that defines
+
+how one entity connects to another.
+
+It is **metadata**.
+
+No SQL is executed here.
+
+---
+
+# Relation Attributes
+
+Most common attributes
+
+```
+type
+
+rel-entity-name
+
+title
+
+fk-name
+```
+
+---
+
+# type
+
+Defines relationship type.
+
+Possible values
+
+```
+one
+
+one-nofk
+
+many
+```
+
+We'll understand each.
+
+---
+
+# One Relationship
+
+Example
+
+```
+OrderItem
+
+↓
+
+Product
+```
+
+One OrderItem references
+
+one Product.
+
+Diagram
+
+```
+OrderItem
+
+──────►
+
+Product
+```
+
+---
+
+# Many Relationship
+
+Example
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+```
+
+One OrderHeader has
+
+many OrderItems.
+
+Diagram
+
+```
+OrderHeader
+
+│
+
+├── Item1
+
+├── Item2
+
+├── Item3
+```
+
+---
+
+# One-to-One Relationship
+
+Example
+
+```
+Party
+
+↓
+
+Person
+```
+
+One Party
+
+has one Person record.
+
+Diagram
+
+```
+Party
+
+────►
+
+Person
+```
+
+---
+
+# One-to-Many Relationship
+
+Example
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+```
+
+Diagram
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+
+OrderItem
+
+OrderItem
+```
+
+One order
+
+contains many items.
+
+---
+
+# Many-to-Many Relationship
+
+Suppose
+
+```
+Product
+
+Category
+```
+
+One Product
+
+can belong to
+
+many Categories.
+
+One Category
+
+contains many Products.
+
+Database solves this using
+
+a bridge table.
+
+Example
+
+```
+Product
+
+↓
+
+ProductCategoryMember
+
+↓
+
+ProductCategory
+```
+
+Diagram
+
+```
+Product
+
+↓
+
+ProductCategoryMember
+
+↓
+
+Category
+```
+
+---
+
+# key-map
+
+Question
+
+How does OFBiz know
+
+which field matches?
+
+Answer
+
+```
+key-map
+```
+
+Example
+
+```xml
+<key-map
+
+field-name="productId"/>
+```
+
+Means
+
+```
+OrderItem.productId
+
+↓
+
+Product.productId
+```
+
+---
+
+# Why key-map?
+
+Imagine
+
+```
+OrderHeader
+
+orderId
+```
+
+↓
+
+```
+OrderItem
+
+orderId
+```
+
+Without key-map
+
+OFBiz wouldn't know
+
+which columns should be joined.
+
+---
+
+# Relation Metadata
+
+Internally
+
+ModelRelation stores
+
+```
+Relation Type
+
+Related Entity
+
+Field Mapping
+
+Foreign Key
+```
+
+This metadata is loaded during server startup.
+
+---
+
+# How OFBiz Uses Relationships
+
+Suppose
+
+Developer has
+
+```java
+GenericValue orderItem;
+```
+
+Instead of writing SQL
+
+developer writes
+
+```java
+orderItem.getRelatedOne(
+        "Product",
+        false);
+```
+
+OFBiz already knows
+
+```
+OrderItem
+
+↓
+
+Product
+
+using
+
+productId
+```
+
+No SQL JOIN is written manually.
+
+---
+
+# getRelatedOne()
+
+Purpose
+
+Fetch exactly one related record.
+
+Example
+
+```java
+GenericValue product =
+orderItem.getRelatedOne(
+        "Product",
+        false);
+```
+
+Flow
+
+```
+OrderItem
+
+↓
+
+Relationship
+
+↓
+
+Product
+
+↓
+
+GenericValue
+```
+
+---
+
+# SQL Generated
+
+Equivalent SQL
+
+```sql
+SELECT *
+
+FROM PRODUCT
+
+WHERE PRODUCT_ID=?
+```
+
+Developer never writes it.
+
+---
+
+# getRelated()
+
+Purpose
+
+Fetch multiple related records.
+
+Example
+
+```java
+List<GenericValue> items =
+orderHeader.getRelated(
+        "OrderItem",
+        null,
+        null,
+        false);
+```
+
+Equivalent SQL
+
+```sql
+SELECT *
+
+FROM ORDER_ITEM
+
+WHERE ORDER_ID=?
+```
+
+---
+
+# Difference
+
+```
+getRelatedOne()
+
+↓
+
+One Record
+```
+
+```
+getRelated()
+
+↓
+
+Multiple Records
+```
+
+---
+
+# Internal Flow
+
+```
+GenericValue
+
+↓
+
+ModelRelation
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+Database
+
+↓
+
+GenericValue
+```
+
+---
+
+# Self Relationship
+
+Sometimes
+
+an entity relates to itself.
+
+Example
+
+```
+ProductCategory
+
+↓
+
+Parent Category
+
+↓
+
+Child Category
+```
+
+Diagram
+
+```
+Electronics
+
+↓
+
+Laptop
+
+↓
+
+Gaming Laptop
+```
+
+Same entity.
+
+Different records.
+
+---
+
+# View Entity
+
+Sometimes
+
+multiple entities
+
+must be joined together.
+
+Instead of writing SQL
+
+OFBiz provides
+
+```
+View Entity
+```
+
+Example
+
+```
+OrderHeader
+
+JOIN
+
+OrderItem
+
+JOIN
+
+Product
+```
+
+Defined in XML.
+
+---
+
+# Why Relationships Matter
+
+Without relationships
+
+every query would need
+
+manual SQL JOINs.
+
+Example
+
+```sql
+SELECT *
+
+FROM ORDER_HEADER
+
+JOIN ORDER_ITEM
+
+JOIN PRODUCT
+
+JOIN PARTY
+
+JOIN FACILITY
+```
+
+OFBiz simplifies this using
+
+```
+ModelRelation
+```
+
+---
+
+# Relationship Lifecycle
+
+```
+entitymodel.xml
+
+↓
+
+ModelReader
+
+↓
+
+ModelRelation
+
+↓
+
+Entity Engine
+
+↓
+
+GenericValue.getRelated()
+
+↓
+
+SQL Generated
+
+↓
+
+Database
+```
+
+---
+
+# Common OFBiz Relationships
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+
+↓
+
+Product
+
+↓
+
+ProductCategoryMember
+
+↓
+
+ProductCategory
+```
+
+Another
+
+```
+Party
+
+↓
+
+Person
+```
+
+Another
+
+```
+Shipment
+
+↓
+
+ShipmentItem
+
+↓
+
+OrderItem
+```
+
+These relationships form the backbone of OFBiz.
+
+---
+
+# Real-Life Analogy
+
+Imagine a family tree.
+
+```
+Grandfather
+
+↓
+
+Father
+
+↓
+
+Son
+```
+
+You don't search every person manually.
+
+You simply ask
+
+```
+Who is the father?
+```
+
+Similarly
+
+```
+OrderItem.getRelatedOne("Product")
+```
+
+asks
+
+"Which Product is related to this OrderItem?"
+
+OFBiz finds it automatically.
+
+---
+
+# Sequence Diagram
+
+```
+Developer
+
+│
+
+│ getRelatedOne()
+
+▼
+
+GenericValue
+
+│
+
+▼
+
+ModelRelation
+
+│
+
+▼
+
+Entity Engine
+
+│
+
+▼
+
+SQL Builder
+
+│
+
+▼
+
+Database
+
+│
+
+▼
+
+GenericValue
+
+│
+
+▼
+
+Developer
+```
+
+---
+
+# Best Practices
+
+✔ Define relationships in Entity XML instead of writing repeated joins.
+
+✔ Use `getRelatedOne()` when only one record is expected.
+
+✔ Use `getRelated()` for collections.
+
+✔ Keep relationship names meaningful.
+
+✔ Avoid unnecessary repeated related lookups inside large loops; consider View Entities or optimized queries when fetching large datasets.
+
+---
+
+# Common Mistakes
+
+## Mistake 1
+
+Writing raw SQL JOINs
+
+when relationships already exist.
+
+---
+
+## Mistake 2
+
+Using `getRelated()`
+
+when relationship type is
+
+```
+one
+```
+
+---
+
+## Mistake 3
+
+Forgetting to define
+
+```
+key-map
+```
+
+Without it,
+
+OFBiz cannot determine
+
+which fields should be joined.
+
+---
+
+# Interview Questions
+
+Q1. What is an Entity Relationship?
+
+Q2. Difference between Primary Key and Foreign Key?
+
+Q3. What is `<relation>` in Entity XML?
+
+Q4. What is `key-map`?
+
+Q5. Difference between `type="one"` and `type="many"`?
+
+Q6. Difference between `getRelated()` and `getRelatedOne()`?
+
+Q7. What is a Self Relationship?
+
+Q8. What is a View Entity?
+
+Q9. Which class stores relationship metadata?
+
+Answer
+
+```
+ModelRelation
+```
+
+Q10. Why are relationships important in OFBiz?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ Primary Keys
+
+✔ Foreign Keys
+
+✔ Entity Relationships
+
+✔ `<relation>`
+
+✔ `key-map`
+
+✔ One-to-One
+
+✔ One-to-Many
+
+✔ Many-to-Many
+
+✔ Self Relationships
+
+✔ `getRelated()`
+
+✔ `getRelatedOne()`
+
+✔ ModelRelation
+
+✔ Relationship lifecycle
+
+---
+
+# Next Chapter (Chapter 17)
+
+Now we'll study **View Entities**, one of the most powerful features of the OFBiz Entity Engine.
+
+We'll cover:
+
+- What is a View Entity?
+- Why View Entities exist
+- `view-entity` XML
+- `member-entity`
+- `alias`
+- `view-link`
+- Aggregation (`SUM`, `COUNT`, `MAX`, `MIN`)
+- Group By
+- Complex joins
+- How View Entities generate SQL automatically
+
+By the end of the next chapter, you'll understand how OFBiz performs complex multi-table joins **without writing SQL manually**.
+
+
+-----------------------------------------------
+
+# Chapter 17 - View Entities (Performing SQL JOINs Without Writing SQL)
+
+---
+
+# Goal of this Chapter
+
+Till now we have learned
+
+- EntityQuery
+- EntityCondition
+- GenericValue
+- Delegator
+- Relationships
+
+Now let's answer another important question.
+
+> **How does OFBiz retrieve data from multiple tables without writing SQL JOINs?**
+
+Example
+
+Suppose we need
+
+```
+Order Name
+
+Customer Name
+
+Product Name
+
+Quantity
+
+Price
+```
+
+These fields are stored in different tables.
+
+Without View Entity,
+
+we would write
+
+```sql
+SELECT ...
+
+FROM ORDER_HEADER
+
+JOIN ORDER_ITEM
+
+JOIN PRODUCT
+
+JOIN PARTY
+```
+
+Instead,
+
+OFBiz provides
+
+```
+View Entity
+```
+
+---
+
+# What is a View Entity?
+
+A View Entity is a **virtual entity** that combines data from multiple entities.
+
+Think of it as
+
+```
+Multiple Entities
+
+↓
+
+One Virtual Entity
+
+↓
+
+One Query
+```
+
+Unlike normal entities,
+
+a View Entity does **not** create a new database table.
+
+It only defines
+
+how multiple tables should be joined.
+
+---
+
+# Normal Entity vs View Entity
+
+### Normal Entity
+
+Represents
+
+```
+One Database Table
+```
+
+Example
+
+```
+Product
+
+↓
+
+PRODUCT Table
+```
+
+---
+
+### View Entity
+
+Represents
+
+```
+Many Tables
+
+↓
+
+One Virtual View
+```
+
+Example
+
+```
+OrderHeader
+
++
+
+OrderItem
+
++
+
+Product
+
+=
+
+OrderProductView
+```
+
+---
+
+# Why View Entities?
+
+Suppose you need
+
+```
+Order Number
+
+Customer Name
+
+Product Name
+
+Unit Price
+
+Quantity
+```
+
+Data exists in
+
+```
+OrderHeader
+
+↓
+
+OrderRole
+
+↓
+
+Party
+
+↓
+
+OrderItem
+
+↓
+
+Product
+```
+
+Without View Entity
+
+you would manually write JOINs.
+
+With View Entity
+
+OFBiz generates them automatically.
+
+---
+
+# Real-Life Analogy
+
+Imagine Excel.
+
+Sheet 1
+
+```
+Customers
+```
+
+Sheet 2
+
+```
+Orders
+```
+
+Sheet 3
+
+```
+Products
+```
+
+A View Entity is like creating one report
+
+that combines all three sheets
+
+without copying data.
+
+---
+
+# View Entity Structure
+
+Basic syntax
+
+```xml
+<view-entity entity-name="OrderProductView">
+
+    ...
+
+</view-entity>
+```
+
+Inside it
+
+we define
+
+- Member Entities
+- Relationships
+- Fields
+- Aliases
+
+---
+
+# Member Entity
+
+Question
+
+How does OFBiz know
+
+which tables are involved?
+
+Answer
+
+```
+member-entity
+```
+
+Example
+
+```xml
+<member-entity
+
+entity-alias="OH"
+
+entity-name="OrderHeader"/>
+```
+
+Meaning
+
+Include
+
+```
+OrderHeader
+```
+
+in this View.
+
+---
+
+# Multiple Member Entities
+
+Example
+
+```xml
+<member-entity
+
+entity-alias="OH"
+
+entity-name="OrderHeader"/>
+
+<member-entity
+
+entity-alias="OI"
+
+entity-name="OrderItem"/>
+
+<member-entity
+
+entity-alias="P"
+
+entity-name="Product"/>
+```
+
+Now View Entity contains
+
+```
+OrderHeader
+
++
+
+OrderItem
+
++
+
+Product
+```
+
+---
+
+# Why entity-alias?
+
+Suppose
+
+```
+OrderHeader
+
+OrderItem
+```
+
+both contain
+
+```
+orderId
+```
+
+How do we distinguish them?
+
+Using aliases.
+
+Example
+
+```
+OH.orderId
+
+OI.orderId
+```
+
+Exactly like SQL aliases.
+
+---
+
+# SQL Equivalent
+
+View Entity
+
+```xml
+entity-alias="OH"
+```
+
+Equivalent SQL
+
+```sql
+FROM ORDER_HEADER OH
+```
+
+---
+
+# Alias
+
+Question
+
+Which fields should the View return?
+
+Answer
+
+```
+alias
+```
+
+Example
+
+```xml
+<alias
+
+entity-alias="OH"
+
+name="orderId"/>
+```
+
+Now
+
+```
+orderId
+```
+
+becomes available
+
+in the View Entity.
+
+---
+
+# More Aliases
+
+```xml
+<alias
+
+entity-alias="OI"
+
+name="quantity"/>
+
+<alias
+
+entity-alias="P"
+
+name="internalName"/>
+```
+
+Now the View returns
+
+```
+orderId
+
+quantity
+
+internalName
+```
+
+---
+
+# View Link
+
+Question
+
+How are member entities connected?
+
+Answer
+
+```
+view-link
+```
+
+Example
+
+```xml
+<view-link
+
+entity-alias="OH"
+
+rel-entity-alias="OI">
+```
+
+Meaning
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+```
+
+---
+
+# Key Map Inside View Link
+
+Example
+
+```xml
+<key-map
+
+field-name="orderId"/>
+```
+
+Meaning
+
+```
+OH.orderId
+
+=
+
+OI.orderId
+```
+
+Exactly like
+
+```sql
+ON
+
+OH.ORDER_ID
+
+=
+
+OI.ORDER_ID
+```
+
+---
+
+# Complete Join
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+
+↓
+
+Product
+```
+
+View Links
+
+```
+OH
+
+↓
+
+OI
+
+↓
+
+P
+```
+
+---
+
+# SQL Generated
+
+Suppose View Entity contains
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+```
+
+Generated SQL
+
+```sql
+SELECT
+
+OH.ORDER_ID,
+
+OI.PRODUCT_ID
+
+FROM ORDER_HEADER OH
+
+JOIN ORDER_ITEM OI
+
+ON OH.ORDER_ID = OI.ORDER_ID
+```
+
+Developer never writes this SQL.
+
+---
+
+# Querying a View Entity
+
+From Java
+
+```java
+EntityQuery.use(delegator)
+
+.from("OrderProductView")
+
+.queryList();
+```
+
+Notice
+
+A View Entity is queried
+
+exactly like a normal entity.
+
+---
+
+# Why?
+
+Because
+
+Entity Engine treats
+
+View Entity
+
+as another entity.
+
+Developer doesn't need
+
+special code.
+
+---
+
+# Aggregation
+
+View Entities support
+
+```
+COUNT
+
+SUM
+
+AVG
+
+MIN
+
+MAX
+```
+
+---
+
+# Example
+
+Total Quantity
+
+```xml
+<alias
+
+entity-alias="OI"
+
+name="quantity"
+
+function="sum"/>
+```
+
+Equivalent SQL
+
+```sql
+SUM(QUANTITY)
+```
+
+---
+
+# COUNT Example
+
+```xml
+function="count"
+```
+
+Equivalent SQL
+
+```sql
+COUNT(*)
+```
+
+Useful for reports.
+
+---
+
+# Group By
+
+Suppose
+
+```
+Sales
+
+per Product
+```
+
+Generated SQL
+
+```sql
+GROUP BY PRODUCT_ID
+```
+
+View Entities support this
+
+using aliases and aggregate functions.
+
+---
+
+# Distinct
+
+View Entity also supports
+
+```
+DISTINCT
+```
+
+through EntityQuery.
+
+---
+
+# Dynamic View Entity
+
+Question
+
+What if joins are decided
+
+at runtime?
+
+Answer
+
+```
+DynamicViewEntity
+```
+
+Instead of XML,
+
+joins are built in Java.
+
+Useful for
+
+dynamic reporting.
+
+---
+
+# Difference
+
+Static View
+
+```
+XML
+
+Permanent
+```
+
+Dynamic View
+
+```
+Java
+
+Created at Runtime
+```
+
+---
+
+# Internal Flow
+
+```
+View Entity XML
+
+↓
+
+ModelViewEntity
+
+↓
+
+Member Entities
+
+↓
+
+View Links
+
+↓
+
+SQL Builder
+
+↓
+
+JOIN SQL
+
+↓
+
+Database
+```
+
+---
+
+# Important Internal Class
+
+For View Entities,
+
+Entity Engine creates
+
+```
+ModelViewEntity
+```
+
+instead of
+
+```
+ModelEntity
+```
+
+---
+
+# Sequence Diagram
+
+```
+Developer
+
+│
+
+│ EntityQuery
+
+▼
+
+View Entity
+
+│
+
+▼
+
+ModelViewEntity
+
+│
+
+▼
+
+SQL Builder
+
+│
+
+▼
+
+JOIN SQL
+
+│
+
+▼
+
+Database
+
+│
+
+▼
+
+GenericValue
+```
+
+---
+
+# Real Example
+
+Suppose you need
+
+```
+Order Number
+
+↓
+
+Customer Name
+
+↓
+
+Product Name
+
+↓
+
+Quantity
+
+↓
+
+Price
+```
+
+Instead of
+
+writing a huge SQL JOIN,
+
+you define
+
+```
+OrderSummaryView
+```
+
+Then
+
+```java
+EntityQuery.use(delegator)
+
+.from("OrderSummaryView")
+
+.queryList();
+```
+
+Done.
+
+---
+
+# Common Mistakes
+
+## Mistake 1
+
+Thinking
+
+View Entity creates
+
+a new table.
+
+Wrong.
+
+It is
+
+only metadata.
+
+---
+
+## Mistake 2
+
+Forgetting
+
+```
+view-link
+```
+
+Without View Links,
+
+member entities
+
+cannot be joined.
+
+---
+
+## Mistake 3
+
+Using wrong
+
+```
+entity-alias
+```
+
+Always use aliases consistently.
+
+---
+
+# Best Practices
+
+✔ Use View Entities for reusable joins.
+
+✔ Keep aliases meaningful (`OH`, `OI`, `P`, etc.).
+
+✔ Prefer View Entities over writing repeated JOIN logic.
+
+✔ Use aggregate functions for reporting instead of post-processing in Java.
+
+✔ Consider `DynamicViewEntity` when joins depend on user input or runtime conditions.
+
+---
+
+# Interview Questions
+
+Q1. What is a View Entity?
+
+Q2. Difference between Entity and View Entity?
+
+Q3. Does a View Entity create a database table?
+
+Q4. What is `member-entity`?
+
+Q5. Why do we need `entity-alias`?
+
+Q6. What is `view-link`?
+
+Q7. What is `key-map` inside `view-link`?
+
+Q8. What is `ModelViewEntity`?
+
+Q9. Difference between Static View Entity and DynamicViewEntity?
+
+Q10. Can aggregate functions like `SUM` and `COUNT` be used in View Entities?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ View Entity
+
+✔ member-entity
+
+✔ entity-alias
+
+✔ alias
+
+✔ view-link
+
+✔ key-map
+
+✔ ModelViewEntity
+
+✔ Static vs Dynamic View Entity
+
+✔ Aggregate Functions
+
+✔ Group By
+
+✔ SQL JOIN generation
+
+✔ Querying View Entities
+
+---
+
+# Next Chapter (Chapter 18)
+
+Now we'll study **DynamicViewEntity**, one of the most advanced features of the Entity Engine.
+
+We'll cover:
+
+- What is DynamicViewEntity?
+- Why it exists
+- How to build joins in Java
+- Adding member entities dynamically
+- Adding aliases dynamically
+- Creating view links at runtime
+- Reporting use cases
+- Performance considerations
+- DynamicViewEntity → SQL generation flow
+
+By the end of the next chapter, you'll understand how OFBiz can build complex reports and search screens **without defining a permanent View Entity in XML**.
+
+
+-------------------------------------------------------
+
+# Chapter 18 - DynamicViewEntity (Building SQL JOINs at Runtime)
+
+---
+
+# Goal of this Chapter
+
+In the previous chapter, we learned about
+
+```
+View Entity
+```
+
+But View Entities have one limitation.
+
+They must be defined
+
+inside
+
+```
+entitymodel.xml
+```
+
+Question
+
+> What if we don't know the joins until runtime?
+
+Example
+
+Suppose user opens a Report screen.
+
+Today they want
+
+```
+Order
+
++
+
+Customer
+```
+
+Tomorrow they want
+
+```
+Order
+
++
+
+Customer
+
++
+
+Shipment
+```
+
+Next day they want
+
+```
+Order
+
++
+
+Customer
+
++
+
+Shipment
+
++
+
+Payment
+```
+
+Should we create
+
+three different View Entities?
+
+No.
+
+This is why OFBiz provides
+
+```
+DynamicViewEntity
+```
+
+---
+
+# What is DynamicViewEntity?
+
+A DynamicViewEntity is
+
+a View Entity created completely in Java
+
+at runtime.
+
+Think
+
+```
+Static View Entity
+
+↓
+
+XML
+
+↓
+
+Permanent
+```
+
+vs
+
+```
+DynamicViewEntity
+
+↓
+
+Java
+
+↓
+
+Temporary
+```
+
+---
+
+# Why DynamicViewEntity?
+
+Suppose a search screen allows users to choose
+
+```
+✓ Customer
+
+✓ Product
+
+✓ Shipment
+
+✓ Payment
+
+✓ Facility
+```
+
+The final query depends
+
+on user selection.
+
+We cannot create
+
+hundreds of XML View Entities.
+
+Instead
+
+we create one
+
+```
+DynamicViewEntity
+```
+
+---
+
+# Static vs Dynamic
+
+| Static View Entity | DynamicViewEntity |
+|-------------------|-------------------|
+| XML | Java |
+| Loaded during startup | Created at runtime |
+| Permanent | Temporary |
+| Fixed joins | Dynamic joins |
+| Best for reusable views | Best for reports/search |
+
+---
+
+# High-Level Flow
+
+```
+Developer
+
+↓
+
+DynamicViewEntity
+
+↓
+
+Member Entities
+
+↓
+
+Aliases
+
+↓
+
+View Links
+
+↓
+
+EntityQuery
+
+↓
+
+Entity Engine
+
+↓
+
+SQL
+
+↓
+
+Database
+```
+
+---
+
+# Step 1 - Create DynamicViewEntity
+
+Example
+
+```java
+DynamicViewEntity dve =
+new DynamicViewEntity();
+```
+
+Currently
+
+it is empty.
+
+```
+DynamicViewEntity
+
+{
+
+}
+```
+
+---
+
+# Step 2 - Add Member Entity
+
+Example
+
+```java
+dve.addMemberEntity(
+        "OH",
+        "OrderHeader");
+```
+
+Meaning
+
+```
+Alias
+
+↓
+
+OH
+
+Entity
+
+↓
+
+OrderHeader
+```
+
+---
+
+# Add Another Entity
+
+```java
+dve.addMemberEntity(
+        "OI",
+        "OrderItem");
+```
+
+Now
+
+```
+OH
+
+↓
+
+OrderHeader
+
+OI
+
+↓
+
+OrderItem
+```
+
+---
+
+# Step 3 - Add Alias
+
+Question
+
+Which fields should be returned?
+
+Answer
+
+```
+addAlias()
+```
+
+Example
+
+```java
+dve.addAlias(
+        "OH",
+        "orderId");
+```
+
+Another
+
+```java
+dve.addAlias(
+        "OI",
+        "productId");
+```
+
+Returned fields
+
+```
+orderId
+
+productId
+```
+
+---
+
+# Step 4 - Add View Link
+
+Question
+
+How are entities connected?
+
+Answer
+
+```java
+dve.addViewLink(...)
+```
+
+Example
+
+```
+OrderHeader
+
+↓
+
+OrderItem
+
+using
+
+orderId
+```
+
+Equivalent SQL
+
+```sql
+ON
+
+OH.ORDER_ID
+
+=
+
+OI.ORDER_ID
+```
+
+---
+
+# Internal Structure
+
+After adding entities
+
+```
+DynamicViewEntity
+
+{
+
+Member Entities
+
+OH
+
+OI
+
+Aliases
+
+orderId
+
+productId
+
+View Links
+
+OH → OI
+
+}
+```
+
+Still
+
+No SQL exists.
+
+---
+
+# Step 5 - Use in EntityQuery
+
+Example
+
+```java
+EntityQuery.use(delegator)
+
+.from(dve)
+
+.queryList();
+```
+
+Notice
+
+Instead of
+
+```java
+.from("OrderHeader")
+```
+
+we pass
+
+```
+DynamicViewEntity
+```
+
+---
+
+# SQL Generation
+
+Entity Engine converts
+
+```
+DynamicViewEntity
+
+↓
+
+JOIN SQL
+```
+
+Example
+
+```sql
+SELECT
+
+OH.ORDER_ID,
+
+OI.PRODUCT_ID
+
+FROM ORDER_HEADER OH
+
+JOIN ORDER_ITEM OI
+
+ON OH.ORDER_ID = OI.ORDER_ID
+```
+
+Developer never writes SQL.
+
+---
+
+# Why Runtime?
+
+Suppose
+
+user selects
+
+```
+Customer
+
+Product
+
+Inventory
+```
+
+Tomorrow
+
+user selects
+
+```
+Customer
+
+Shipment
+```
+
+DynamicViewEntity changes automatically.
+
+---
+
+# Reporting Example
+
+Suppose
+
+Dashboard
+
+contains filters
+
+```
+Date
+
+Store
+
+Facility
+
+Status
+
+Customer
+
+Shipment
+```
+
+Every filter
+
+changes SQL.
+
+DynamicViewEntity builds
+
+the JOIN dynamically.
+
+---
+
+# Search Screen Example
+
+User selects
+
+```
+Search by
+
+☑ Product
+
+☑ Category
+
+☑ Supplier
+```
+
+DynamicViewEntity creates
+
+only the required joins.
+
+No unnecessary tables.
+
+---
+
+# Aggregation
+
+DynamicViewEntity also supports
+
+```
+SUM
+
+COUNT
+
+AVG
+
+MIN
+
+MAX
+```
+
+Exactly like
+
+Static View Entity.
+
+---
+
+# Group By
+
+Supports
+
+```
+GROUP BY
+```
+
+Example
+
+```
+Sales
+
+Per Product
+```
+
+---
+
+# Dynamic WHERE
+
+Works with
+
+```
+EntityCondition
+```
+
+Example
+
+```java
+.where(condition)
+```
+
+No difference.
+
+---
+
+# Complete Flow
+
+```
+DynamicViewEntity
+
+↓
+
+EntityQuery
+
+↓
+
+EntityCondition
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+SQL Builder
+
+↓
+
+JOIN SQL
+
+↓
+
+Database
+
+↓
+
+GenericValue
+```
+
+---
+
+# Internal Classes
+
+DynamicViewEntity is converted into
+
+```
+ModelViewEntity
+```
+
+before SQL generation.
+
+Flow
+
+```
+DynamicViewEntity
+
+↓
+
+ModelViewEntity
+
+↓
+
+SQL Builder
+```
+
+---
+
+# Dynamic vs Static Performance
+
+Static View
+
+```
+Already Loaded
+
+↓
+
+Slightly Faster
+```
+
+Dynamic View
+
+```
+Built Every Time
+
+↓
+
+Slightly More Overhead
+```
+
+Usually
+
+the difference is very small.
+
+Choose based on use case,
+
+not micro-performance.
+
+---
+
+# When to Use DynamicViewEntity?
+
+Use it when
+
+✔ User-defined reports
+
+✔ Advanced search screens
+
+✔ Dynamic filters
+
+✔ Unknown joins
+
+✔ Temporary views
+
+---
+
+# When NOT to Use It?
+
+Don't use DynamicViewEntity
+
+when
+
+✔ Same join is reused everywhere
+
+✔ View never changes
+
+✔ Permanent business object
+
+In such cases,
+
+prefer a normal
+
+```
+View Entity
+```
+
+---
+
+# DynamicViewEntity Lifecycle
+
+```
+Java Code
+
+↓
+
+Create DynamicViewEntity
+
+↓
+
+Add Member Entities
+
+↓
+
+Add Aliases
+
+↓
+
+Add View Links
+
+↓
+
+EntityQuery
+
+↓
+
+Entity Engine
+
+↓
+
+JOIN SQL
+
+↓
+
+Database
+
+↓
+
+GenericValue
+```
+
+---
+
+# Real-Life Analogy
+
+Imagine a pizza.
+
+Static View Entity
+
+```
+Fixed Pizza
+
+Cheese
+
+Tomato
+
+Olives
+```
+
+Every customer gets
+
+the same pizza.
+
+DynamicViewEntity
+
+Customer chooses
+
+```
+✓ Cheese
+
+✓ Mushroom
+
+✓ Corn
+
+✓ Paneer
+```
+
+Pizza is prepared
+
+only after
+
+the order is placed.
+
+Exactly how
+
+DynamicViewEntity works.
+
+---
+
+# Sequence Diagram
+
+```
+Developer
+
+│
+
+│ Create DynamicViewEntity
+
+▼
+
+Member Entities
+
+│
+
+▼
+
+Aliases
+
+│
+
+▼
+
+View Links
+
+│
+
+▼
+
+EntityQuery
+
+│
+
+▼
+
+Entity Engine
+
+│
+
+▼
+
+SQL Builder
+
+│
+
+▼
+
+Database
+
+│
+
+▼
+
+GenericValue
+```
+
+---
+
+# Common Mistakes
+
+## Mistake 1
+
+Using DynamicViewEntity
+
+for every query.
+
+Wrong.
+
+If joins are fixed,
+
+use Static View Entity.
+
+---
+
+## Mistake 2
+
+Forgetting
+
+```
+View Links
+```
+
+Without View Links
+
+tables cannot be joined.
+
+---
+
+## Mistake 3
+
+Adding aliases
+
+that don't belong
+
+to any member entity.
+
+---
+
+# Best Practices
+
+✔ Use DynamicViewEntity only when the query structure is dynamic.
+
+✔ Keep aliases short and meaningful.
+
+✔ Reuse EntityCondition for filtering.
+
+✔ Avoid adding unnecessary member entities.
+
+✔ Prefer Static View Entities for common business objects.
+
+---
+
+# Interview Questions
+
+Q1. What is DynamicViewEntity?
+
+Q2. Difference between View Entity and DynamicViewEntity?
+
+Q3. Why was DynamicViewEntity introduced?
+
+Q4. Can DynamicViewEntity perform joins?
+
+Q5. Does DynamicViewEntity create database tables?
+
+Q6. When should you prefer a Static View Entity?
+
+Q7. How does EntityQuery use a DynamicViewEntity?
+
+Q8. Does DynamicViewEntity support aggregation?
+
+Q9. Which internal class is eventually used for SQL generation?
+
+Answer
+
+```
+ModelViewEntity
+```
+
+Q10. Give a real-world use case for DynamicViewEntity.
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ DynamicViewEntity
+
+✔ Runtime joins
+
+✔ addMemberEntity()
+
+✔ addAlias()
+
+✔ addViewLink()
+
+✔ Dynamic reporting
+
+✔ Search screens
+
+✔ Runtime SQL generation
+
+✔ Static vs Dynamic View Entity
+
+✔ Best practices
+
+---
+
+# Next Chapter (Chapter 19)
+
+Now we'll study one of the most important concepts in the Service Engine:
+
+# Service Dispatcher
+
+We'll cover:
+
+- What is the Dispatcher?
+- DispatchContext
+- GenericDispatcher
+- LocalDispatcher
+- runSync()
+- runAsync()
+- Service invocation flow
+- Service validation
+- Transaction management
+- Service chaining
+- Complete request → service → database execution flow
+
+This chapter is extremely important because **every service execution in OFBiz goes through the Dispatcher**. By understanding it, you'll understand how the entire Service Engine works internally.
+
+--------------------------------------------------
+
+# Chapter 20 - ModelService (The Blueprint of Every Service)
+
+---
+
+# Goal of this Chapter
+
+In the previous chapter, we learned
+
+```
+Dispatcher
+```
+
+Now let's answer another important question.
+
+> When Dispatcher receives
+
+```java
+dispatcher.runSync(
+    "createOrder",
+    context);
+```
+
+How does it know
+
+- which parameters are required?
+- which Java method to call?
+- whether authentication is required?
+- whether the service is transactional?
+- what type of values should be returned?
+
+The answer is
+
+```
+ModelService
+```
+
+---
+
+# What is ModelService?
+
+A **ModelService** is the **Java representation (metadata)** of a service definition.
+
+Think of it as a blueprint.
+
+```
+services.xml
+
+↓
+
+ModelService
+
+↓
+
+Dispatcher
+```
+
+Dispatcher never reads
+
+```
+services.xml
+```
+
+every time.
+
+Instead,
+
+during startup,
+
+OFBiz loads every service
+
+into a
+
+```
+ModelService
+```
+
+object.
+
+---
+
+# Real Life Analogy
+
+Imagine building a house.
+
+Before construction,
+
+an architect prepares
+
+```
+Blueprint
+```
+
+The workers don't read
+
+requirements repeatedly.
+
+They simply follow
+
+the blueprint.
+
+Similarly
+
+```
+services.xml
+
+↓
+
+Blueprint
+
+↓
+
+ModelService
+
+↓
+
+Dispatcher executes
+```
+
+---
+
+# Where is ModelService Created?
+
+During server startup
+
+OFBiz scans
+
+```
+services.xml
+```
+
+Example
+
+```xml
+<service
+
+name="createOrder"
+
+engine="java"
+
+location="..."
+
+invoke="createOrder"
+
+auth="true"/>
+```
+
+This XML becomes
+
+```
+ModelService
+```
+
+---
+
+# High-Level Flow
+
+```
+Server Starts
+
+↓
+
+Read services.xml
+
+↓
+
+Create ModelService
+
+↓
+
+Store in Memory
+
+↓
+
+Dispatcher Uses It
+```
+
+---
+
+# Why ModelService?
+
+Without ModelService
+
+every service execution would require
+
+```
+Read XML
+
+↓
+
+Parse XML
+
+↓
+
+Validate XML
+
+↓
+
+Execute
+```
+
+Very slow.
+
+Instead
+
+```
+Startup
+
+↓
+
+Parse Once
+
+↓
+
+ModelService
+
+↓
+
+Reuse Forever
+```
+
+---
+
+# What Does ModelService Store?
+
+A ModelService stores
+
+```
+Service Name
+
+↓
+
+Engine
+
+↓
+
+Location
+
+↓
+
+Invoke Method
+
+↓
+
+Authentication
+
+↓
+
+Transaction Settings
+
+↓
+
+IN Parameters
+
+↓
+
+OUT Parameters
+
+↓
+
+Default Values
+
+↓
+
+Permissions
+```
+
+Everything about a service
+
+is stored here.
+
+---
+
+# Example
+
+Suppose
+
+```xml
+<service
+
+name="createProduct"
+
+engine="java"
+
+location="..."
+
+invoke="createProduct"
+
+auth="true"/>
+```
+
+Internally
+
+```
+ModelService
+
+{
+
+name
+
+=
+
+createProduct
+
+engine
+
+=
+
+java
+
+invoke
+
+=
+
+createProduct
+
+authentication
+
+=
+
+true
+
+}
+```
+
+---
+
+# Service Name
+
+Example
+
+```xml
+name="createOrder"
+```
+
+ModelService stores
+
+```
+createOrder
+```
+
+Dispatcher searches
+
+using this name.
+
+---
+
+# Engine
+
+Example
+
+```xml
+engine="groovy"
+```
+
+Possible values
+
+```
+java
+
+groovy
+
+simple
+
+entity-auto
+```
+
+Dispatcher decides
+
+which engine
+
+should execute the service.
+
+---
+
+# Location
+
+Example
+
+```xml
+location="component://order/src/..."
+```
+
+This tells Dispatcher
+
+where the implementation exists.
+
+---
+
+# Invoke
+
+Example
+
+```xml
+invoke="createOrder"
+```
+
+Dispatcher calls
+
+```
+createOrder()
+```
+
+inside
+
+the specified class.
+
+---
+
+# Authentication
+
+Example
+
+```xml
+auth="true"
+```
+
+ModelService stores
+
+```
+Authentication Required
+```
+
+Dispatcher checks
+
+user login
+
+before execution.
+
+---
+
+# Export
+
+Some services are marked
+
+```
+export="true"
+```
+
+Meaning
+
+they can be invoked
+
+through remote interfaces
+
+such as SOAP, XML-RPC, or other configured service endpoints.
+
+---
+
+# Transaction Flag
+
+Example
+
+```xml
+use-transaction="true"
+```
+
+ModelService stores
+
+```
+Transactional
+
+=
+
+true
+```
+
+Dispatcher starts
+
+transaction automatically.
+
+---
+
+# IN Parameters
+
+Example
+
+```xml
+<attribute
+
+name="orderId"
+
+type="String"
+
+mode="IN"/>
+```
+
+Meaning
+
+caller must provide
+
+```
+orderId
+```
+
+---
+
+# OUT Parameters
+
+Example
+
+```xml
+<attribute
+
+name="orderHeader"
+
+type="GenericValue"
+
+mode="OUT"/>
+```
+
+Meaning
+
+service returns
+
+```
+orderHeader
+```
+
+---
+
+# INOUT Parameters
+
+Sometimes
+
+same parameter
+
+comes in
+
+and goes out.
+
+```
+mode="INOUT"
+```
+
+Example
+
+```
+context
+
+↓
+
+Service modifies it
+
+↓
+
+Returns updated value
+```
+
+---
+
+# Required Parameters
+
+Example
+
+```xml
+optional="false"
+```
+
+Dispatcher checks
+
+```
+Parameter Exists?
+
+↓
+
+No
+
+↓
+
+Error
+```
+
+before calling Java.
+
+---
+
+# Optional Parameters
+
+Example
+
+```xml
+optional="true"
+```
+
+Missing parameter?
+
+No problem.
+
+Service still runs.
+
+---
+
+# Default Values
+
+Example
+
+```
+statusId
+
+=
+
+CREATED
+```
+
+If caller doesn't provide it,
+
+ModelService
+
+can supply
+
+the default value
+
+when configured.
+
+---
+
+# Parameter Types
+
+Example
+
+```
+String
+
+BigDecimal
+
+Timestamp
+
+GenericValue
+
+List
+
+Map
+```
+
+Dispatcher validates
+
+the parameter types
+
+before execution.
+
+---
+
+# Validation Flow
+
+```
+Context Map
+
+↓
+
+ModelService
+
+↓
+
+Check Required Fields
+
+↓
+
+Check Types
+
+↓
+
+Authentication
+
+↓
+
+Execute Service
+```
+
+---
+
+# ModelParam
+
+Inside ModelService,
+
+each parameter
+
+is represented by
+
+```
+ModelParam
+```
+
+One
+
+```
+ModelParam
+
+=
+
+One Attribute
+```
+
+---
+
+# Example
+
+Service
+
+```
+createOrder
+```
+
+contains
+
+```
+orderId
+
+partyId
+
+currencyUomId
+
+grandTotal
+```
+
+Internally
+
+```
+ModelService
+
+↓
+
+ModelParam
+
+orderId
+
+↓
+
+ModelParam
+
+partyId
+
+↓
+
+ModelParam
+
+currencyUomId
+
+↓
+
+ModelParam
+
+grandTotal
+```
+
+---
+
+# Complete Lifecycle
+
+```
+services.xml
+
+↓
+
+ModelServiceReader
+
+↓
+
+ModelService
+
+↓
+
+Dispatcher
+
+↓
+
+Validation
+
+↓
+
+Java Service
+
+↓
+
+Result
+```
+
+---
+
+# Internal Classes
+
+Important classes
+
+```
+ModelService
+
+↓
+
+ModelParam
+
+↓
+
+ServiceDispatcher
+
+↓
+
+GenericDispatcher
+
+↓
+
+DispatchContext
+```
+
+---
+
+# Dispatcher Uses ModelService
+
+When
+
+```java
+dispatcher.runSync(...)
+```
+
+is called
+
+Dispatcher performs
+
+```
+Find ModelService
+
+↓
+
+Validate Context
+
+↓
+
+Authentication
+
+↓
+
+Transaction
+
+↓
+
+Invoke Service
+```
+
+Everything comes
+
+from
+
+```
+ModelService
+```
+
+---
+
+# Sequence Diagram
+
+```
+Developer
+
+│
+
+│ runSync()
+
+▼
+
+Dispatcher
+
+│
+
+▼
+
+ModelService
+
+│
+
+▼
+
+Validate Parameters
+
+│
+
+▼
+
+Java Service
+
+│
+
+▼
+
+Return Map
+```
+
+---
+
+# Real Example
+
+Suppose
+
+```
+createShipment
+```
+
+requires
+
+```
+shipmentId
+
+facilityId
+
+carrierPartyId
+```
+
+Caller provides
+
+```java
+context.put(
+    "shipmentId",
+    "S100");
+```
+
+Missing
+
+```
+facilityId
+```
+
+Dispatcher checks
+
+```
+ModelService
+
+↓
+
+facilityId Required
+
+↓
+
+Validation Failed
+
+↓
+
+Service Not Executed
+```
+
+---
+
+# Common Mistakes
+
+## Mistake 1
+
+Thinking
+
+ModelService
+
+executes Java code.
+
+Wrong.
+
+It stores
+
+metadata only.
+
+---
+
+## Mistake 2
+
+Thinking Dispatcher
+
+reads XML
+
+every time.
+
+Wrong.
+
+Dispatcher uses
+
+already-loaded
+
+ModelService objects.
+
+---
+
+## Mistake 3
+
+Ignoring
+
+required attributes
+
+defined in
+
+services.xml.
+
+Validation will fail
+
+before
+
+the Java method is called.
+
+---
+
+# Best Practices
+
+✔ Keep service definitions accurate.
+
+✔ Clearly define IN and OUT parameters.
+
+✔ Mark only truly optional parameters as optional.
+
+✔ Use meaningful parameter names.
+
+✔ Keep the XML definition synchronized with the Java implementation.
+
+---
+
+# Interview Questions
+
+Q1. What is ModelService?
+
+Q2. Why does OFBiz use ModelService?
+
+Q3. When is ModelService created?
+
+Q4. What is the difference between ModelService and a Java Service?
+
+Q5. What information does ModelService contain?
+
+Q6. What is ModelParam?
+
+Q7. Who uses ModelService?
+
+Q8. Does ModelService execute business logic?
+
+Q9. What is the purpose of IN and OUT parameters?
+
+Q10. Why doesn't Dispatcher read `services.xml` every time?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ ModelService
+
+✔ ModelParam
+
+✔ Service Metadata
+
+✔ IN Parameters
+
+✔ OUT Parameters
+
+✔ INOUT Parameters
+
+✔ Required vs Optional Parameters
+
+✔ Authentication Metadata
+
+✔ Transaction Metadata
+
+✔ Service Validation
+
+✔ Service Lifecycle
+
+✔ Dispatcher → ModelService interaction
+
+---
+
+# Next Chapter (Chapter 21)
+
+Now we'll study **Service Definition (`services.xml`)**, where services are actually declared.
+
+We'll cover:
+
+- Structure of `services.xml`
+- `<service>` tag
+- `<attribute>` tag
+- Engine types (`java`, `groovy`, `simple`, `entity-auto`)
+- `location`
+- `invoke`
+- `auth`
+- `export`
+- `use-transaction`
+- `validate`
+- Service inheritance and organization
+- How OFBiz loads service definitions during startup
+
+By the end of the next chapter, you'll be able to confidently read and write `services.xml` files and understand exactly how they are transformed into `ModelService` objects.
+
+
+--------------------------------------------------------------------
+
+# Chapter 21 - services.xml (Where Every OFBiz Service is Defined)
+
+---
+
+# Goal of this Chapter
+
+In the previous chapter, we learned
+
+```
+ModelService
+```
+
+Now let's answer another important question.
+
+> Where does ModelService come from?
+
+The answer is
+
+```
+services.xml
+```
+
+Every service that exists in OFBiz is first declared inside
+
+```
+services.xml
+```
+
+During server startup,
+
+OFBiz reads this file,
+
+creates ModelService objects,
+
+and stores them in memory.
+
+---
+
+# High-Level Flow
+
+```
+Developer writes
+
+↓
+
+services.xml
+
+↓
+
+Service Reader
+
+↓
+
+ModelService
+
+↓
+
+Dispatcher
+
+↓
+
+Service Execution
+```
+
+Notice
+
+```
+services.xml
+
+does NOT execute anything.
+```
+
+It only defines
+
+how a service should behave.
+
+---
+
+# What is services.xml?
+
+It is an XML configuration file
+
+that describes
+
+- Service Name
+- Engine
+- Java Class
+- Method
+- Parameters
+- Authentication
+- Transactions
+- Validation
+
+Think of it as
+
+```
+Blueprint
+
+for every service.
+```
+
+---
+
+# Location of services.xml
+
+Usually found inside
+
+```
+component/
+
+↓
+
+servicedef/
+
+↓
+
+services.xml
+```
+
+Example
+
+```
+applications/
+
+↓
+
+order/
+
+↓
+
+servicedef/
+
+↓
+
+services.xml
+```
+
+Every component can have
+
+its own
+
+```
+services.xml
+```
+
+---
+
+# Basic Structure
+
+```xml
+<services>
+
+    <service ...>
+
+    </service>
+
+</services>
+```
+
+The root tag
+
+is
+
+```
+<services>
+```
+
+Inside it,
+
+multiple
+
+```
+<service>
+```
+
+tags exist.
+
+---
+
+# Example
+
+```xml
+<service
+
+name="createOrder"
+
+engine="java"
+
+location="org.apache.ofbiz.order.OrderServices"
+
+invoke="createOrder"
+
+auth="true"/>
+```
+
+This does NOT execute
+
+```
+createOrder()
+```
+
+It only tells OFBiz
+
+where it exists.
+
+---
+
+# Service Lifecycle
+
+```
+Developer
+
+↓
+
+Write XML
+
+↓
+
+Server Starts
+
+↓
+
+Read XML
+
+↓
+
+Create ModelService
+
+↓
+
+Dispatcher Uses It
+
+↓
+
+Java Executes
+```
+
+---
+
+# The `<service>` Tag
+
+Every service begins with
+
+```xml
+<service ...>
+```
+
+Example
+
+```xml
+<service
+
+name="approveOrder"
+
+engine="java"
+
+location="..."
+
+invoke="approveOrder"/>
+```
+
+---
+
+# name
+
+Example
+
+```xml
+name="createShipment"
+```
+
+This is the
+
+unique identifier.
+
+Dispatcher later calls
+
+```java
+dispatcher.runSync(
+        "createShipment",
+        context);
+```
+
+Notice
+
+Dispatcher searches
+
+using
+
+```
+name
+```
+
+---
+
+# engine
+
+Example
+
+```xml
+engine="java"
+```
+
+Possible values
+
+```
+java
+
+groovy
+
+simple
+
+entity-auto
+```
+
+Engine tells OFBiz
+
+how the service
+
+should be executed.
+
+---
+
+# location
+
+Example
+
+```xml
+location="org.apache.ofbiz.order.OrderServices"
+```
+
+Meaning
+
+Java implementation
+
+is located here.
+
+---
+
+# invoke
+
+Example
+
+```xml
+invoke="createOrder"
+```
+
+Dispatcher finally calls
+
+```java
+OrderServices.createOrder()
+```
+
+---
+
+# auth
+
+Example
+
+```xml
+auth="true"
+```
+
+Meaning
+
+User must be logged in
+
+before execution.
+
+If
+
+```
+auth="false"
+```
+
+Anonymous users
+
+may invoke the service
+
+(subject to the application's exposure and security configuration).
+
+---
+
+# use-transaction
+
+Example
+
+```xml
+use-transaction="true"
+```
+
+Meaning
+
+Dispatcher automatically
+
+starts a transaction.
+
+Flow
+
+```
+Begin Transaction
+
+↓
+
+Execute Service
+
+↓
+
+Commit
+
+or
+
+Rollback
+```
+
+---
+
+# export
+
+Example
+
+```xml
+export="true"
+```
+
+Meaning
+
+Service is available
+
+to remote clients
+
+through configured service interfaces.
+
+---
+
+# validate
+
+Some services define
+
+```xml
+validate="true"
+```
+
+Meaning
+
+Dispatcher validates
+
+parameters
+
+before execution.
+
+---
+
+# debug
+
+Sometimes you'll see
+
+```xml
+debug="true"
+```
+
+Used mainly
+
+during development
+
+to assist debugging.
+
+---
+
+# The `<attribute>` Tag
+
+Inside
+
+```
+<service>
+```
+
+we define
+
+parameters.
+
+Example
+
+```xml
+<attribute
+
+name="orderId"
+
+type="String"
+
+mode="IN"/>
+```
+
+---
+
+# Structure
+
+```
+Service
+
+↓
+
+Attributes
+
+↓
+
+Input
+
+Output
+
+InputOutput
+```
+
+---
+
+# name
+
+Example
+
+```xml
+name="partyId"
+```
+
+Parameter name
+
+inside
+
+```
+context Map
+```
+
+---
+
+# type
+
+Example
+
+```xml
+type="String"
+```
+
+Possible types
+
+```
+String
+
+Timestamp
+
+BigDecimal
+
+Boolean
+
+GenericValue
+
+List
+
+Map
+```
+
+Dispatcher validates
+
+the types.
+
+---
+
+# mode
+
+Possible values
+
+```
+IN
+
+OUT
+
+INOUT
+```
+
+---
+
+## IN
+
+Caller provides value.
+
+Example
+
+```xml
+mode="IN"
+```
+
+---
+
+## OUT
+
+Service returns value.
+
+Example
+
+```xml
+mode="OUT"
+```
+
+---
+
+## INOUT
+
+Input
+
+and
+
+Output
+
+are the same variable.
+
+---
+
+# optional
+
+Example
+
+```xml
+optional="false"
+```
+
+Meaning
+
+Mandatory parameter.
+
+Dispatcher checks
+
+before execution.
+
+---
+
+# Required Parameter Flow
+
+```
+Context Map
+
+↓
+
+Contains orderId?
+
+↓
+
+No
+
+↓
+
+Validation Error
+
+↓
+
+Java Method Not Called
+```
+
+---
+
+# Default Values
+
+Some services
+
+specify default values
+
+for parameters.
+
+If caller
+
+doesn't provide them,
+
+OFBiz can use
+
+the default.
+
+---
+
+# Example Service
+
+```xml
+<service
+
+name="createProduct"
+
+engine="java"
+
+location="org.apache.ofbiz.product.ProductServices"
+
+invoke="createProduct"
+
+auth="true"
+
+use-transaction="true">
+
+    <attribute
+
+        name="productId"
+
+        type="String"
+
+        mode="IN"/>
+
+    <attribute
+
+        name="internalName"
+
+        type="String"
+
+        mode="IN"/>
+
+    <attribute
+
+        name="product"
+
+        type="GenericValue"
+
+        mode="OUT"/>
+
+</service>
+```
+
+This definition tells OFBiz
+
+everything required
+
+to execute
+
+```
+createProduct()
+```
+
+---
+
+# Internal Flow
+
+```
+services.xml
+
+↓
+
+ServiceReader
+
+↓
+
+ModelService
+
+↓
+
+Dispatcher
+
+↓
+
+Validation
+
+↓
+
+Java Method
+
+↓
+
+Result
+```
+
+---
+
+# How Dispatcher Uses It
+
+Developer writes
+
+```java
+dispatcher.runSync(
+    "createProduct",
+    context);
+```
+
+Dispatcher performs
+
+```
+Find ModelService
+
+↓
+
+Read Engine
+
+↓
+
+Read Location
+
+↓
+
+Read Invoke
+
+↓
+
+Validate Attributes
+
+↓
+
+Authentication
+
+↓
+
+Transaction
+
+↓
+
+Call Java
+```
+
+---
+
+# Relationship with Previous Chapters
+
+```
+services.xml
+
+↓
+
+ModelService
+
+↓
+
+Dispatcher
+
+↓
+
+Java Service
+
+↓
+
+Delegator
+
+↓
+
+Entity Engine
+
+↓
+
+Database
+```
+
+Notice
+
+Everything starts
+
+from
+
+```
+services.xml
+```
+
+---
+
+# Common Engines
+
+## Java
+
+```
+Business Logic
+
+↓
+
+Java Class
+```
+
+---
+
+## Groovy
+
+```
+Business Logic
+
+↓
+
+Groovy Script
+```
+
+---
+
+## Simple
+
+```
+Business Logic
+
+↓
+
+Simple XML Actions
+```
+
+---
+
+## Entity-Auto
+
+```
+Automatic CRUD
+
+↓
+
+No Java Required
+```
+
+We'll study each
+
+in upcoming chapters.
+
+---
+
+# Real-Life Analogy
+
+Imagine
+
+an employee record.
+
+```
+Employee Name
+
+Department
+
+Designation
+
+Salary
+```
+
+This record
+
+doesn't perform work.
+
+It only describes
+
+the employee.
+
+Similarly
+
+```
+services.xml
+
+doesn't execute code.
+
+It describes the service.
+```
+
+---
+
+# Sequence Diagram
+
+```
+Developer
+
+│
+
+│ runSync()
+
+▼
+
+Dispatcher
+
+│
+
+▼
+
+ModelService
+
+│
+
+▼
+
+services.xml Metadata
+
+│
+
+▼
+
+Java Service
+
+│
+
+▼
+
+Database
+
+│
+
+▼
+
+Result
+```
+
+---
+
+# Common Mistakes
+
+## Mistake 1
+
+Thinking
+
+services.xml
+
+contains business logic.
+
+Wrong.
+
+Business logic exists
+
+inside
+
+Java,
+
+Groovy,
+
+or Simple services.
+
+---
+
+## Mistake 2
+
+Changing
+
+Java method name
+
+but forgetting
+
+to update
+
+```
+invoke
+```
+
+Dispatcher
+
+won't find
+
+the method.
+
+---
+
+## Mistake 3
+
+Defining incorrect
+
+parameter types.
+
+Validation
+
+will fail
+
+before execution.
+
+---
+
+## Mistake 4
+
+Forgetting to define
+
+mandatory input parameters
+
+using `<attribute>`.
+
+The service may receive incomplete data or fail validation.
+
+---
+
+# Best Practices
+
+✔ Keep one logical group of services per `services.xml`.
+
+✔ Give services clear, action-oriented names (`createOrder`, `cancelShipment`, `approveInvoice`).
+
+✔ Define all input and output parameters explicitly.
+
+✔ Use `use-transaction="true"` for operations that modify multiple entities.
+
+✔ Keep XML metadata synchronized with the actual implementation.
+
+---
+
+# Interview Questions
+
+Q1. What is `services.xml`?
+
+Q2. Why does OFBiz use `services.xml`?
+
+Q3. Does `services.xml` execute business logic?
+
+Q4. What is the purpose of the `engine` attribute?
+
+Q5. What is the difference between `location` and `invoke`?
+
+Q6. What is the purpose of `<attribute>`?
+
+Q7. What are the different parameter modes?
+
+Q8. What is `use-transaction`?
+
+Q9. What happens during server startup with `services.xml`?
+
+Q10. How does `services.xml` relate to `ModelService`?
+
+---
+
+# Chapter Summary
+
+After this chapter you should understand
+
+✔ `services.xml`
+
+✔ `<service>`
+
+✔ `<attribute>`
+
+✔ `name`
+
+✔ `engine`
+
+✔ `location`
+
+✔ `invoke`
+
+✔ `auth`
+
+✔ `use-transaction`
+
+✔ `export`
+
+✔ `validate`
+
+✔ Parameter modes (`IN`, `OUT`, `INOUT`)
+
+✔ Complete Service Definition Lifecycle
+
+---
+
+# Next Chapter (Chapter 22)
+
+Now we'll study the **Java Service Engine**, which is where most enterprise business logic in OFBiz is implemented.
+
+We'll cover:
+
+- What is a Java Service?
+- Standard Java Service method signature
+- `DispatchContext`
+- Context `Map`
+- `ServiceUtil.returnSuccess()`
+- `ServiceUtil.returnError()`
+- Accessing the `Delegator`
+- Accessing the `Dispatcher`
+- Reading and writing `GenericValue`
+- Calling other services from a Java service
+- Exception handling and transaction behavior
+- Complete execution flow from `dispatcher.runSync()` to Java method execution
+
+By the end of the next chapter, you'll be able to confidently read, write, and debug Java services in OFBiz.
+
+-----------------------------
+
+
+------------------------------------
+
+javascript fundamenetal const, integeer, boolen
+
+how to write function, codnitionals , loops, dom manipulation
+
+
+working with api , fetch and api, es6 + feature 
+
+
+
+project colour picker that changes the backrgound
+
+a coffe order builder by vue
+
+
+
+
+========================================================================
+JAVA SCRIPT
+
+
+
